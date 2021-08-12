@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6817AB4F26B9CC6500CCCE4D /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 6817AB4E26B9CC6500CCCE4D /* CodeEditor */; };
+		683D922526B0BBEF00E5EF82 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 683D922426B0BBEF00E5EF82 /* Ink */; };
+		683D922726B0F48200E5EF82 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D922626B0F48200E5EF82 /* WebView.swift */; };
+		683D922A26B107EB00E5EF82 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 683D922926B107EB00E5EF82 /* Introspect */; };
+		684C9BED26C5C7F500D8CDC7 /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 684C9BEC26C5C7F500D8CDC7 /* HighlightedTextEditor */; };
+		684C9BF026C5CA5A00D8CDC7 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 684C9BEF26C5CA5A00D8CDC7 /* MarkdownUI */; };
+		684C9BF226C5D15B00D8CDC7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 684C9BF126C5D15B00D8CDC7 /* Credits.rtf */; };
 		68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BA726B0B3750001421E /* ConscriptorApp.swift */; };
 		68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BA926B0B3750001421E /* ConscriptorDocument.swift */; };
 		68871BAC26B0B3750001421E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BAB26B0B3750001421E /* ContentView.swift */; };
@@ -34,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		683D922626B0F48200E5EF82 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		684C9BF126C5D15B00D8CDC7 /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		68871BA426B0B3750001421E /* Conscriptor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Conscriptor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68871BA726B0B3750001421E /* ConscriptorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConscriptorApp.swift; sourceTree = "<group>"; };
 		68871BA926B0B3750001421E /* ConscriptorDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConscriptorDocument.swift; sourceTree = "<group>"; };
@@ -55,6 +64,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				683D922A26B107EB00E5EF82 /* Introspect in Frameworks */,
+				6817AB4F26B9CC6500CCCE4D /* CodeEditor in Frameworks */,
+				684C9BED26C5C7F500D8CDC7 /* HighlightedTextEditor in Frameworks */,
+				683D922526B0BBEF00E5EF82 /* Ink in Frameworks */,
+				684C9BF026C5CA5A00D8CDC7 /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,10 +113,12 @@
 			isa = PBXGroup;
 			children = (
 				68871BA726B0B3750001421E /* ConscriptorApp.swift */,
+				683D922626B0F48200E5EF82 /* WebView.swift */,
 				68871BA926B0B3750001421E /* ConscriptorDocument.swift */,
 				68871BAB26B0B3750001421E /* ContentView.swift */,
 				68871BAD26B0B3770001421E /* Assets.xcassets */,
 				68871BB226B0B3770001421E /* Info.plist */,
+				684C9BF126C5D15B00D8CDC7 /* Credits.rtf */,
 				68871BB326B0B3770001421E /* Conscriptor.entitlements */,
 				68871BAF26B0B3770001421E /* Preview Content */,
 			);
@@ -151,6 +167,13 @@
 			dependencies = (
 			);
 			name = Conscriptor;
+			packageProductDependencies = (
+				683D922426B0BBEF00E5EF82 /* Ink */,
+				683D922926B107EB00E5EF82 /* Introspect */,
+				6817AB4E26B9CC6500CCCE4D /* CodeEditor */,
+				684C9BEC26C5C7F500D8CDC7 /* HighlightedTextEditor */,
+				684C9BEF26C5CA5A00D8CDC7 /* MarkdownUI */,
+			);
 			productName = Conscriptor;
 			productReference = 68871BA426B0B3750001421E /* Conscriptor.app */;
 			productType = "com.apple.product-type.application";
@@ -198,7 +221,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1300;
 				TargetAttributes = {
 					68871BA326B0B3750001421E = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -222,6 +245,13 @@
 				Base,
 			);
 			mainGroup = 68871B9B26B0B3750001421E;
+			packageReferences = (
+				683D922326B0BBEE00E5EF82 /* XCRemoteSwiftPackageReference "Ink" */,
+				683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				6817AB4D26B9CC6500CCCE4D /* XCRemoteSwiftPackageReference "CodeEditor" */,
+				684C9BEB26C5C7F500D8CDC7 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
+				684C9BEE26C5CA5A00D8CDC7 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
+			);
 			productRefGroup = 68871BA526B0B3750001421E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -239,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68871BB126B0B3770001421E /* Preview Assets.xcassets in Resources */,
+				684C9BF226C5D15B00D8CDC7 /* Credits.rtf in Resources */,
 				68871BAE26B0B3770001421E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +296,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */,
+				683D922726B0F48200E5EF82 /* WebView.swift in Sources */,
 				68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */,
 				68871BAC26B0B3750001421E /* ContentView.swift in Sources */,
 			);
@@ -423,6 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Conscriptor/Conscriptor.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Conscriptor/Preview Content\"";
@@ -435,6 +468,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.Conscriptor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -447,6 +481,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Conscriptor/Conscriptor.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Conscriptor/Preview Content\"";
@@ -459,6 +494,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.Conscriptor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -589,6 +625,77 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6817AB4D26B9CC6500CCCE4D /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ZeeZide/CodeEditor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		683D922326B0BBEE00E5EF82 /* XCRemoteSwiftPackageReference "Ink" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Ink";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.1;
+			};
+		};
+		683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.3;
+			};
+		};
+		684C9BEB26C5C7F500D8CDC7 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kyle-n/HighlightedTextEditor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		684C9BEE26C5CA5A00D8CDC7 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6817AB4E26B9CC6500CCCE4D /* CodeEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6817AB4D26B9CC6500CCCE4D /* XCRemoteSwiftPackageReference "CodeEditor" */;
+			productName = CodeEditor;
+		};
+		683D922426B0BBEF00E5EF82 /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 683D922326B0BBEE00E5EF82 /* XCRemoteSwiftPackageReference "Ink" */;
+			productName = Ink;
+		};
+		683D922926B107EB00E5EF82 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		684C9BEC26C5C7F500D8CDC7 /* HighlightedTextEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 684C9BEB26C5C7F500D8CDC7 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */;
+			productName = HighlightedTextEditor;
+		};
+		684C9BEF26C5CA5A00D8CDC7 /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 684C9BEE26C5CA5A00D8CDC7 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
+			productName = MarkdownUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 68871B9C26B0B3750001421E /* Project object */;
 }
