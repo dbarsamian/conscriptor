@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6817AB4F26B9CC6500CCCE4D /* CodeEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 6817AB4E26B9CC6500CCCE4D /* CodeEditor */; };
 		683D922526B0BBEF00E5EF82 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 683D922426B0BBEF00E5EF82 /* Ink */; };
 		683D922726B0F48200E5EF82 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D922626B0F48200E5EF82 /* WebView.swift */; };
 		683D922A26B107EB00E5EF82 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 683D922926B107EB00E5EF82 /* Introspect */; };
@@ -21,6 +20,9 @@
 		68871BB126B0B3770001421E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68871BB026B0B3770001421E /* Preview Assets.xcassets */; };
 		68871BBD26B0B3770001421E /* ConscriptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BBC26B0B3770001421E /* ConscriptorTests.swift */; };
 		68871BC826B0B3770001421E /* ConscriptorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BC726B0B3770001421E /* ConscriptorUITests.swift */; };
+		D576840926E0A18700E2A12B /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = D576840826E0A18700E2A12B /* github.css */; };
+		D576840A26E0A18700E2A12B /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = D576840826E0A18700E2A12B /* github.css */; };
+		D576840B26E0A18700E2A12B /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = D576840826E0A18700E2A12B /* github.css */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,7 @@
 		68871BC326B0B3770001421E /* ConscriptorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConscriptorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68871BC726B0B3770001421E /* ConscriptorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConscriptorUITests.swift; sourceTree = "<group>"; };
 		68871BC926B0B3770001421E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D576840826E0A18700E2A12B /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +68,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				683D922A26B107EB00E5EF82 /* Introspect in Frameworks */,
-				6817AB4F26B9CC6500CCCE4D /* CodeEditor in Frameworks */,
 				684C9BED26C5C7F500D8CDC7 /* HighlightedTextEditor in Frameworks */,
 				683D922526B0BBEF00E5EF82 /* Ink in Frameworks */,
 				684C9BF026C5CA5A00D8CDC7 /* MarkdownUI in Frameworks */,
@@ -112,6 +114,7 @@
 		68871BA626B0B3750001421E /* Conscriptor */ = {
 			isa = PBXGroup;
 			children = (
+				D576840826E0A18700E2A12B /* github.css */,
 				68871BA726B0B3750001421E /* ConscriptorApp.swift */,
 				683D922626B0F48200E5EF82 /* WebView.swift */,
 				68871BA926B0B3750001421E /* ConscriptorDocument.swift */,
@@ -170,7 +173,6 @@
 			packageProductDependencies = (
 				683D922426B0BBEF00E5EF82 /* Ink */,
 				683D922926B107EB00E5EF82 /* Introspect */,
-				6817AB4E26B9CC6500CCCE4D /* CodeEditor */,
 				684C9BEC26C5C7F500D8CDC7 /* HighlightedTextEditor */,
 				684C9BEF26C5CA5A00D8CDC7 /* MarkdownUI */,
 			);
@@ -248,7 +250,6 @@
 			packageReferences = (
 				683D922326B0BBEE00E5EF82 /* XCRemoteSwiftPackageReference "Ink" */,
 				683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				6817AB4D26B9CC6500CCCE4D /* XCRemoteSwiftPackageReference "CodeEditor" */,
 				684C9BEB26C5C7F500D8CDC7 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
 				684C9BEE26C5CA5A00D8CDC7 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
 			);
@@ -268,6 +269,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D576840926E0A18700E2A12B /* github.css in Resources */,
 				68871BB126B0B3770001421E /* Preview Assets.xcassets in Resources */,
 				684C9BF226C5D15B00D8CDC7 /* Credits.rtf in Resources */,
 				68871BAE26B0B3770001421E /* Assets.xcassets in Resources */,
@@ -278,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D576840A26E0A18700E2A12B /* github.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D576840B26E0A18700E2A12B /* github.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,7 +459,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Conscriptor/Conscriptor.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Conscriptor/Preview Content\"";
@@ -481,7 +485,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Conscriptor/Conscriptor.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Conscriptor/Preview Content\"";
@@ -627,14 +631,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		6817AB4D26B9CC6500CCCE4D /* XCRemoteSwiftPackageReference "CodeEditor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ZeeZide/CodeEditor";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 		683D922326B0BBEE00E5EF82 /* XCRemoteSwiftPackageReference "Ink" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JohnSundell/Ink";
@@ -670,11 +666,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		6817AB4E26B9CC6500CCCE4D /* CodeEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6817AB4D26B9CC6500CCCE4D /* XCRemoteSwiftPackageReference "CodeEditor" */;
-			productName = CodeEditor;
-		};
 		683D922426B0BBEF00E5EF82 /* Ink */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 683D922326B0BBEE00E5EF82 /* XCRemoteSwiftPackageReference "Ink" */;

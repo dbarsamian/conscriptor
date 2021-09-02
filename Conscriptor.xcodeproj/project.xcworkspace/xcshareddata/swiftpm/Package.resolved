@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "CodeEditor",
-        "repositoryURL": "https://github.com/ZeeZide/CodeEditor",
-        "state": {
-          "branch": null,
-          "revision": "5856fac22b0a2174dbdea212784567c8c9cd1129",
-          "version": "1.2.0"
-        }
-      },
-      {
         "package": "combine-schedulers",
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {
@@ -35,15 +26,6 @@
           "branch": null,
           "revision": "a0af7fbf17e9b5c7ac6fabe17034be2f7195bd1e",
           "version": "2.0.2"
-        }
-      },
-      {
-        "package": "Highlightr",
-        "repositoryURL": "https://github.com/raspu/Highlightr",
-        "state": {
-          "branch": null,
-          "revision": "93199b9e434f04bda956a613af8f571933f9f037",
-          "version": "2.1.2"
         }
       },
       {

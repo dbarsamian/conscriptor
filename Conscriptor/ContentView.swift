@@ -5,7 +5,6 @@
 //  Created by David Barsamian on 7/27/21.
 //
 
-import CodeEditor
 import HighlightedTextEditor
 import Ink
 import Introspect
@@ -23,25 +22,36 @@ struct ContentView: View {
     }
 
     var body: some View {
-        HStack(spacing: 2) {
-            // CodeEditor package
-//            CodeEditor(source: $document.text,
-//                       language: .markdown,
-//                       theme: .atelierSavannaLight,
-//                       fontSize: .init(get: {
-//                           CGFloat(fontSize)
-//                       }, set: {
-//                           fontSize = Int($0)
-//                       }))
-            // HighlightedTextEditor package
+        HSplitView {
             HighlightedTextEditor(text: $document.text, highlightRules: .markdown)
-            // MarkdownUI package
-            ScrollView {
-                Markdown(.init(document.text))
-                    .padding()
+                .frame(minWidth: 300)
+                .introspectTextView { textView in
+                    textView.enclosingScrollView?.autohidesScrollers = true
+                }
+            ZStack {
+                WebView(html: html)
+                ProgressView()
             }
-            // WebView
-//            WebView(html: html)
+            .frame(minWidth: 300)
+        }
+        .toolbar {
+            ToolbarItemGroup {
+                Button {
+                    print("Bold")
+                } label: {
+                    Image(systemName: "bold")
+                }
+                Button {
+                    print("Italic")
+                } label: {
+                    Image(systemName: "italic")
+                }
+                Button {
+                    print("Underline")
+                } label: {
+                    Image(systemName: "underline")
+                }
+            }
         }
     }
 }
