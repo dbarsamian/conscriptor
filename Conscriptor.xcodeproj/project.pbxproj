@@ -7,40 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		683D922526B0BBEF00E5EF82 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = 683D922426B0BBEF00E5EF82 /* Ink */; };
 		683D922726B0F48200E5EF82 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683D922626B0F48200E5EF82 /* WebView.swift */; };
 		683D922A26B107EB00E5EF82 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 683D922926B107EB00E5EF82 /* Introspect */; };
-		684C9BED26C5C7F500D8CDC7 /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = 684C9BEC26C5C7F500D8CDC7 /* HighlightedTextEditor */; };
-		684C9BF026C5CA5A00D8CDC7 /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = 684C9BEF26C5CA5A00D8CDC7 /* MarkdownUI */; };
 		684C9BF226C5D15B00D8CDC7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 684C9BF126C5D15B00D8CDC7 /* Credits.rtf */; };
 		68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BA726B0B3750001421E /* ConscriptorApp.swift */; };
 		68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BA926B0B3750001421E /* ConscriptorDocument.swift */; };
 		68871BAC26B0B3750001421E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BAB26B0B3750001421E /* ContentView.swift */; };
 		68871BAE26B0B3770001421E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68871BAD26B0B3770001421E /* Assets.xcassets */; };
 		68871BB126B0B3770001421E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68871BB026B0B3770001421E /* Preview Assets.xcassets */; };
-		68871BBD26B0B3770001421E /* ConscriptorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BBC26B0B3770001421E /* ConscriptorTests.swift */; };
-		68871BC826B0B3770001421E /* ConscriptorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BC726B0B3770001421E /* ConscriptorUITests.swift */; };
+		D53C190426E0CCEB00E7934B /* MarkdownSyntax in Frameworks */ = {isa = PBXBuildFile; productRef = D53C190326E0CCEB00E7934B /* MarkdownSyntax */; };
+		D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = D53C190926E0CF3100E7934B /* HighlightedTextEditor */; };
 		D576840926E0A18700E2A12B /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = D576840826E0A18700E2A12B /* github.css */; };
-		D576840A26E0A18700E2A12B /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = D576840826E0A18700E2A12B /* github.css */; };
-		D576840B26E0A18700E2A12B /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = D576840826E0A18700E2A12B /* github.css */; };
+		D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		68871BB926B0B3770001421E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68871B9C26B0B3750001421E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68871BA326B0B3750001421E;
-			remoteInfo = Conscriptor;
-		};
-		68871BC426B0B3770001421E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 68871B9C26B0B3750001421E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 68871BA326B0B3750001421E;
-			remoteInfo = Conscriptor;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		683D922626B0F48200E5EF82 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
@@ -53,13 +32,8 @@
 		68871BB026B0B3770001421E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68871BB226B0B3770001421E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68871BB326B0B3770001421E /* Conscriptor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Conscriptor.entitlements; sourceTree = "<group>"; };
-		68871BB826B0B3770001421E /* ConscriptorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConscriptorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		68871BBC26B0B3770001421E /* ConscriptorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConscriptorTests.swift; sourceTree = "<group>"; };
-		68871BBE26B0B3770001421E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		68871BC326B0B3770001421E /* ConscriptorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ConscriptorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		68871BC726B0B3770001421E /* ConscriptorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConscriptorUITests.swift; sourceTree = "<group>"; };
-		68871BC926B0B3770001421E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D576840826E0A18700E2A12B /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
+		D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrospectExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,24 +41,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D53C190426E0CCEB00E7934B /* MarkdownSyntax in Frameworks */,
+				D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */,
 				683D922A26B107EB00E5EF82 /* Introspect in Frameworks */,
-				684C9BED26C5C7F500D8CDC7 /* HighlightedTextEditor in Frameworks */,
-				683D922526B0BBEF00E5EF82 /* Ink in Frameworks */,
-				684C9BF026C5CA5A00D8CDC7 /* MarkdownUI in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		68871BB526B0B3770001421E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		68871BC026B0B3770001421E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,8 +54,6 @@
 			isa = PBXGroup;
 			children = (
 				68871BA626B0B3750001421E /* Conscriptor */,
-				68871BBB26B0B3770001421E /* ConscriptorTests */,
-				68871BC626B0B3770001421E /* ConscriptorUITests */,
 				68871BA526B0B3750001421E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,8 +62,6 @@
 			isa = PBXGroup;
 			children = (
 				68871BA426B0B3750001421E /* Conscriptor.app */,
-				68871BB826B0B3770001421E /* ConscriptorTests.xctest */,
-				68871BC326B0B3770001421E /* ConscriptorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +79,7 @@
 				684C9BF126C5D15B00D8CDC7 /* Credits.rtf */,
 				68871BB326B0B3770001421E /* Conscriptor.entitlements */,
 				68871BAF26B0B3770001421E /* Preview Content */,
+				D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */,
 			);
 			path = Conscriptor;
 			sourceTree = "<group>";
@@ -134,24 +90,6 @@
 				68871BB026B0B3770001421E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		68871BBB26B0B3770001421E /* ConscriptorTests */ = {
-			isa = PBXGroup;
-			children = (
-				68871BBC26B0B3770001421E /* ConscriptorTests.swift */,
-				68871BBE26B0B3770001421E /* Info.plist */,
-			);
-			path = ConscriptorTests;
-			sourceTree = "<group>";
-		};
-		68871BC626B0B3770001421E /* ConscriptorUITests */ = {
-			isa = PBXGroup;
-			children = (
-				68871BC726B0B3770001421E /* ConscriptorUITests.swift */,
-				68871BC926B0B3770001421E /* Info.plist */,
-			);
-			path = ConscriptorUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -171,50 +109,13 @@
 			);
 			name = Conscriptor;
 			packageProductDependencies = (
-				683D922426B0BBEF00E5EF82 /* Ink */,
 				683D922926B107EB00E5EF82 /* Introspect */,
-				684C9BEC26C5C7F500D8CDC7 /* HighlightedTextEditor */,
-				684C9BEF26C5CA5A00D8CDC7 /* MarkdownUI */,
+				D53C190326E0CCEB00E7934B /* MarkdownSyntax */,
+				D53C190926E0CF3100E7934B /* HighlightedTextEditor */,
 			);
 			productName = Conscriptor;
 			productReference = 68871BA426B0B3750001421E /* Conscriptor.app */;
 			productType = "com.apple.product-type.application";
-		};
-		68871BB726B0B3770001421E /* ConscriptorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 68871BCF26B0B3770001421E /* Build configuration list for PBXNativeTarget "ConscriptorTests" */;
-			buildPhases = (
-				68871BB426B0B3770001421E /* Sources */,
-				68871BB526B0B3770001421E /* Frameworks */,
-				68871BB626B0B3770001421E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				68871BBA26B0B3770001421E /* PBXTargetDependency */,
-			);
-			name = ConscriptorTests;
-			productName = ConscriptorTests;
-			productReference = 68871BB826B0B3770001421E /* ConscriptorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		68871BC226B0B3770001421E /* ConscriptorUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 68871BD226B0B3770001421E /* Build configuration list for PBXNativeTarget "ConscriptorUITests" */;
-			buildPhases = (
-				68871BBF26B0B3770001421E /* Sources */,
-				68871BC026B0B3770001421E /* Frameworks */,
-				68871BC126B0B3770001421E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				68871BC526B0B3770001421E /* PBXTargetDependency */,
-			);
-			name = ConscriptorUITests;
-			productName = ConscriptorUITests;
-			productReference = 68871BC326B0B3770001421E /* ConscriptorUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -228,14 +129,6 @@
 					68871BA326B0B3750001421E = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
-					68871BB726B0B3770001421E = {
-						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = 68871BA326B0B3750001421E;
-					};
-					68871BC226B0B3770001421E = {
-						CreatedOnToolsVersion = 12.5.1;
-						TestTargetID = 68871BA326B0B3750001421E;
-					};
 				};
 			};
 			buildConfigurationList = 68871B9F26B0B3750001421E /* Build configuration list for PBXProject "Conscriptor" */;
@@ -248,18 +141,15 @@
 			);
 			mainGroup = 68871B9B26B0B3750001421E;
 			packageReferences = (
-				683D922326B0BBEE00E5EF82 /* XCRemoteSwiftPackageReference "Ink" */,
 				683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				684C9BEB26C5C7F500D8CDC7 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
-				684C9BEE26C5CA5A00D8CDC7 /* XCRemoteSwiftPackageReference "MarkdownUI" */,
+				D53C190226E0CCEB00E7934B /* XCRemoteSwiftPackageReference "MarkdownSyntax" */,
+				D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
 			);
 			productRefGroup = 68871BA526B0B3750001421E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				68871BA326B0B3750001421E /* Conscriptor */,
-				68871BB726B0B3770001421E /* ConscriptorTests */,
-				68871BC226B0B3770001421E /* ConscriptorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -276,22 +166,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		68871BB626B0B3770001421E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D576840A26E0A18700E2A12B /* github.css in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		68871BC126B0B3770001421E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				D576840B26E0A18700E2A12B /* github.css in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -299,6 +173,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */,
 				68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */,
 				683D922726B0F48200E5EF82 /* WebView.swift in Sources */,
 				68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */,
@@ -306,36 +181,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		68871BB426B0B3770001421E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				68871BBD26B0B3770001421E /* ConscriptorTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		68871BBF26B0B3770001421E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				68871BC826B0B3770001421E /* ConscriptorUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		68871BBA26B0B3770001421E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 68871BA326B0B3750001421E /* Conscriptor */;
-			targetProxy = 68871BB926B0B3770001421E /* PBXContainerItemProxy */;
-		};
-		68871BC526B0B3770001421E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 68871BA326B0B3750001421E /* Conscriptor */;
-			targetProxy = 68871BC426B0B3770001421E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		68871BCA26B0B3770001421E /* Debug */ = {
@@ -505,90 +351,6 @@
 			};
 			name = Release;
 		};
-		68871BD026B0B3770001421E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J97PER9B8T;
-				INFOPLIST_FILE = ConscriptorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.ConscriptorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Conscriptor.app/Contents/MacOS/Conscriptor";
-			};
-			name = Debug;
-		};
-		68871BD126B0B3770001421E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J97PER9B8T;
-				INFOPLIST_FILE = ConscriptorTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.ConscriptorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Conscriptor.app/Contents/MacOS/Conscriptor";
-			};
-			name = Release;
-		};
-		68871BD326B0B3770001421E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J97PER9B8T;
-				INFOPLIST_FILE = ConscriptorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.ConscriptorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Conscriptor;
-			};
-			name = Debug;
-		};
-		68871BD426B0B3770001421E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = J97PER9B8T;
-				INFOPLIST_FILE = ConscriptorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.ConscriptorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Conscriptor;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -610,35 +372,9 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		68871BCF26B0B3770001421E /* Build configuration list for PBXNativeTarget "ConscriptorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				68871BD026B0B3770001421E /* Debug */,
-				68871BD126B0B3770001421E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		68871BD226B0B3770001421E /* Build configuration list for PBXNativeTarget "ConscriptorUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				68871BD326B0B3770001421E /* Debug */,
-				68871BD426B0B3770001421E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		683D922326B0BBEE00E5EF82 /* XCRemoteSwiftPackageReference "Ink" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JohnSundell/Ink";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.1;
-			};
-		};
 		683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
@@ -647,7 +383,15 @@
 				minimumVersion = 0.1.3;
 			};
 		};
-		684C9BEB26C5C7F500D8CDC7 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */ = {
+		D53C190226E0CCEB00E7934B /* XCRemoteSwiftPackageReference "MarkdownSyntax" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hebertialmeida/MarkdownSyntax";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kyle-n/HighlightedTextEditor";
 			requirement = {
@@ -655,36 +399,23 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		684C9BEE26C5CA5A00D8CDC7 /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		683D922426B0BBEF00E5EF82 /* Ink */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 683D922326B0BBEE00E5EF82 /* XCRemoteSwiftPackageReference "Ink" */;
-			productName = Ink;
-		};
 		683D922926B107EB00E5EF82 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		684C9BEC26C5C7F500D8CDC7 /* HighlightedTextEditor */ = {
+		D53C190326E0CCEB00E7934B /* MarkdownSyntax */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 684C9BEB26C5C7F500D8CDC7 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */;
-			productName = HighlightedTextEditor;
+			package = D53C190226E0CCEB00E7934B /* XCRemoteSwiftPackageReference "MarkdownSyntax" */;
+			productName = MarkdownSyntax;
 		};
-		684C9BEF26C5CA5A00D8CDC7 /* MarkdownUI */ = {
+		D53C190926E0CF3100E7934B /* HighlightedTextEditor */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 684C9BEE26C5CA5A00D8CDC7 /* XCRemoteSwiftPackageReference "MarkdownUI" */;
-			productName = MarkdownUI;
+			package = D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */;
+			productName = HighlightedTextEditor;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

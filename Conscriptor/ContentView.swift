@@ -6,19 +6,25 @@
 //
 
 import HighlightedTextEditor
-import Ink
 import Introspect
-import MarkdownUI
+import MarkdownSyntax
 import SwiftUI
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("fontsize") private var fontSize = Int(NSFont.systemFontSize)
+    
     @Binding var document: ConscriptorDocument
+    @State private var showingErrorAlert = false
 
     var html: String {
-        let parser = MarkdownParser()
-        return parser.html(from: document.text)
+        do {
+            return try Markdown(text: document.text).renderHtml()
+        } catch {
+            print(error.localizedDescription)
+            showingErrorAlert.toggle()
+            return ""
+        }
     }
 
     var body: some View {
@@ -27,14 +33,24 @@ struct ContentView: View {
                 .frame(minWidth: 300)
                 .introspectTextView { textView in
                     textView.enclosingScrollView?.autohidesScrollers = true
+                    textView.textContainerInset = .init(width: 30, height: 40)
                 }
-            ZStack {
-                WebView(html: html)
-                ProgressView()
-            }
-            .frame(minWidth: 300)
+            WebView(html: html)
+                .frame(minWidth: 300)
         }
+        .introspectSplitView(customize: { splitView in
+            splitView.dividerStyle = .thin
+        })
         .toolbar {
+            toolbarContent
+        }
+        .alert(isPresented: $showingErrorAlert) {
+            Alert(title: Text("Error"), message: Text("Couldn't generate a live preview for the text entered. Please try again."), dismissButton: .cancel())
+        }
+    }
+
+    var toolbarContent: some ToolbarContent {
+        Group {
             ToolbarItemGroup {
                 Button {
                     print("Bold")
@@ -50,6 +66,28 @@ struct ContentView: View {
                     print("Underline")
                 } label: {
                     Image(systemName: "underline")
+                }
+                Button {
+                    print("Strikethrough")
+                } label: {
+                    Image(systemName: "strikethrough")
+                }
+            }
+            ToolbarItemGroup {
+                Button {
+                    print("Link")
+                } label: {
+                    Image(systemName: "link.badge.plus")
+                }
+                Button {
+                    print("Smart Code")
+                } label: {
+                    Image(systemName: "chevron.left.forwardslash.chevron.right")
+                }
+                Button {
+                    print("Insert Table")
+                } label: {
+                    Image(systemName: "tablecells")
                 }
             }
         }

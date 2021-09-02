@@ -17,7 +17,7 @@ extension UTType {
 struct ConscriptorDocument: FileDocument {
     var text: String
 
-    init(text: String = "Hello, world!") {
+    init(text: String = "# Hello, world!") {
         self.text = text
     }
 
