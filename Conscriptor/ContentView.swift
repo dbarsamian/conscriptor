@@ -34,6 +34,7 @@ struct ContentView: View {
                 .introspectTextView { textView in
                     textView.enclosingScrollView?.autohidesScrollers = true
                     textView.textContainerInset = .init(width: 30, height: 40)
+                    textView.usesFontPanel = false
                 }
             WebView(html: html)
                 .frame(minWidth: 300)
