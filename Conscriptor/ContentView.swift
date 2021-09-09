@@ -13,7 +13,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("fontsize") private var fontSize = Int(NSFont.systemFontSize)
-    
+
     @Binding var document: ConscriptorDocument
     @State private var showingErrorAlert = false
 
@@ -43,14 +43,15 @@ struct ContentView: View {
             splitView.dividerStyle = .thin
         })
         .toolbar {
-            toolbarContent
+            toolbarContent()
         }
         .alert(isPresented: $showingErrorAlert) {
             Alert(title: Text("Error"), message: Text("Couldn't generate a live preview for the text entered. Please try again."), dismissButton: .cancel())
         }
     }
 
-    var toolbarContent: some ToolbarContent {
+    @ToolbarContentBuilder
+    func toolbarContent() -> some ToolbarContent {
         Group {
             ToolbarItemGroup {
                 Button {

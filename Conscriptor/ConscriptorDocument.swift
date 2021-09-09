@@ -21,7 +21,12 @@ struct ConscriptorDocument: FileDocument {
         self.text = text
     }
 
-    static var readableContentTypes: [UTType] { [.plainText] }
+    static var readableContentTypes: [UTType] {
+        [
+            UTType("net.daringfireball.markdown") ?? .plainText,
+            .plainText,
+        ]
+    }
 
     init(configuration: ReadConfiguration) throws {
         guard let data = configuration.file.regularFileContents,
@@ -31,7 +36,7 @@ struct ConscriptorDocument: FileDocument {
         }
         text = string
     }
-    
+
     func fileWrapper(configuration: WriteConfiguration) throws -> FileWrapper {
         let data = text.data(using: .utf8)!
         return .init(regularFileWithContents: data)

@@ -15,7 +15,7 @@ struct ConscriptorApp: App {
                 .frame(minWidth: 800, minHeight: 500)
         }
         .commands {
-            
+            ToolbarCommands()
         }
     }
 }
