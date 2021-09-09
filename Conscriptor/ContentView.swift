@@ -16,6 +16,7 @@ struct ContentView: View {
 
     @Binding var document: ConscriptorDocument
     @State private var showingErrorAlert = false
+    @State private var textView: NSTextView?
 
     var html: String {
         do {
@@ -32,9 +33,7 @@ struct ContentView: View {
             HighlightedTextEditor(text: $document.text, highlightRules: .markdown)
                 .frame(minWidth: 300)
                 .introspectTextView { textView in
-                    textView.enclosingScrollView?.autohidesScrollers = true
-                    textView.textContainerInset = .init(width: 30, height: 40)
-                    textView.usesFontPanel = false
+                    self.textView = textView
                 }
             WebView(html: html)
                 .frame(minWidth: 300)
@@ -47,6 +46,16 @@ struct ContentView: View {
         }
         .alert(isPresented: $showingErrorAlert) {
             Alert(title: Text("Error"), message: Text("Couldn't generate a live preview for the text entered. Please try again."), dismissButton: .cancel())
+        }
+        .onChange(of: textView) { newValue in
+            // Functionally only fires once when the view is created.
+            if let newValue = newValue {
+                newValue.enclosingScrollView?.autohidesScrollers = true
+                newValue.textContainerInset = .init(width: 30, height: 40)
+                newValue.usesFontPanel = false
+            } else {
+                NSLog("ContentView textView reference invalid", "")
+            }
         }
     }
 
