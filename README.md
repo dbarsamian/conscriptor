@@ -4,19 +4,20 @@
 
 A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps) markdown editor, built in SwiftUI.
 
-*Conscriptor* is a Markdown editor designed to make editing
+*Conscriptor* is a Markdown editor designed to make editing Markdown documents easier, more approachable, and faster.
 
 ### Features
 
-- Live offline preview with [Github's CSS](https://github.com/sindresorhus/github-markdown-css)
-- Syntax highlighting
-- Toolbar items for frequently used syntax (e.g. bold, italic, underline, strikethrough)
-- Table creation
+- Live offline preview styled with [GitHub's CSS](https://github.com/sindresorhus/github-markdown-css) so you can see what your document looks like in real-time.
+- Syntax highlighting to styling stand out.
+- Customizable toolbar with quick access to common syntax to make editing approachable.
+- Keyboard shortcuts for common syntax to make editing quicker.
+- Insert tables prepopulated with placeholders to make writing tables quicker.
 
 ### Planned Additions
 
-- Auto-completion for common syntax
-- Template system
+- Auto-completion for symmetrical syntax, like **bold**, *italic*, ~~strikethrough~~, and `code`.
+- Template creation and management to make writing common documents easy.
 
 ## Getting Started
 
