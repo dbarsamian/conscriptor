@@ -12,13 +12,17 @@
 		684C9BF226C5D15B00D8CDC7 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 684C9BF126C5D15B00D8CDC7 /* Credits.rtf */; };
 		68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BA726B0B3750001421E /* ConscriptorApp.swift */; };
 		68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BA926B0B3750001421E /* ConscriptorDocument.swift */; };
-		68871BAC26B0B3750001421E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BAB26B0B3750001421E /* ContentView.swift */; };
+		68871BAC26B0B3750001421E /* MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BAB26B0B3750001421E /* MarkdownEditorView.swift */; };
 		68871BAE26B0B3770001421E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68871BAD26B0B3770001421E /* Assets.xcassets */; };
 		68871BB126B0B3770001421E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68871BB026B0B3770001421E /* Preview Assets.xcassets */; };
 		D53C190426E0CCEB00E7934B /* MarkdownSyntax in Frameworks */ = {isa = PBXBuildFile; productRef = D53C190326E0CCEB00E7934B /* MarkdownSyntax */; };
 		D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = D53C190926E0CF3100E7934B /* HighlightedTextEditor */; };
+		D56601FD26EB3F3D0071C6E3 /* StringSubscriptExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56601FC26EB3F3D0071C6E3 /* StringSubscriptExtension.swift */; };
 		D576840926E0A18700E2A12B /* github.css in Resources */ = {isa = PBXBuildFile; fileRef = D576840826E0A18700E2A12B /* github.css */; };
 		D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */; };
+		D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */; };
+		D5CE033426F4314E00CB86E5 /* MarkdownEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */; };
+		D5D6747726F1C3F000871617 /* CMarkdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6747626F1C3F000871617 /* CMarkdown.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,13 +31,17 @@
 		68871BA426B0B3750001421E /* Conscriptor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Conscriptor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68871BA726B0B3750001421E /* ConscriptorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConscriptorApp.swift; sourceTree = "<group>"; };
 		68871BA926B0B3750001421E /* ConscriptorDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConscriptorDocument.swift; sourceTree = "<group>"; };
-		68871BAB26B0B3750001421E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		68871BAB26B0B3750001421E /* MarkdownEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorView.swift; sourceTree = "<group>"; };
 		68871BAD26B0B3770001421E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68871BB026B0B3770001421E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68871BB226B0B3770001421E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68871BB326B0B3770001421E /* Conscriptor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Conscriptor.entitlements; sourceTree = "<group>"; };
+		D56601FC26EB3F3D0071C6E3 /* StringSubscriptExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSubscriptExtension.swift; sourceTree = "<group>"; };
 		D576840826E0A18700E2A12B /* github.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = github.css; sourceTree = "<group>"; };
 		D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrospectExtension.swift; sourceTree = "<group>"; };
+		D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownFormatter.swift; sourceTree = "<group>"; };
+		D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorController.swift; sourceTree = "<group>"; };
+		D5D6747626F1C3F000871617 /* CMarkdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMarkdown.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,16 +78,20 @@
 			isa = PBXGroup;
 			children = (
 				D576840826E0A18700E2A12B /* github.css */,
+				D5D6747626F1C3F000871617 /* CMarkdown.swift */,
 				68871BA726B0B3750001421E /* ConscriptorApp.swift */,
 				683D922626B0F48200E5EF82 /* WebView.swift */,
 				68871BA926B0B3750001421E /* ConscriptorDocument.swift */,
-				68871BAB26B0B3750001421E /* ContentView.swift */,
+				68871BAB26B0B3750001421E /* MarkdownEditorView.swift */,
+				D56601FC26EB3F3D0071C6E3 /* StringSubscriptExtension.swift */,
 				68871BAD26B0B3770001421E /* Assets.xcassets */,
 				68871BB226B0B3770001421E /* Info.plist */,
 				684C9BF126C5D15B00D8CDC7 /* Credits.rtf */,
 				68871BB326B0B3770001421E /* Conscriptor.entitlements */,
 				68871BAF26B0B3770001421E /* Preview Content */,
 				D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */,
+				D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */,
+				D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */,
 			);
 			path = Conscriptor;
 			sourceTree = "<group>";
@@ -173,11 +185,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D56601FD26EB3F3D0071C6E3 /* StringSubscriptExtension.swift in Sources */,
 				D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */,
 				68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */,
 				683D922726B0F48200E5EF82 /* WebView.swift in Sources */,
+				D5CE033426F4314E00CB86E5 /* MarkdownEditorController.swift in Sources */,
 				68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */,
-				68871BAC26B0B3750001421E /* ContentView.swift in Sources */,
+				68871BAC26B0B3750001421E /* MarkdownEditorView.swift in Sources */,
+				D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */,
+				D5D6747726F1C3F000871617 /* CMarkdown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
