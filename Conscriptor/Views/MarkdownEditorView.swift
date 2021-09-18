@@ -30,6 +30,7 @@ struct MarkdownEditorView: View {
         }
     }
 
+    // MARK: Body
     var body: some View {
         HSplitView {
             HighlightedTextEditor(text: $document.text, highlightRules: .markdown)
@@ -53,6 +54,9 @@ struct MarkdownEditorView: View {
         .alert(isPresented: $showingErrorAlert) {
             Alert(title: Text("Error"), message: Text("Couldn't generate a live preview for the text entered. Please try again."), dismissButton: .cancel())
         }
+        .onAppear {
+            setupNotifications()
+        }
         // The following blocks functionally fire only once.
         .onChange(of: textView) { newValue in
             if let newValue = newValue {
@@ -70,6 +74,7 @@ struct MarkdownEditorView: View {
         }
     }
 
+    // MARK: ToolbarContent
     @ToolbarContentBuilder
     func toolbarContent() -> some CustomizableToolbarContent {
         Group {
@@ -137,6 +142,22 @@ struct MarkdownEditorView: View {
             }
         }
     }
+    
+    private func setupNotifications() {
+        let nc = NotificationCenter.default
+        nc.addObserver(forName: .formatBold, object: nil, queue: .main) { _ in
+            MarkdownEditorController.format(&document, with: .bold, in: textView)
+        }
+        nc.addObserver(forName: .formatItalic, object: nil, queue: .main) { _ in
+            MarkdownEditorController.format(&document, with: .italic, in: textView)
+        }
+        nc.addObserver(forName: .formatStrikethrough, object: nil, queue: .main) { _ in
+            MarkdownEditorController.format(&document, with: .strikethrough, in: textView)
+        }
+        nc.addObserver(forName: .formatInlineCode, object: nil, queue: .main) { _ in
+            MarkdownEditorController.format(&document, with: .code, in: textView)
+        }
+    }
 
     private func configureTextView(_ textView: NSTextView) {
         textView.enclosingScrollView?.autohidesScrollers = true
@@ -145,8 +166,7 @@ struct MarkdownEditorView: View {
     }
 
     private func configureSplitView(_ splitView: NSSplitView) {
-        // TODO: find a way to get splitviewcontroller so I can collapse panes
-        //      in a pretty way with animation
+        // TODO: find a way to get splitviewcontroller so I can collapse panes in a pretty way with animation
     }
 }
 

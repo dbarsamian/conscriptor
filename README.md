@@ -13,7 +13,7 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 - Syntax highlighting to styling stand out.
 - Customizable toolbar with quick access to common syntax to make editing approachable.
 - Keyboard shortcuts for common syntax to make editing quicker.
-- Insert tables prepopulated with placeholders to make writing tables quicker.
+- Insert tables pre-populated with placeholders to make writing tables quicker.
 
 ### Planned Additions
 

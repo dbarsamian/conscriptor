@@ -16,6 +16,33 @@ struct ConscriptorApp: App {
         }
         .commands {
             ToolbarCommands()
+            TextEditingCommands()
+            CommandGroup(replacing: .textFormatting) {
+                Button {
+                    let nc = NotificationCenter.default
+                    nc.post(name: .formatBold, object: nil)
+                } label: {
+                    Text("Bold")
+                }.keyboardShortcut("b", modifiers: .command)
+                Button {
+                    let nc = NotificationCenter.default
+                    nc.post(name: .formatItalic, object: nil)
+                } label: {
+                    Text("Italic")
+                }.keyboardShortcut("i", modifiers: .command)
+                Button {
+                    let nc = NotificationCenter.default
+                    nc.post(name: .formatStrikethrough, object: nil)
+                } label: {
+                    Text("Strikethrough")
+                }.keyboardShortcut("k", modifiers: .command)
+                Button {
+                    let nc = NotificationCenter.default
+                    nc.post(name: .formatInlineCode, object: nil)
+                } label: {
+                    Text("Inline Code")
+                }.keyboardShortcut("/", modifiers: .command)
+            }
         }
     }
 }
