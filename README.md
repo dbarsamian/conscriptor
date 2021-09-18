@@ -1,7 +1,7 @@
 ![App icon](https://raw.githubusercontent.com/dbarsamian/conscriptor/main/Conscriptor/Assets.xcassets/AppIcon.appiconset/icon_128x128.png)
 # Conscriptor
 
-![Preview of the Conscriptor app, displaying the editor and the preview window](https://images2.imgbox.com/2d/e5/wjMRSmg3_o.png)
+![Preview of the Conscriptor app, displaying the editor and the preview window](https://images2.imgbox.com/39/6c/JhQjnYil_o.png)
 
 A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps) markdown editor, built in SwiftUI.
 
