@@ -18,7 +18,7 @@ struct WebView: NSViewRepresentable {
     func makeNSView(context: Context) -> WKWebView {
         // See https://stackoverflow.com/questions/33123093/insert-css-into-loaded-html-in-uiwebview-wkwebview for details
         lazy var webView: WKWebView = {
-            guard let path = Bundle.main.path(forResource: "github", ofType: "css"),
+            guard let path = Bundle.main.path(forResource: context.environment.colorScheme == .light ? "github-light" : "github-dark", ofType: "css"),
                   let cssString = try? String(contentsOfFile: path, encoding: .utf8).components(separatedBy: .newlines).joined() else {
                 return WKWebView()
             }

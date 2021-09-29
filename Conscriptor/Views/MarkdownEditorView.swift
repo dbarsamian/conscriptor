@@ -12,7 +12,6 @@ import SwiftUI
 
 struct MarkdownEditorView: View {
     @Environment(\.colorScheme) var colorScheme
-    @AppStorage("fontsize") private var fontSize = Int(NSFont.systemFontSize)
 
     @Binding var document: ConscriptorDocument
     @State private var showingPreview = true
@@ -31,17 +30,21 @@ struct MarkdownEditorView: View {
     }
 
     // MARK: Body
+
     var body: some View {
         HSplitView {
             HighlightedTextEditor(text: $document.text, highlightRules: .markdown)
                 .frame(minWidth: 300)
+                .layoutPriority(1)
                 .introspectTextView { textView in
                     self.textView = textView
                 }
             if showingPreview {
                 WebView(html: html)
                     .frame(minWidth: 300)
+                    .layoutPriority(1)
                     .background(Color.white)
+                    .id(colorScheme)
             }
         }
         .introspectSplitView(customize: { splitView in
@@ -75,6 +78,7 @@ struct MarkdownEditorView: View {
     }
 
     // MARK: ToolbarContent
+
     @ToolbarContentBuilder
     func toolbarContent() -> some CustomizableToolbarContent {
         Group {
@@ -142,7 +146,7 @@ struct MarkdownEditorView: View {
             }
         }
     }
-    
+
     private func setupNotifications() {
         let nc = NotificationCenter.default
         nc.addObserver(forName: .formatBold, object: nil, queue: .main) { _ in
