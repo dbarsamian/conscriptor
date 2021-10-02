@@ -10,7 +10,7 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 ### Features
 
 - Live offline preview styled with [GitHub's CSS](https://github.com/sindresorhus/github-markdown-css) so you can see what your document looks like in real-time.
-- Syntax highlighting to styling stand out.
+- **Syntax highlighting** to make styling **stand out**.
 - Customizable toolbar with quick access to common syntax to make editing approachable.
 - Keyboard shortcuts for common syntax to make editing quicker.
 - Insert tables pre-populated with placeholders to make writing tables quicker.

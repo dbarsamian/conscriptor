@@ -38,9 +38,12 @@ struct WebView: NSViewRepresentable {
 
             let configuration = WKWebViewConfiguration()
             configuration.userContentController = userContentController
+            configuration.suppressesIncrementalRendering = true
 
             let webView = WKWebView(frame: .zero,
                                     configuration: configuration)
+            
+            
             return webView
         }()
         webView.configuration.limitsNavigationsToAppBoundDomains = true
