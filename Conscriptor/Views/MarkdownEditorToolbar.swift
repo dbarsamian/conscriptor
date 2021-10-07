@@ -21,6 +21,7 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
                     MarkdownEditorController.format(&document, with: .bold, in: textView)
                 } label: {
                     Label("Bold", systemImage: "bold")
+                        .foregroundColor(Color(NSColor.secondaryLabelColor))
                 }
             }
             ToolbarItem(id: "italic") {
@@ -28,6 +29,7 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
                     MarkdownEditorController.format(&document, with: .italic, in: textView)
                 } label: {
                     Label("Italic", systemImage: "italic")
+                        .foregroundColor(Color(NSColor.secondaryLabelColor))
                 }
             }
             ToolbarItem(id: "strikethrough") {
@@ -35,6 +37,7 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
                     MarkdownEditorController.format(&document, with: .strikethrough, in: textView)
                 } label: {
                     Label("Strikethrough", systemImage: "strikethrough")
+                        .foregroundColor(Color(NSColor.secondaryLabelColor))
                 }
             }
             ToolbarItem(id: "inlineCode") {
@@ -42,6 +45,7 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
                     MarkdownEditorController.format(&document, with: .code, in: textView)
                 } label: {
                     Label("Code", systemImage: "chevron.left.forwardslash.chevron.right")
+                        .foregroundColor(Color(NSColor.secondaryLabelColor))
                 }
             }
         }
