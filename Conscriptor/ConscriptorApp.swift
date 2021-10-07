@@ -12,7 +12,7 @@ struct ConscriptorApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: ConscriptorDocument()) { file in
             MarkdownEditorView(document: file.$document)
-                .frame(minWidth: 800, minHeight: 500)
+                .frame(minWidth: 400, minHeight: 500)
         }
         .commands {
             ToolbarCommands()

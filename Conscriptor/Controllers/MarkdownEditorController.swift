@@ -8,7 +8,7 @@
 import Foundation
 import AppKit
 
-struct MarkdownEditorController {
+struct MarkdownEditorController {    
     public static func format(_ document: inout ConscriptorDocument, with style: MarkdownFormatter.Formatting, in textView: NSTextView?) {
         guard let textView = textView else {
             return

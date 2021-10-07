@@ -32,19 +32,21 @@ struct MarkdownEditorView: View {
     // MARK: Body
 
     var body: some View {
-        HSplitView {
-            HighlightedTextEditor(text: $document.text, highlightRules: .markdown)
-                .frame(minWidth: 300)
-                .layoutPriority(1)
-                .introspectTextView { textView in
-                    self.textView = textView
+        GeometryReader { geo in
+            if geo.size.width < 600 {
+                VSplitView {
+                    editorContent()
+                    if showingPreview {
+                        previewContent()
+                    }
                 }
-            if showingPreview {
-                WebView(html: html)
-                    .frame(minWidth: 300)
-                    .layoutPriority(1)
-                    .background(Color.white)
-                    .id(colorScheme)
+            } else {
+                HSplitView {
+                    editorContent()
+                    if showingPreview {
+                        previewContent()
+                    }
+                }
             }
         }
         .introspectSplitView(customize: { splitView in
@@ -52,7 +54,7 @@ struct MarkdownEditorView: View {
             splitView.dividerStyle = .thin
         })
         .toolbar(id: "editorControls") {
-            toolbarContent()
+            MarkdownEditorToolbar(document: $document, showingPreview: showingPreview, textView: textView)
         }
         .alert(isPresented: $showingErrorAlert) {
             Alert(title: Text("Error"), message: Text("Couldn't generate a live preview for the text entered. Please try again."), dismissButton: .cancel())
@@ -77,77 +79,28 @@ struct MarkdownEditorView: View {
         }
     }
 
-    // MARK: ToolbarContent
-
-    @ToolbarContentBuilder
-    func toolbarContent() -> some CustomizableToolbarContent {
-        Group {
-            ToolbarItem(id: "bold") {
-                Button {
-                    MarkdownEditorController.format(&document, with: .bold, in: textView)
-                } label: {
-                    Label("Bold", systemImage: "bold")
-                }
+    @ViewBuilder
+    func editorContent() -> some View {
+        HighlightedTextEditor(text: $document.text, highlightRules: .markdown)
+            .frame(minWidth: 300)
+            .layoutPriority(1)
+            .introspectTextView { textView in
+                self.textView = textView
             }
-            ToolbarItem(id: "italic") {
-                Button {
-                    MarkdownEditorController.format(&document, with: .italic, in: textView)
-                } label: {
-                    Label("Italic", systemImage: "italic")
-                }
-            }
-            ToolbarItem(id: "strikethrough") {
-                Button {
-                    MarkdownEditorController.format(&document, with: .strikethrough, in: textView)
-                } label: {
-                    Label("Strikethrough", systemImage: "strikethrough")
-                }
-            }
-            ToolbarItem(id: "inlineCode") {
-                Button {
-                    MarkdownEditorController.format(&document, with: .code, in: textView)
-                } label: {
-                    Label("Code", systemImage: "chevron.left.forwardslash.chevron.right")
-                }
-            }
-        }
-        Group {
-            ToolbarItem(id: "link") {
-                Button {
-                    print("Link")
-                } label: {
-                    Label("Add Link", systemImage: "link.badge.plus")
-                }.disabled(true)
-            }
-            ToolbarItem(id: "picture") {
-                Button {
-                    print("Picture")
-                } label: {
-                    Label("Add Picture", systemImage: "photo")
-                }.disabled(true)
-            }
-            ToolbarItem(id: "table") {
-                Button {
-                    print("Insert Table")
-                } label: {
-                    Label("Insert Table", systemImage: "tablecells")
-                }.disabled(true)
-            }
-        }
-        Group {
-            ToolbarItem(id: "sidebar") {
-                Button {
-                    withAnimation {
-                        showingPreview.toggle()
-                    }
-                } label: {
-                    Label("Toggle Preview", systemImage: "sidebar.right")
-                }.disabled(true)
-            }
-        }
     }
 
-    private func setupNotifications() {
+    @ViewBuilder
+    func previewContent() -> some View {
+        WebView(html: html)
+            .frame(minWidth: 300)
+            .layoutPriority(1)
+            .background(Color.white)
+            .id(colorScheme)
+    }
+
+    // MARK: - View Config
+
+    public func setupNotifications() {
         let nc = NotificationCenter.default
         nc.addObserver(forName: .formatBold, object: nil, queue: .main) { _ in
             MarkdownEditorController.format(&document, with: .bold, in: textView)
