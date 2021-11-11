@@ -11,7 +11,7 @@ import SwiftUI
 struct ConscriptorApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: ConscriptorDocument()) { file in
-            MarkdownEditorView(document: file.$document)
+            MarkdownEditorView(conscriptorDocument: file.$document)
                 .frame(minWidth: 400, minHeight: 500)
         }
         .commands {

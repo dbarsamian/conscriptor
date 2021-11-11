@@ -10,9 +10,11 @@ import WebKit
 
 struct WebView: NSViewRepresentable {
     var html: String
+    var scrollPosition: NSPoint
 
-    init(html: String) {
+    init(html: String, scrollPosition: NSPoint) {
         self.html = html
+        self.scrollPosition = scrollPosition
     }
 
     func makeNSView(context: Context) -> WKWebView {
@@ -42,7 +44,7 @@ struct WebView: NSViewRepresentable {
 
             let webView = WKWebView(frame: .zero,
                                     configuration: configuration)
-            
+            webView.scroll(scrollPosition)
             
             return webView
         }()
