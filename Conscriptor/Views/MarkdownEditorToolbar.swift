@@ -11,7 +11,7 @@ import AppKit
 
 struct MarkdownEditorToolbar: CustomizableToolbarContent {
     @Binding var document: ConscriptorDocument
-    @State var showingPreview: Bool
+    @Binding var showingPreview: Bool
     let textView: NSTextView?
     
     var body: some CustomizableToolbarContent {
@@ -75,12 +75,11 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
         Group {
             ToolbarItem(id: "sidebar") {
                 Button {
-                    withAnimation {
-                        showingPreview.toggle()
-                    }
+                    showingPreview.toggle()
                 } label: {
                     Label("Toggle Preview", systemImage: "sidebar.right")
-                }.disabled(true)
+                        .foregroundColor(Color(NSColor.secondaryLabelColor))
+                }
             }
         }
     }
