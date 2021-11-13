@@ -11,21 +11,12 @@
         }
       },
       {
-        "package": "MarkdownSyntax",
-        "repositoryURL": "https://github.com/hebertialmeida/MarkdownSyntax",
+        "package": "Ink",
+        "repositoryURL": "https://github.com/JohnSundell/Ink",
         "state": {
           "branch": null,
-          "revision": "17d7557d08adb3c184a45a3dbd4d3144db5dfda5",
-          "version": "1.1.0"
-        }
-      },
-      {
-        "package": "cmark_gfm",
-        "repositoryURL": "https://github.com/hebertialmeida/swift-cmark-gfm",
-        "state": {
-          "branch": null,
-          "revision": "d0a8b625a499389c12fa08375e6d81d0c6f66cb4",
-          "version": "1.1.1"
+          "revision": "77c3d8953374a9cf5418ef0bd7108524999de85a",
+          "version": "0.5.1"
         }
       },
       {

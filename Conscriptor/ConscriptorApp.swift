@@ -11,7 +11,7 @@ import SwiftUI
 struct ConscriptorApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: ConscriptorDocument()) { file in
-            MarkdownEditorView(document: file.$document)
+            MarkdownEditorView(conscriptorDocument: file.$document)
                 .frame(minWidth: 400, minHeight: 500)
         }
         .commands {
@@ -23,25 +23,52 @@ struct ConscriptorApp: App {
                     nc.post(name: .formatBold, object: nil)
                 } label: {
                     Text("Bold")
-                }.keyboardShortcut("b", modifiers: .command)
+                }
+                .keyboardShortcut("b", modifiers: .command)
+
                 Button {
                     let nc = NotificationCenter.default
                     nc.post(name: .formatItalic, object: nil)
                 } label: {
                     Text("Italic")
-                }.keyboardShortcut("i", modifiers: .command)
+                }
+                .keyboardShortcut("i", modifiers: .command)
+
                 Button {
                     let nc = NotificationCenter.default
                     nc.post(name: .formatStrikethrough, object: nil)
                 } label: {
                     Text("Strikethrough")
-                }.keyboardShortcut("k", modifiers: .command)
+                }
+                .keyboardShortcut("k", modifiers: .command)
+
                 Button {
                     let nc = NotificationCenter.default
                     nc.post(name: .formatInlineCode, object: nil)
                 } label: {
                     Text("Inline Code")
-                }.keyboardShortcut("/", modifiers: .command)
+                }
+                .keyboardShortcut("/", modifiers: .command)
+                
+                Divider()
+                
+                Button {
+//                    let nc = NotificationCenter.default
+//                    nc.post(name: .insertImage, object: nil)
+                } label: {
+                    Text("Insert Image")
+                }
+                .keyboardShortcut("i", modifiers: .option)
+                .disabled(true)
+                
+                Button {
+//                    let nc = NotificationCenter.default
+//                    nc.post(name: .insertLink, object: nil)
+                } label: {
+                    Text("Add Link")
+                }
+                .keyboardShortcut("l", modifiers: .command)
+                .disabled(true)
             }
         }
     }
