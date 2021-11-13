@@ -7,8 +7,8 @@
 
 import Combine
 import HighlightedTextEditor
+import Ink
 import Introspect
-import MarkdownUI
 import SwiftUI
 
 struct MarkdownEditorView: View {
@@ -21,25 +21,10 @@ struct MarkdownEditorView: View {
     @State private var textView: NSTextView?
     @State private var splitView: NSSplitView?
     @State private var scrollPosition = NSPoint.zero
-
-    var editorContent: some View {
-        HighlightedTextEditor(text: $conscriptorDocument.text, highlightRules: .markdown)
-            .frame(minWidth: 300)
-            .introspectTextView { textView in
-                self.textView = textView
-                textView.textContainerInset = .init(width: 30, height: 40)
-                textView.usesFontPanel = false
-                if let scrollView = textView.enclosingScrollView {
-                    scrollView.autohidesScrollers = true
-                }
-            }
-    }
-
-    var livePreview: some View {
-        Markdown(Document(stringLiteral: conscriptorDocument.text))
-            .frame(minWidth: 300)
-            .padding(.horizontal, 30)
-            .padding(.vertical, 40)
+    
+    var html: String {
+        let parser = MarkdownParser()
+        return parser.html(from: conscriptorDocument.text)
     }
 
     // MARK: Body
@@ -49,21 +34,19 @@ struct MarkdownEditorView: View {
             GeometryReader { geo in
                 if geo.size.width > 800 {
                     HStack(spacing: 0) {
-                        editorContent
-                        Color.black
+                        editorContent()
+                        Color(NSColor.windowBackgroundColor)
                             .frame(width: 2)
-                        ScrollView {
-                            livePreview
-                        }
+                        livePreview()
+                            .background(Color(NSColor.textBackgroundColor))
                     }
                 } else {
                     VStack(spacing: 0) {
-                        editorContent
-                        Color.black
+                        editorContent()
+                        Color(NSColor.windowBackgroundColor)
                             .frame(height: 2)
-                        ScrollView {
-                            livePreview
-                        }
+                        livePreview()
+                            .background(Color(NSColor.textBackgroundColor))
                     }
                 }
             }
@@ -77,7 +60,7 @@ struct MarkdownEditorView: View {
                 setupNotifications()
             }
         } else {
-            editorContent
+            editorContent()
                 .toolbar(id: "editorControls") {
                     MarkdownEditorToolbar(document: $conscriptorDocument, showingPreview: $showingPreview, textView: textView)
                 }
@@ -88,6 +71,26 @@ struct MarkdownEditorView: View {
                     setupNotifications()
                 }
         }
+    }
+    
+    @ViewBuilder
+    func editorContent() -> some View {
+        HighlightedTextEditor(text: $conscriptorDocument.text, highlightRules: .markdown)
+            .frame(minWidth: 300)
+            .introspectTextView { textView in
+                self.textView = textView
+                textView.textContainerInset = .init(width: 30, height: 40)
+                textView.usesFontPanel = false
+                if let scrollView = textView.enclosingScrollView {
+                    scrollView.autohidesScrollers = true
+                }
+            }
+    }
+    
+    @ViewBuilder
+    func livePreview() -> some View {
+        WebView(html: html)
+            .frame(minWidth: 300)
     }
 
     // MARK: - View Config

@@ -15,12 +15,12 @@
 		68871BAC26B0B3750001421E /* MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68871BAB26B0B3750001421E /* MarkdownEditorView.swift */; };
 		68871BAE26B0B3770001421E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68871BAD26B0B3770001421E /* Assets.xcassets */; };
 		68871BB126B0B3770001421E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68871BB026B0B3770001421E /* Preview Assets.xcassets */; };
-		D5193772273CDA8100DDB43C /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = D5193771273CDA8100DDB43C /* MarkdownUI */; };
 		D51B6297270F692800DAC0C6 /* MarkdownEditorToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */; };
 		D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = D53C190926E0CF3100E7934B /* HighlightedTextEditor */; };
 		D56601FD26EB3F3D0071C6E3 /* StringSubscriptExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56601FC26EB3F3D0071C6E3 /* StringSubscriptExtension.swift */; };
 		D576840926E0A18700E2A12B /* github-light.css in Resources */ = {isa = PBXBuildFile; fileRef = D576840826E0A18700E2A12B /* github-light.css */; };
 		D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */; };
+		D585951E273FAA3C0017586F /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = D585951D273FAA3C0017586F /* Ink */; };
 		D5989BA626F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BA526F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift */; };
 		D5B3E0482705206600A912E2 /* github-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = D5B3E0472705206600A912E2 /* github-dark.css */; };
 		D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */; };
@@ -55,9 +55,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D585951E273FAA3C0017586F /* Ink in Frameworks */,
 				D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */,
 				683D922A26B107EB00E5EF82 /* Introspect in Frameworks */,
-				D5193772273CDA8100DDB43C /* MarkdownUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,7 +180,7 @@
 			packageProductDependencies = (
 				683D922926B107EB00E5EF82 /* Introspect */,
 				D53C190926E0CF3100E7934B /* HighlightedTextEditor */,
-				D5193771273CDA8100DDB43C /* MarkdownUI */,
+				D585951D273FAA3C0017586F /* Ink */,
 			);
 			productName = Conscriptor;
 			productReference = 68871BA426B0B3750001421E /* Conscriptor.app */;
@@ -212,7 +212,7 @@
 			packageReferences = (
 				683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
-				D5193770273CDA8100DDB43C /* XCRemoteSwiftPackageReference "MarkdownUI" */,
+				D585951C273FAA3C0017586F /* XCRemoteSwiftPackageReference "Ink" */,
 			);
 			productRefGroup = 68871BA526B0B3750001421E /* Products */;
 			projectDirPath = "";
@@ -459,20 +459,20 @@
 				minimumVersion = 0.1.3;
 			};
 		};
-		D5193770273CDA8100DDB43C /* XCRemoteSwiftPackageReference "MarkdownUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gonzalezreal/MarkdownUI";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.2;
-			};
-		};
 		D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kyle-n/HighlightedTextEditor";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 2.0.0;
+			};
+		};
+		D585951C273FAA3C0017586F /* XCRemoteSwiftPackageReference "Ink" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JohnSundell/Ink";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -483,15 +483,15 @@
 			package = 683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		D5193771273CDA8100DDB43C /* MarkdownUI */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D5193770273CDA8100DDB43C /* XCRemoteSwiftPackageReference "MarkdownUI" */;
-			productName = MarkdownUI;
-		};
 		D53C190926E0CF3100E7934B /* HighlightedTextEditor */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */;
 			productName = HighlightedTextEditor;
+		};
+		D585951D273FAA3C0017586F /* Ink */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D585951C273FAA3C0017586F /* XCRemoteSwiftPackageReference "Ink" */;
+			productName = Ink;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

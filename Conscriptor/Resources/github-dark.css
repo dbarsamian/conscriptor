@@ -27,7 +27,8 @@ body {
   line-height: 1.6;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #0e1116;
+  background-color: rgba(14, 17, 22, 0.01); /* workaround for getting scrollers to be correct color with transparent background*/
+/*  background-color: transparent;*/
   padding: 30px;
   color: #cad1d8;
 }
@@ -104,11 +105,13 @@ h6 tt, h6 code {
 
 h1 {
   font-size: 28px;
+  color: #cad1d9;
 }
 
 h2 {
   font-size: 24px;
   border-bottom: 1px solid #cccccc;
+  color: #cad1d9;
 }
 
 h3 {
@@ -369,7 +372,8 @@ code, tt {
   white-space: nowrap;
   border: 1px solid #21252a;
   background-color: #353940;
-  border-radius: 3px;
+  border-radius: 4px;
+  font-family: Menlo, monospace;
 }
 
 pre code {
