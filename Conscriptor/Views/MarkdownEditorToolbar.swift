@@ -15,6 +15,9 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
     let textView: NSTextView?
     
     var body: some CustomizableToolbarContent {
+        ToolbarItem(id: "spacer") {
+            Spacer()
+        }
         Group {
             ToolbarItem(id: "bold") {
                 Button {
@@ -49,6 +52,9 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
                 }
             }
         }
+        ToolbarItem(id: "spacer") {
+            Spacer()
+        }
         Group {
             ToolbarItem(id: "link") {
                 Button {
@@ -71,6 +77,9 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
                     Label("Insert Table", systemImage: "tablecells")
                 }.disabled(true)
             }
+        }
+        ToolbarItem(id: "spacer") {
+            Spacer()
         }
         Group {
             ToolbarItem(id: "sidebar") {

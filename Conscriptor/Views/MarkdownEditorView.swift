@@ -35,16 +35,14 @@ struct MarkdownEditorView: View {
                 if geo.size.width > 800 {
                     HStack(spacing: 0) {
                         editorContent()
-                        Color(NSColor.windowBackgroundColor)
-                            .frame(width: 2)
+                        Divider()
                         livePreview()
                             .background(Color(NSColor.textBackgroundColor))
                     }
                 } else {
                     VStack(spacing: 0) {
                         editorContent()
-                        Color(NSColor.windowBackgroundColor)
-                            .frame(height: 2)
+                        Divider()
                         livePreview()
                             .background(Color(NSColor.textBackgroundColor))
                     }

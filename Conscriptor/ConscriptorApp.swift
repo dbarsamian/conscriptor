@@ -12,8 +12,9 @@ struct ConscriptorApp: App {
     var body: some Scene {
         DocumentGroup(newDocument: ConscriptorDocument()) { file in
             MarkdownEditorView(conscriptorDocument: file.$document)
-                .frame(minWidth: 400, minHeight: 500)
+                .frame(minWidth: 650, minHeight: 800)
         }
+        .windowToolbarStyle(.unified)
         .commands {
             ToolbarCommands()
             TextEditingCommands()
