@@ -14,6 +14,7 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 - Customizable toolbar with quick access to common syntax to make editing approachable.
 - Keyboard shortcuts for common syntax to make editing quicker.
 - Insert tables pre-populated with placeholders to make writing tables quicker.
+- Inline HTML tags for adding in custom elements.
 
 ### Planned Additions
 
@@ -24,14 +25,14 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 
 To setup *Conscriptor* for development...
 
-0. Install Xcode 13 Beta.
+0. Install Xcode 13.1.
 1. Clone `https://github.com/dbarsamian/conscriptor`
-2. Open in Xcode 13.
+2. Open in Xcode.
 
 ### Built with
 
 - Swift 5.5
-- Xcode 13 beta
+- Xcode 13.1
 
 ## Authors
 
