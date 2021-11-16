@@ -47,8 +47,14 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
                 Button {
                     MarkdownEditorController.format(&document, with: .code, in: textView)
                 } label: {
-                    Label("Code", systemImage: "chevron.left.forwardslash.chevron.right")
-                        .foregroundColor(Color(NSColor.secondaryLabelColor))
+                    if #available(macOS 12.0, *) {
+                        Label("Code", systemImage: "chevron.left.forwardslash.chevron.right") // Monterey+
+                            .foregroundColor(Color(NSColor.secondaryLabelColor))
+                    } else {
+                        Label("Code", systemImage: "chevron.left.slash.chevron.right") // Legacy name
+                            .foregroundColor(Color(NSColor.secondaryLabelColor))
+                    }
+                    
                 }
             }
         }
