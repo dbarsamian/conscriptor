@@ -51,6 +51,18 @@ struct WebView: NSViewRepresentable {
         nsView.loadHTMLString(html, baseURL: nil)
     }
     
+    /// Custom Coordinator which handles persistent scroll position in the WebView.
+    ///
+    /// # How Persistent Scroll Position Works
+    /// This is done by evaluating JavaScript at two points during the WKWebView's navigation lifecycle.
+    /// When the WKWebView's navigation delegate is asked to decide the policy for a navigation action, first the action is checked
+    /// to validate that it's a valid action (i.e. it doesn't navigate outside of the current page). If it's invalid, the URL in the action's request
+    /// will be open externally using the system's default application. (For 99% of links, this will be the default web browser.)
+    /// If it's a valid request, then we capture the current scroll position using some JavaScript and store the result.
+    ///
+    /// Once the page has finished loading, it's then safe to call some more JavaScript that sets the page's scroll position to the value
+    /// we stored earlier.
+    ///
     class Coordinator: NSObject, WKNavigationDelegate {
         private var scrollPosition = CGPoint() {
             didSet {
@@ -60,28 +72,36 @@ struct WebView: NSViewRepresentable {
         
         // https://stackoverflow.com/questions/36231061/wkwebview-open-links-from-certain-domain-in-safari
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+            print("Navigation: deciding policy for action...")
             guard let url = navigationAction.request.url else {
+                webView.evaluateJavaScript("[scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, scrollTop = window.pageYOffset || document.documentElement.scrollTop]") { [weak self] value, error in
+                    guard let value = value as? [Int] else {
+                        print(String(describing: value))
+                        return
+                    }
+                    self?.scrollPosition = CGPoint(x: value[0], y: value[1])
+                    print("Navigation: scroll position captured")
+                }
                 decisionHandler(.allow)
+                print("Navigation: navigation action accepted")
                 return
             }
             
             if url.description.lowercased().starts(with: "http://") || url.description.lowercased().starts(with: "https://") {
                 decisionHandler(.cancel)
+                print("Navigation: navgiation action denied")
                 NSWorkspace.shared.open(url)
             } else {
-                decisionHandler(.allow)
-            }
-        }
-        
-        func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-            print("Navigation: did start provisional navigation")
-            webView.evaluateJavaScript("[scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, scrollTop = window.pageYOffset || document.documentElement.scrollTop]") { [weak self] value, error in
-                guard let value = value as? [Int] else {
-                    print(String(describing: value))
-                    return
+                webView.evaluateJavaScript("[scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, scrollTop = window.pageYOffset || document.documentElement.scrollTop]") { [weak self] value, error in
+                    guard let value = value as? [Int] else {
+                        print(String(describing: value))
+                        return
+                    }
+                    self?.scrollPosition = CGPoint(x: value[0], y: value[1])
+                    print("Navigation: scroll position captured")
                 }
-                self?.scrollPosition = CGPoint(x: value[0], y: value[1])
-                print("Navigation: scroll position captured")
+                decisionHandler(.allow)
+                print("Navigation: navigation action accepted")
             }
         }
         
