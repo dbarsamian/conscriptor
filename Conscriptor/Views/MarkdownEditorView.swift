@@ -19,6 +19,7 @@ struct MarkdownEditorView: View {
     @State private var showingPreview = true
     @State private var showingErrorAlert = false
     @State private var textView: NSTextView?
+    @State private var webScrollView: NSScrollView?
     @State private var splitView: NSSplitView?
     @State private var scrollPosition = NSPoint.zero
     
@@ -87,8 +88,16 @@ struct MarkdownEditorView: View {
     
     @ViewBuilder
     func livePreview() -> some View {
-        WebView(html: html)
-            .frame(minWidth: 300)
+        GeometryReader { geo in
+            ScrollView {
+                WebView(html: html)
+                    .frame(minWidth: 300, idealHeight: geo.size.height)
+            }
+            .frame(height: geo.size.height)
+            .introspectScrollView { scrollView in
+                self.webScrollView = scrollView
+            }
+        }
     }
 
     // MARK: - View Config
