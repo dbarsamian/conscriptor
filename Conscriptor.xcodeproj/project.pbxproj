@@ -109,9 +109,8 @@
 		D5989BA026F45BBA00D9E496 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				683D922626B0F48200E5EF82 /* WebView.swift */,
-				68871BAB26B0B3750001421E /* MarkdownEditorView.swift */,
-				D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */,
+				D5F0319F278813EF007A55C2 /* Web */,
+				D5F0319E278813E6007A55C2 /* Editor */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -159,6 +158,23 @@
 				D5989BA526F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift */,
 			);
 			path = Notifications;
+			sourceTree = "<group>";
+		};
+		D5F0319E278813E6007A55C2 /* Editor */ = {
+			isa = PBXGroup;
+			children = (
+				68871BAB26B0B3750001421E /* MarkdownEditorView.swift */,
+				D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */,
+			);
+			path = Editor;
+			sourceTree = "<group>";
+		};
+		D5F0319F278813EF007A55C2 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				683D922626B0F48200E5EF82 /* WebView.swift */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
