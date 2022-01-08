@@ -26,6 +26,9 @@
 		D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */; };
 		D5CE033426F4314E00CB86E5 /* MarkdownEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */; };
 		D5D6747726F1C3F000871617 /* CMarkdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6747626F1C3F000871617 /* CMarkdown.swift */; };
+		D5D903DB278859AB00EC7B85 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D903DA278859AB00EC7B85 /* Template.swift */; };
+		D5D903DF2789200300EC7B85 /* TemplateGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D903DE2789200300EC7B85 /* TemplateGridView.swift */; };
+		D5F031A427881C2B007A55C2 /* OpenTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F031A327881C2B007A55C2 /* OpenTemplateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownFormatter.swift; sourceTree = "<group>"; };
 		D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorController.swift; sourceTree = "<group>"; };
 		D5D6747626F1C3F000871617 /* CMarkdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMarkdown.swift; sourceTree = "<group>"; };
+		D5D903DA278859AB00EC7B85 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		D5D903DE2789200300EC7B85 /* TemplateGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateGridView.swift; sourceTree = "<group>"; };
+		D5F031A327881C2B007A55C2 /* OpenTemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenTemplateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,8 +115,9 @@
 		D5989BA026F45BBA00D9E496 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				D5F0319F278813EF007A55C2 /* Web */,
 				D5F0319E278813E6007A55C2 /* Editor */,
+				D5F031A227881C0D007A55C2 /* Templates */,
+				D5F0319F278813EF007A55C2 /* Web */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -120,6 +127,7 @@
 			children = (
 				D5D6747626F1C3F000871617 /* CMarkdown.swift */,
 				68871BA926B0B3750001421E /* ConscriptorDocument.swift */,
+				D5D903DA278859AB00EC7B85 /* Template.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,6 +183,15 @@
 				683D922626B0F48200E5EF82 /* WebView.swift */,
 			);
 			path = Web;
+			sourceTree = "<group>";
+		};
+		D5F031A227881C0D007A55C2 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				D5F031A327881C2B007A55C2 /* OpenTemplateView.swift */,
+				D5D903DE2789200300EC7B85 /* TemplateGridView.swift */,
+			);
+			path = Templates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,11 +278,14 @@
 			files = (
 				D56601FD26EB3F3D0071C6E3 /* StringSubscriptExtension.swift in Sources */,
 				D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */,
+				D5D903DB278859AB00EC7B85 /* Template.swift in Sources */,
+				D5F031A427881C2B007A55C2 /* OpenTemplateView.swift in Sources */,
 				68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */,
 				683D922726B0F48200E5EF82 /* WebView.swift in Sources */,
 				D5989BA626F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift in Sources */,
 				D5CE033426F4314E00CB86E5 /* MarkdownEditorController.swift in Sources */,
 				68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */,
+				D5D903DF2789200300EC7B85 /* TemplateGridView.swift in Sources */,
 				D51B6297270F692800DAC0C6 /* MarkdownEditorToolbar.swift in Sources */,
 				68871BAC26B0B3750001421E /* MarkdownEditorView.swift in Sources */,
 				D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */,

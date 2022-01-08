@@ -9,8 +9,16 @@ import SwiftUI
 
 @main
 struct ConscriptorApp: App {
+    @State var templateToUse: Template?
+    
     var body: some Scene {
-        DocumentGroup(newDocument: ConscriptorDocument()) { file in
+        WindowGroup("Templates") {
+            OpenTemplateView(templateToUse: $templateToUse)
+                .frame(minWidth: 800, minHeight: 600)
+        }
+        .windowStyle(.hiddenTitleBar)
+        
+        DocumentGroup(newDocument: ConscriptorDocument(text: templateToUse?.document ?? "")) { file in
             MarkdownEditorView(conscriptorDocument: file.$document)
                 .frame(minWidth: 650, minHeight: 800)
         }
