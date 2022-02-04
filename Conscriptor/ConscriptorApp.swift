@@ -14,7 +14,7 @@ struct ConscriptorApp: App {
     var body: some Scene {
         WindowGroup("Templates") {
             OpenTemplateView(templateToUse: $templateToUse)
-                .frame(minWidth: 800, minHeight: 600)
+                .frame(width: 800, height: 500)
         }
         .windowStyle(.hiddenTitleBar)
         

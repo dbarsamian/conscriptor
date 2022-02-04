@@ -9,7 +9,6 @@ import SwiftUI
 import WebKit
 
 struct WebView: NSViewRepresentable {
-    
     var html: String
 
     init(html: String) {
@@ -18,7 +17,7 @@ struct WebView: NSViewRepresentable {
 
     func makeNSView(context: Context) -> WKWebView {
         /// See https://stackoverflow.com/questions/33123093/insert-css-into-loaded-html-in-uiwebview-wkwebview for details
-        
+
         lazy var webView: WKWebView = {
             let userContentController = WKUserContentController()
             if let userScript = generateStyleScript(context: context) {
@@ -37,7 +36,7 @@ struct WebView: NSViewRepresentable {
         webView.configuration.limitsNavigationsToAppBoundDomains = true
         /// Thanks https://stackoverflow.com/questions/27211561/transparent-background-wkwebview-nsview/40267954 for this
         webView.setValue(false, forKey: "drawsBackground")
-        
+
         webView.navigationDelegate = context.coordinator
 
         return webView
@@ -47,10 +46,10 @@ struct WebView: NSViewRepresentable {
         if let userScript = generateStyleScript(context: context) {
             nsView.configuration.userContentController.addUserScript(userScript)
         }
-        
+
         nsView.loadHTMLString(html, baseURL: nil)
     }
-    
+
     /// Custom Coordinator which handles persistent scroll position in the WebView.
     ///
     /// # How Persistent Scroll Position Works
@@ -69,12 +68,12 @@ struct WebView: NSViewRepresentable {
                 print("Navigation: \(scrollPosition)")
             }
         }
-        
+
         // https://stackoverflow.com/questions/36231061/wkwebview-open-links-from-certain-domain-in-safari
         func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             print("Navigation: deciding policy for action...")
             guard let url = navigationAction.request.url else {
-                webView.evaluateJavaScript("[scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, scrollTop = window.pageYOffset || document.documentElement.scrollTop]") { [weak self] value, error in
+                webView.evaluateJavaScript("[scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, scrollTop = window.pageYOffset || document.documentElement.scrollTop]") { [weak self] value, _ in
                     guard let value = value as? [Int] else {
                         print(String(describing: value))
                         return
@@ -86,13 +85,13 @@ struct WebView: NSViewRepresentable {
                 print("Navigation: navigation action accepted")
                 return
             }
-            
+
             if url.description.lowercased().starts(with: "http://") || url.description.lowercased().starts(with: "https://") {
                 decisionHandler(.cancel)
                 print("Navigation: navgiation action denied")
                 NSWorkspace.shared.open(url)
             } else {
-                webView.evaluateJavaScript("[scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, scrollTop = window.pageYOffset || document.documentElement.scrollTop]") { [weak self] value, error in
+                webView.evaluateJavaScript("[scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, scrollTop = window.pageYOffset || document.documentElement.scrollTop]") { [weak self] value, _ in
                     guard let value = value as? [Int] else {
                         print(String(describing: value))
                         return
@@ -104,7 +103,7 @@ struct WebView: NSViewRepresentable {
                 print("Navigation: navigation action accepted")
             }
         }
-        
+
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
             print("Navigation: did finish navigation")
             webView.evaluateJavaScript("document.documentElement.scrollLeft = document.body.scrollLeft = \(scrollPosition.x)") { _, _ in
@@ -115,14 +114,15 @@ struct WebView: NSViewRepresentable {
             }
         }
     }
-    
+
     func makeCoordinator() -> Coordinator {
         return Coordinator()
     }
 
     private func generateStyleScript(context: Context) -> WKUserScript? {
         guard let path = Bundle.main.path(forResource: context.environment.colorScheme == .light ? "github-light" : "github-dark", ofType: "css"),
-              let cssString = try? String(contentsOfFile: path, encoding: .utf8).components(separatedBy: .newlines).joined() else {
+              let cssString = try? String(contentsOfFile: path, encoding: .utf8).components(separatedBy: .newlines).joined()
+        else {
             print("ERROR: COULD NOT FIND CSS FILES")
             return nil
         }

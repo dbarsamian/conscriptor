@@ -366,22 +366,20 @@ span.float-right > span {
   text-align: right;
 }
 
+pre code {
+    margin: 0;
+    padding: 0;
+    white-space: pre;
+    border: none;
+    background: transparent;
+}
+
 code, tt {
   margin: 0 2px;
   padding: 0 5px;
   white-space: nowrap;
-  border: 1px solid #21252a;
-  background-color: #353940;
   border-radius: 4px;
   font-family: Menlo, monospace;
-}
-
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent;
 }
 
 .highlight pre {
@@ -395,8 +393,8 @@ pre code {
 }
 
 pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
+  background-color: #353940;
+  border: 1px solid #21252a;
   font-size: 13px;
   line-height: 19px;
   overflow: auto;
