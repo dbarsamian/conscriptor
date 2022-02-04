@@ -14,8 +14,9 @@ struct OpenTemplateView: View {
     @State var filter: TemplateCategory = .AllTemplates
     
     private func templateGrid(displaying filter: TemplateCategory) -> some View {
-        return VStack {
+        return VStack(alignment: .leading) {
             TemplateGridView(dismissTemplateWindow: dismiss, filter: filter, templateToUse: $templateToUse)
+                .edgesIgnoringSafeArea(.all)
             Divider()
                 .foregroundColor(Color.black)
             HStack(alignment: .center) {
