@@ -8,14 +8,100 @@
 import SwiftUI
 
 struct TemplateGridView: View {
-    let dismissTemplateWindow: DismissAction
-    var filter: TemplateCategory
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    @FetchRequest(entity: UserTemplate.entity(), sortDescriptors: [], predicate: nil, animation: Animation.default) var userTemplates: FetchedResults<UserTemplate>
+    
     @Binding var templateToUse: Template?
     
-    var body: some View {
-//        let rows: [GridItem] = [.init(.fixed(360 / 2))]
+    @State var showingDeleteAlert = false
+    @State var templateToDelete: UserTemplate?
+    
+    let dismissTemplateWindow: DismissAction
+    var filter: TemplateCategory
+    
+    private var templates: [Template] {
+        var presets = Template.Presets.filter { $0.templateType == filter || filter == .AllTemplates }
+        if !userTemplates.isEmpty {
+            let userPresets = userTemplates.map { userTemplate in
+                Template(id: userTemplate.id ?? UUID(), templateType: .User, document: userTemplate.document ?? "", name: userTemplate.name ?? "")
+            }
+            presets.append(contentsOf: userPresets)
+        }
+        return presets
+    }
+    
+    private func templateView(displaying template: Template) -> some View {
+        return TemplateView(template: template)
+            .frame(width: 280 / 2, height: 360 / 2)
+            .scaleEffect(0.25, anchor: UnitPoint.center)
+            .allowsHitTesting(false)
+            .background(Color(nsColor: NSColor.textBackgroundColor))
+            .cornerRadius(8)
+            .shadow(radius: 6, y: 4)
+            .overlay(
+                templateToUse?.id == template.id
+                    ? AnyView(selectedOverlay)
+                    : AnyView(normalOverlay)
+            )
+            .onTapGesture {
+                if templateToUse?.id == template.id {
+                    NSDocumentController.shared.newDocument(self)
+                    dismissTemplateWindow()
+                } else {
+                    templateToUse?.id = template.id
+                }
+                templateToUse = template
+            }
+    }
+    
+    private func templateName(displaying template: Template) -> some View {
+        return Text(template.name)
+            .padding(.horizontal, 6)
+            .padding(.vertical, 2)
+            .foregroundColor(
+                templateToUse?.id == template.id
+                    ? Color.black
+                    : Color(nsColor: NSColor.textColor)
+            )
+            .background(
+                templateToUse?.id == template.id
+                    ? AnyView(selectedBackground)
+                    : AnyView(EmptyView())
+            )
+    }
+    
+    private func grid(displaying templates: [Template]) -> some View {
         let columns: [GridItem] = [.init(.adaptive(minimum: 160))]
-        let templates = Template.Presets.filter { $0.templateType == filter || filter == .AllTemplates }
+        return LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
+            ForEach(templates) { preset in
+                VStack {
+                    templateView(displaying: preset)
+                    templateName(displaying: preset)
+                    if filter == .AllTemplates {
+                        Text(preset.templateType.rawValue)
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                }
+                .contextMenu {
+                    if preset.templateType == .User {
+                        Button(role: .destructive) {
+                            templateToDelete = userTemplates.first(where: { $0.id == preset.id })
+                            if templateToDelete != nil {
+                                showingDeleteAlert.toggle()
+                            }
+                        } label: {
+                            Label("Delete Template", systemImage: "trash")
+                        }
+                    }
+                }
+            }
+            .padding()
+        }
+    }
+    
+    var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
                 Text("Choose a Template")
@@ -24,53 +110,19 @@ struct TemplateGridView: View {
                     .padding(.leading, 26)
                     .padding(.top, 40)
                     .multilineTextAlignment(.leading)
-                LazyVGrid(columns: columns, alignment: .center, spacing: 20) {
-                    ForEach(templates) { preset in
-                        VStack {
-                            TemplateView(template: preset)
-                                .frame(width: 280 / 2, height: 360 / 2)
-                                .scaleEffect(0.25, anchor: UnitPoint.center)
-                                .allowsHitTesting(false)
-                                .background(Color(nsColor: NSColor.textBackgroundColor))
-                                .cornerRadius(8)
-                                .shadow(radius: 6, y: 4)
-                                .overlay(
-                                    templateToUse?.id == preset.id
-                                        ? AnyView(selectedOverlay)
-                                        : AnyView(normalOverlay)
-                                )
-                                .onTapGesture {
-                                    if templateToUse?.id == preset.id {
-                                        NSDocumentController.shared.newDocument(self)
-                                        dismissTemplateWindow()
-                                    } else {
-                                        templateToUse?.id = preset.id
-                                    }
-                                    templateToUse = preset
-                                }
-                            Text(preset.name)
-                                .padding(.horizontal, 6)
-                                .padding(.vertical, 2)
-                                .foregroundColor(
-                                    templateToUse?.id == preset.id
-                                        ? Color.black
-                                        : Color(nsColor: NSColor.textColor)
-                                )
-                                .background(
-                                    templateToUse?.id == preset.id
-                                        ? AnyView(selectedBackground)
-                                        : AnyView(EmptyView())
-                                )
-                            if filter == .AllTemplates {
-                                Text(preset.templateType.rawValue)
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-                    }
-                    .padding()
-                }
+                grid(displaying: templates)
+                    .padding(.horizontal, 26)
             }
+        }
+        .alert("Are you sure?", isPresented: $showingDeleteAlert) {
+            Button("Delete", role: .destructive) {
+                managedObjectContext.delete(templateToDelete!)
+                try? managedObjectContext.save()
+                templateToDelete = nil
+            }
+            Button("Cancel", role: .cancel) {}
+        } message: {
+            Text("This action cannot be undone.")
         }
     }
     
@@ -93,7 +145,7 @@ struct TemplateGridView_Previews: PreviewProvider {
     @Environment(\.dismiss) static var dismiss
     
     static var previews: some View {
-        TemplateGridView(dismissTemplateWindow: dismiss, filter: .AllTemplates, templateToUse: .constant(Template.Presets.first!))
+        TemplateGridView(templateToUse: .constant(Template.Presets.first!), dismissTemplateWindow: dismiss, filter: .AllTemplates)
             .previewLayout(.sizeThatFits)
     }
 }

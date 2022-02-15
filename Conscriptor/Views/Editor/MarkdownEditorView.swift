@@ -13,16 +13,19 @@ import SwiftUI
 
 struct MarkdownEditorView: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.managedObjectContext) var managedObjectContext
 
     @Binding var conscriptorDocument: ConscriptorDocument
 
     @State private var showingPreview = true
     @State private var showingErrorAlert = false
+    @State private var showingTemplateSaveAlert = false
+    @State private var newTemplateName = ""
     @State private var textView: NSTextView?
     @State private var webScrollView: NSScrollView?
     @State private var splitView: NSSplitView?
     @State private var scrollPosition = NSPoint.zero
-    
+
     var html: String {
         let parser = MarkdownParser()
         return parser.html(from: conscriptorDocument.text)
@@ -31,35 +34,25 @@ struct MarkdownEditorView: View {
     // MARK: Body
 
     var body: some View {
-        if showingPreview {
-            GeometryReader { geo in
-                if geo.size.width > 800 {
-                    HStack(spacing: 0) {
-                        editorContent()
-                        Divider()
-                        livePreview()
-                            .background(Color(NSColor.textBackgroundColor))
-                    }
-                } else {
-                    VStack(spacing: 0) {
-                        editorContent()
-                        Divider()
-                        livePreview()
-                            .background(Color(NSColor.textBackgroundColor))
+        Group {
+            if showingPreview {
+                GeometryReader { geo in
+                    if geo.size.width > 800 {
+                        HStack(spacing: 0) {
+                            editorContent()
+                            Divider()
+                            livePreview()
+                                .background(Color(NSColor.textBackgroundColor))
+                        }
+                    } else {
+                        VStack(spacing: 0) {
+                            editorContent()
+                            Divider()
+                            livePreview()
+                                .background(Color(NSColor.textBackgroundColor))
+                        }
                     }
                 }
-            }
-            .toolbar(id: "editorControls") {
-                MarkdownEditorToolbar(document: $conscriptorDocument, showingPreview: $showingPreview, textView: textView)
-            }
-            .alert(isPresented: $showingErrorAlert) {
-                Alert(title: Text("Error"), message: Text("Couldn't generate a live preview for the text entered. Please try again."), dismissButton: .cancel())
-            }
-            .onAppear {
-                setupNotifications()
-            }
-        } else {
-            editorContent()
                 .toolbar(id: "editorControls") {
                     MarkdownEditorToolbar(document: $conscriptorDocument, showingPreview: $showingPreview, textView: textView)
                 }
@@ -69,9 +62,49 @@ struct MarkdownEditorView: View {
                 .onAppear {
                     setupNotifications()
                 }
+            } else {
+                editorContent()
+                    .toolbar(id: "editorControls") {
+                        MarkdownEditorToolbar(document: $conscriptorDocument, showingPreview: $showingPreview, textView: textView)
+                    }
+                    .alert(isPresented: $showingErrorAlert) {
+                        Alert(title: Text("Error"), message: Text("Couldn't generate a live preview for the text entered. Please try again."), dismissButton: .cancel())
+                    }
+                    .onAppear {
+                        setupNotifications()
+                    }
+            }
+        }
+        .sheet(isPresented: $showingTemplateSaveAlert) {
+            VStack {
+                Text("Save as Template")
+                    .font(.title2)
+                TextField("Template Title", text: $newTemplateName, prompt: Text("Enter a name for this template..."))
+                    .padding(.vertical)
+                HStack {
+                    Button("Cancel", role: .cancel) {
+                        showingTemplateSaveAlert.toggle()
+                    }
+                    Spacer()
+                    Button("Save") {
+                        let template = UserTemplate(context: managedObjectContext)
+                        template.id = UUID()
+                        template.name = newTemplateName
+                        template.document = conscriptorDocument.text
+
+                        if managedObjectContext.hasChanges {
+                            try? managedObjectContext.save()
+                        }
+
+                        showingTemplateSaveAlert.toggle()
+                    }
+                    .disabled(newTemplateName.isEmpty)
+                }
+            }
+            .padding()
         }
     }
-    
+
     @ViewBuilder
     func editorContent() -> some View {
         HighlightedTextEditor(text: $conscriptorDocument.text, highlightRules: .markdown)
@@ -85,7 +118,7 @@ struct MarkdownEditorView: View {
                 }
             }
     }
-    
+
     @ViewBuilder
     func livePreview() -> some View {
         GeometryReader { geo in
@@ -115,6 +148,9 @@ struct MarkdownEditorView: View {
         }
         nc.addObserver(forName: .formatInlineCode, object: nil, queue: .main) { _ in
             MarkdownEditorController.format(&conscriptorDocument, with: .code, in: textView)
+        }
+        nc.addObserver(forName: .saveNewTemplate, object: nil, queue: .main) { _ in
+            showingTemplateSaveAlert.toggle()
         }
     }
 }

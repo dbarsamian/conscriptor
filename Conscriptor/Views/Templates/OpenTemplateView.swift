@@ -10,15 +10,16 @@ import SwiftUI
 struct OpenTemplateView: View {
     
     @Environment(\.dismiss) var dismiss
+    
     @Binding var templateToUse: Template?
+    
     @State var filter: TemplateCategory = .AllTemplates
     
     private func templateGrid(displaying filter: TemplateCategory) -> some View {
         return VStack(alignment: .leading) {
-            TemplateGridView(dismissTemplateWindow: dismiss, filter: filter, templateToUse: $templateToUse)
+            TemplateGridView(templateToUse: $templateToUse, dismissTemplateWindow: dismiss, filter: filter)
                 .edgesIgnoringSafeArea(.all)
             Divider()
-                .foregroundColor(Color.black)
             HStack(alignment: .center) {
                 Spacer()
                 Button("Cancel", role: .cancel) {

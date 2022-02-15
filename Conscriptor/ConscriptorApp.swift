@@ -9,23 +9,52 @@ import SwiftUI
 
 @main
 struct ConscriptorApp: App {
+    let persistenceController = PersistenceController.shared
+    
+    @Environment(\.scenePhase) var scenePhase
     @State var templateToUse: Template?
+    @State private var showingAlert = false
     
     var body: some Scene {
         WindowGroup("Templates") {
             OpenTemplateView(templateToUse: $templateToUse)
-                .frame(width: 800, height: 500)
+                .frame(minWidth: 800, minHeight: 500)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .alert("Error", isPresented: $showingAlert) {
+                    Button("OK", role: .cancel) {}
+                } message: {
+                    Text("There was an error trying to save your custom templates. Please try again.")
+                }
         }
         .windowStyle(.hiddenTitleBar)
+        .onChange(of: scenePhase) { _ in
+            let results = persistenceController.save()
+            switch results {
+            case .Error:
+                showingAlert.toggle()
+            default:
+                break
+            }
+        }
         
         DocumentGroup(newDocument: ConscriptorDocument(text: templateToUse?.document ?? "")) { file in
             MarkdownEditorView(conscriptorDocument: file.$document)
                 .frame(minWidth: 650, minHeight: 800)
+                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
         .windowToolbarStyle(.unified)
         .commands {
             ToolbarCommands()
             TextEditingCommands()
+            CommandGroup(after: .saveItem) {
+                Button {
+                    let nc = NotificationCenter.default
+                    nc.post(name: .saveNewTemplate, object: nil)
+                } label: {
+                    Text("Save as Template")
+                }
+                .keyboardShortcut("s", modifiers: [.control, .shift])
+            }
             CommandGroup(replacing: .textFormatting) {
                 Button {
                     let nc = NotificationCenter.default

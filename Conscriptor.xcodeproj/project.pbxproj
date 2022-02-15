@@ -22,6 +22,11 @@
 		D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */; };
 		D585951E273FAA3C0017586F /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = D585951D273FAA3C0017586F /* Ink */; };
 		D5989BA626F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BA526F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift */; };
+		D5AA1FFA27ADE54500DB2EE1 /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA1FF927ADE54500DB2EE1 /* TemplateView.swift */; };
+		D5AA1FFE27ADE7BC00DB2EE1 /* UserTemplate.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D5AA1FFC27ADE7BC00DB2EE1 /* UserTemplate.xcdatamodeld */; };
+		D5AA200027ADE80900DB2EE1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA1FFF27ADE80900DB2EE1 /* Persistence.swift */; };
+		D5AA200227ADEA5300DB2EE1 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA200127ADEA5300DB2EE1 /* OSLogExtension.swift */; };
+		D5AA200427ADF57100DB2EE1 /* NotificationName+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA200327ADF57100DB2EE1 /* NotificationName+Persistence.swift */; };
 		D5B3E0482705206600A912E2 /* github-dark.css in Resources */ = {isa = PBXBuildFile; fileRef = D5B3E0472705206600A912E2 /* github-dark.css */; };
 		D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */; };
 		D5CE033426F4314E00CB86E5 /* MarkdownEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */; };
@@ -47,6 +52,11 @@
 		D576840826E0A18700E2A12B /* github-light.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-light.css"; sourceTree = "<group>"; };
 		D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrospectExtension.swift; sourceTree = "<group>"; };
 		D5989BA526F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+MarkdownEditorView.swift"; sourceTree = "<group>"; };
+		D5AA1FF927ADE54500DB2EE1 /* TemplateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateView.swift; sourceTree = "<group>"; };
+		D5AA1FFD27ADE7BC00DB2EE1 /* UserTemplate.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserTemplate.xcdatamodel; sourceTree = "<group>"; };
+		D5AA1FFF27ADE80900DB2EE1 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		D5AA200127ADEA5300DB2EE1 /* OSLogExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExtension.swift; sourceTree = "<group>"; };
+		D5AA200327ADF57100DB2EE1 /* NotificationName+Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Persistence.swift"; sourceTree = "<group>"; };
 		D5B3E0472705206600A912E2 /* github-dark.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-dark.css"; sourceTree = "<group>"; };
 		D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownFormatter.swift; sourceTree = "<group>"; };
 		D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorController.swift; sourceTree = "<group>"; };
@@ -126,8 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				D5D6747626F1C3F000871617 /* CMarkdown.swift */,
-				68871BA926B0B3750001421E /* ConscriptorDocument.swift */,
-				D5D903DA278859AB00EC7B85 /* Template.swift */,
+				D5AA1FF827ADE52800DB2EE1 /* Documents */,
+				D5AA1FFB27ADE7AB00DB2EE1 /* Templates */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,8 +145,8 @@
 		D5989BA226F45BEF00D9E496 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */,
-				D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */,
+				D5AA1FF527ADE4C100DB2EE1 /* Markdown */,
+				D5AA1FFF27ADE80900DB2EE1 /* Persistence.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -147,6 +157,7 @@
 				D5989BA726F45EC000D9E496 /* Notifications */,
 				D56601FC26EB3F3D0071C6E3 /* StringSubscriptExtension.swift */,
 				D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */,
+				D5AA200127ADEA5300DB2EE1 /* OSLogExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -164,8 +175,35 @@
 			isa = PBXGroup;
 			children = (
 				D5989BA526F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift */,
+				D5AA200327ADF57100DB2EE1 /* NotificationName+Persistence.swift */,
 			);
 			path = Notifications;
+			sourceTree = "<group>";
+		};
+		D5AA1FF527ADE4C100DB2EE1 /* Markdown */ = {
+			isa = PBXGroup;
+			children = (
+				D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */,
+				D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */,
+			);
+			path = Markdown;
+			sourceTree = "<group>";
+		};
+		D5AA1FF827ADE52800DB2EE1 /* Documents */ = {
+			isa = PBXGroup;
+			children = (
+				68871BA926B0B3750001421E /* ConscriptorDocument.swift */,
+			);
+			path = Documents;
+			sourceTree = "<group>";
+		};
+		D5AA1FFB27ADE7AB00DB2EE1 /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				D5D903DA278859AB00EC7B85 /* Template.swift */,
+				D5AA1FFC27ADE7BC00DB2EE1 /* UserTemplate.xcdatamodeld */,
+			);
+			path = Templates;
 			sourceTree = "<group>";
 		};
 		D5F0319E278813E6007A55C2 /* Editor */ = {
@@ -190,6 +228,7 @@
 			children = (
 				D5F031A327881C2B007A55C2 /* OpenTemplateView.swift */,
 				D5D903DE2789200300EC7B85 /* TemplateGridView.swift */,
+				D5AA1FF927ADE54500DB2EE1 /* TemplateView.swift */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -278,15 +317,20 @@
 			files = (
 				D56601FD26EB3F3D0071C6E3 /* StringSubscriptExtension.swift in Sources */,
 				D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */,
+				D5AA200027ADE80900DB2EE1 /* Persistence.swift in Sources */,
 				D5D903DB278859AB00EC7B85 /* Template.swift in Sources */,
 				D5F031A427881C2B007A55C2 /* OpenTemplateView.swift in Sources */,
 				68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */,
+				D5AA200227ADEA5300DB2EE1 /* OSLogExtension.swift in Sources */,
 				683D922726B0F48200E5EF82 /* WebView.swift in Sources */,
 				D5989BA626F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift in Sources */,
+				D5AA200427ADF57100DB2EE1 /* NotificationName+Persistence.swift in Sources */,
 				D5CE033426F4314E00CB86E5 /* MarkdownEditorController.swift in Sources */,
+				D5AA1FFA27ADE54500DB2EE1 /* TemplateView.swift in Sources */,
 				68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */,
 				D5D903DF2789200300EC7B85 /* TemplateGridView.swift in Sources */,
 				D51B6297270F692800DAC0C6 /* MarkdownEditorToolbar.swift in Sources */,
+				D5AA1FFE27ADE7BC00DB2EE1 /* UserTemplate.xcdatamodeld in Sources */,
 				68871BAC26B0B3750001421E /* MarkdownEditorView.swift in Sources */,
 				D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */,
 				D5D6747726F1C3F000871617 /* CMarkdown.swift in Sources */,
@@ -532,6 +576,19 @@
 			productName = Ink;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		D5AA1FFC27ADE7BC00DB2EE1 /* UserTemplate.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D5AA1FFD27ADE7BC00DB2EE1 /* UserTemplate.xcdatamodel */,
+			);
+			currentVersion = D5AA1FFD27ADE7BC00DB2EE1 /* UserTemplate.xcdatamodel */;
+			path = UserTemplate.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 68871B9C26B0B3750001421E /* Project object */;
 }

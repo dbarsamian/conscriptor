@@ -22,6 +22,8 @@ public enum TemplateCategory: String, CaseIterable, Identifiable {
             return "books.vertical"
         case .Developer:
             return "hammer"
+        case .User:
+            return "person"
         }
     }
     
@@ -29,6 +31,7 @@ public enum TemplateCategory: String, CaseIterable, Identifiable {
     case Basic = "Basic"
     case Blogging = "Blogging"
     case Developer = "Developer"
+    case User = "User"
 }
 
 public struct Template: Identifiable {
@@ -44,18 +47,4 @@ public struct Template: Identifiable {
         Template(templateType: .Developer, document: "# README\n\n## About The Project\n\nLorem ipsum...\n\n## Getting Started\n\nLorem ipsum...", name: "README.md"),
         Template(templateType: .Developer, document: "# Feature Name\n\n### Author\n\nA paragraph describing the feature...\n\n```\nExample\nblock\nof\ncode\n```", name: "Documentation")
     ]
-}
-
-struct TemplateView: View {
-    let template: Template
-    
-    var html: String {
-        let parser = MarkdownParser()
-        return parser.html(from: template.document)
-    }
-    
-    var body: some View {
-        WebView(html: html)
-            .frame(width: 280 * 2, height: 360 * 2)
-    }
 }
