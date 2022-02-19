@@ -11,25 +11,25 @@ import os.log
 
 struct PersistenceController {
     enum PersistenceSaveResults {
-        case Success
-        case Error
-        case NoChanges
+        case success
+        case error
+        case noChanges
     }
-    
+
     static let shared = PersistenceController()
-    
+
     let container: NSPersistentContainer
-    
+
     static var preview: PersistenceController = {
         let controller = PersistenceController(inMemory: true)
-        for n in 0 ..< 4 {
+        for previewN in 0 ..< 4 {
             let userTemplate = UserTemplate(context: controller.container.viewContext)
-            userTemplate.name = "User Template \(n)"
-            userTemplate.document = "# User Template \(n)"
+            userTemplate.name = "User Template \(previewN)"
+            userTemplate.document = "# User Template \(previewN)"
         }
         return controller
     }()
-    
+
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "UserTemplate")
         if inMemory {
@@ -41,19 +41,21 @@ struct PersistenceController {
             }
         }
     }
-    
+
     func save() -> PersistenceSaveResults {
         let context = container.viewContext
         if context.hasChanges {
             do {
                 try context.save()
-                return .Success
+                return .success
             } catch {
-                Logger.persistence.error("Persistence threw an error while trying to save: \(error.localizedDescription)")
-                return .Error
+                Logger.persistence.error("""
+                "Persistence threw an error while trying to save: \(error.localizedDescription)
+                """)
+                return .error
             }
         } else {
-            return .NoChanges
+            return .noChanges
         }
     }
 }

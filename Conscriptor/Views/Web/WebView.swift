@@ -16,7 +16,8 @@ struct WebView: NSViewRepresentable {
     }
 
     func makeNSView(context: Context) -> WKWebView {
-        /// See https://stackoverflow.com/questions/33123093/insert-css-into-loaded-html-in-uiwebview-wkwebview for details
+        // swiftlint:disable:next line_length
+        // See https://stackoverflow.com/questions/33123093/insert-css-into-loaded-html-in-uiwebview-wkwebview for details
 
         lazy var webView: WKWebView = {
             let userContentController = WKUserContentController()
@@ -34,7 +35,7 @@ struct WebView: NSViewRepresentable {
             return webView
         }()
         webView.configuration.limitsNavigationsToAppBoundDomains = true
-        /// Thanks https://stackoverflow.com/questions/27211561/transparent-background-wkwebview-nsview/40267954 for this
+        // Thanks https://stackoverflow.com/questions/27211561/transparent-background-wkwebview-nsview/40267954 for this
         webView.setValue(false, forKey: "drawsBackground")
 
         webView.navigationDelegate = context.coordinator
@@ -54,64 +55,58 @@ struct WebView: NSViewRepresentable {
     ///
     /// # How Persistent Scroll Position Works
     /// This is done by evaluating JavaScript at two points during the WKWebView's navigation lifecycle.
-    /// When the WKWebView's navigation delegate is asked to decide the policy for a navigation action, first the action is checked
-    /// to validate that it's a valid action (i.e. it doesn't navigate outside of the current page). If it's invalid, the URL in the action's request
-    /// will be open externally using the system's default application. (For 99% of links, this will be the default web browser.)
-    /// If it's a valid request, then we capture the current scroll position using some JavaScript and store the result.
+    /// When the WKWebView's navigation delegate is asked to decide the policy for a navigation action,
+    /// first the action is checked to validate that it's a valid action (i.e. it doesn't navigate outside
+    /// of the current page). If it's invalid, the URL in the action's request
+    /// will be open externally using the system's default application. (For 99% of links,
+    /// this will be the default web browser.) If it's a valid request,
+    /// then we capture the current scroll position using some JavaScript and store the result.
     ///
-    /// Once the page has finished loading, it's then safe to call some more JavaScript that sets the page's scroll position to the value
-    /// we stored earlier.
+    /// Once the page has finished loading, it's then safe to call some more
+    /// JavaScript that sets the page's scroll position to the value we stored earlier.
     ///
     class Coordinator: NSObject, WKNavigationDelegate {
-        private var scrollPosition = CGPoint() {
-            didSet {
-                print("Navigation: \(scrollPosition)")
-            }
-        }
+        private var scrollPosition = CGPoint()
 
         // https://stackoverflow.com/questions/36231061/wkwebview-open-links-from-certain-domain-in-safari
-        func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
-            print("Navigation: deciding policy for action...")
+        func webView(_ webView: WKWebView,
+                     decidePolicyFor navigationAction: WKNavigationAction,
+                     decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
             guard let url = navigationAction.request.url else {
+                // swiftlint:disable:next line_length
                 webView.evaluateJavaScript("[scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, scrollTop = window.pageYOffset || document.documentElement.scrollTop]") { [weak self] value, _ in
                     guard let value = value as? [Int] else {
-                        print(String(describing: value))
                         return
                     }
                     self?.scrollPosition = CGPoint(x: value[0], y: value[1])
-                    print("Navigation: scroll position captured")
                 }
                 decisionHandler(.allow)
-                print("Navigation: navigation action accepted")
                 return
             }
 
-            if url.description.lowercased().starts(with: "http://") || url.description.lowercased().starts(with: "https://") {
+            if url.description.lowercased().starts(with: "http://")
+                || url.description.lowercased().starts(with: "https://") {
                 decisionHandler(.cancel)
-                print("Navigation: navgiation action denied")
                 NSWorkspace.shared.open(url)
             } else {
+                // swiftlint:disable:next line_length
                 webView.evaluateJavaScript("[scrollLeft = window.pageXOffset || document.documentElement.scrollLeft, scrollTop = window.pageYOffset || document.documentElement.scrollTop]") { [weak self] value, _ in
                     guard let value = value as? [Int] else {
-                        print(String(describing: value))
                         return
                     }
                     self?.scrollPosition = CGPoint(x: value[0], y: value[1])
-                    print("Navigation: scroll position captured")
                 }
                 decisionHandler(.allow)
-                print("Navigation: navigation action accepted")
             }
         }
 
         func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            print("Navigation: did finish navigation")
-            webView.evaluateJavaScript("document.documentElement.scrollLeft = document.body.scrollLeft = \(scrollPosition.x)") { _, _ in
-                print("Navigation: applied X scroll")
-            }
-            webView.evaluateJavaScript("document.documentElement.scrollTop = document.body.scrollTop = \(scrollPosition.y)") { _, _ in
-                print("Navigation: applied Y scroll")
-            }
+            webView.evaluateJavaScript("""
+            document.documentElement.scrollLeft = document.body.scrollLeft = \(scrollPosition.x)
+            """)
+            webView.evaluateJavaScript("""
+            document.documentElement.scrollTop = document.body.scrollTop = \(scrollPosition.y)
+            """)
         }
     }
 
@@ -120,11 +115,15 @@ struct WebView: NSViewRepresentable {
     }
 
     private func generateStyleScript(context: Context) -> WKUserScript? {
-        guard let path = Bundle.main.path(forResource: context.environment.colorScheme == .light ? "github-light" : "github-dark", ofType: "css"),
-              let cssString = try? String(contentsOfFile: path, encoding: .utf8).components(separatedBy: .newlines).joined()
+        guard let path = Bundle.main.path(forResource: context.environment.colorScheme == .light
+            ? "github-light"
+            : "github-dark",
+            ofType: "css"),
+            let cssString = try? String(contentsOfFile: path, encoding: .utf8)
+            .components(separatedBy: .newlines)
+            .joined()
         else {
-            print("ERROR: COULD NOT FIND CSS FILES")
-            return nil
+            fatalError(".css style files for live preview could not be found.")
         }
 
         let source = """

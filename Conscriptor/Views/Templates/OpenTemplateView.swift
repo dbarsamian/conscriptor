@@ -8,13 +8,12 @@
 import SwiftUI
 
 struct OpenTemplateView: View {
-    
     @Environment(\.dismiss) var dismiss
-    
+
     @Binding var templateToUse: Template?
-    
-    @State var filter: TemplateCategory = .AllTemplates
-    
+
+    @State var filter: TemplateCategory = .allTemplates
+
     private func templateGrid(displaying filter: TemplateCategory) -> some View {
         return VStack(alignment: .leading) {
             TemplateGridView(templateToUse: $templateToUse, dismissTemplateWindow: dismiss, filter: filter)
@@ -38,7 +37,7 @@ struct OpenTemplateView: View {
             .frame(maxWidth: .infinity, maxHeight: 40)
         }
     }
-    
+
     var body: some View {
         NavigationView {
             List(TemplateCategory.allCases) { category in
@@ -51,15 +50,14 @@ struct OpenTemplateView: View {
             .frame(width: 200)
             .navigationTitle("Choose a Template")
             .listStyle(SidebarListStyle())
-            
-            templateGrid(displaying: .AllTemplates)
-            
+
+            templateGrid(displaying: .allTemplates)
         }
         .introspectSplitView { splitView in
             configureSplitView(splitView)
         }
     }
-    
+
     private func configureSplitView(_ splitView: NSSplitView) {
         if let splitVC = splitView.delegate as? NSSplitViewController, let sidebar = splitVC.splitViewItems.first {
             sidebar.canCollapse = false

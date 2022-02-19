@@ -6,45 +6,86 @@
 //
 
 import Foundation
-import SwiftUI
 import Ink
+import SwiftUI
 
 public enum TemplateCategory: String, CaseIterable, Identifiable {
     public var id: RawValue { rawValue }
-    
+
     static func getIcon(for category: TemplateCategory) -> String {
         switch category {
-        case .AllTemplates:
+        case .allTemplates:
             return "rectangle.3.group"
-        case .Basic:
+        case .basic:
             return "doc.plaintext"
-        case .Blogging:
+        case .blogging:
             return "books.vertical"
-        case .Developer:
+        case .developer:
             return "hammer"
-        case .User:
+        case .user:
             return "person"
         }
     }
-    
-    case AllTemplates = "All Templates"
-    case Basic = "Basic"
-    case Blogging = "Blogging"
-    case Developer = "Developer"
-    case User = "User"
+
+    case allTemplates = "All Templates"
+    case basic
+    case blogging
+    case developer
+    case user
 }
 
 public struct Template: Identifiable {
-    public var id: UUID = UUID()
+    public var id: UUID = .init()
     var templateType: TemplateCategory
     var document: String
     var name: String
-    
+
     static let Presets: [Template] = [
-        Template(templateType: .Basic, document: "", name: "Empty"),
-        Template(templateType: .Basic, document: "# Notes\n\n## Subject 1\n\n- Note 1\n\n- Note 2\n\n- Note 3", name: "Note Taking"),
-        Template(templateType: .Blogging, document: "# Title\n\n## Subtitle\n\n### Author\n\nStart writing... maybe insert [some links](https://www.youtube.com/watch?v=dQw4w9WgXcQ)", name: "Blog Post"),
-        Template(templateType: .Developer, document: "# README\n\n## About The Project\n\nLorem ipsum...\n\n## Getting Started\n\nLorem ipsum...", name: "README.md"),
-        Template(templateType: .Developer, document: "# Feature Name\n\n### Author\n\nA paragraph describing the feature...\n\n```\nExample\nblock\nof\ncode\n```", name: "Documentation")
+        Template(templateType: .basic,
+                 document: "",
+                 name: "Empty"),
+        Template(templateType: .basic,
+                 document: "# Notes\n\n## Subject 1\n\n- Note 1\n\n- Note 2\n\n- Note 3",
+                 name: "Note Taking"),
+        Template(templateType: .blogging,
+                 document: """
+                 # Title
+
+                 ## Subtitle
+
+                 ### Author
+
+                 Start writing... maybe insert [some links](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+                 """,
+                 name: "Blog Post"),
+        Template(templateType: .developer,
+                 document: """
+                 # README
+
+                 ## About The Project
+
+                 Lorem ipsum...
+
+                 ## Getting Started
+
+                 Lorem ipsum...
+                 """,
+                 name: "README.md"),
+        Template(templateType: .developer,
+                 document: """
+                 # Feature Name
+
+                 ### Author
+
+                 A paragraph describing the feature...
+
+                 ```
+                 Example
+                 block
+                 of
+                 code
+                 ```
+                 """,
+                 name: "Documentation")
     ]
 }

@@ -10,7 +10,7 @@ import Introspect
 import SwiftUI
 
 extension View {
-    public func introspectSplitView(customize: @escaping (NSSplitView) -> ()) -> some View {
+    public func introspectSplitView(customize: @escaping (NSSplitView) -> Void) -> some View {
         return inject(AppKitIntrospectionView(selector: { introspectionView in
             guard let viewHost = Introspect.findViewHost(from: introspectionView) else {
                 return nil

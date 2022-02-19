@@ -18,6 +18,7 @@
 		D51B6297270F692800DAC0C6 /* MarkdownEditorToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */; };
 		D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = D53C190926E0CF3100E7934B /* HighlightedTextEditor */; };
 		D56601FD26EB3F3D0071C6E3 /* StringSubscriptExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56601FC26EB3F3D0071C6E3 /* StringSubscriptExtension.swift */; };
+		D56D04CD27BDCCBE001A21B7 /* MarkdownEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D04CC27BDCCBE001A21B7 /* MarkdownEditorDelegate.swift */; };
 		D576840926E0A18700E2A12B /* github-light.css in Resources */ = {isa = PBXBuildFile; fileRef = D576840826E0A18700E2A12B /* github-light.css */; };
 		D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */; };
 		D585951E273FAA3C0017586F /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = D585951D273FAA3C0017586F /* Ink */; };
@@ -49,6 +50,7 @@
 		68871BB326B0B3770001421E /* Conscriptor.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Conscriptor.entitlements; sourceTree = "<group>"; };
 		D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorToolbar.swift; sourceTree = "<group>"; };
 		D56601FC26EB3F3D0071C6E3 /* StringSubscriptExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSubscriptExtension.swift; sourceTree = "<group>"; };
+		D56D04CC27BDCCBE001A21B7 /* MarkdownEditorDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorDelegate.swift; sourceTree = "<group>"; };
 		D576840826E0A18700E2A12B /* github-light.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = "github-light.css"; sourceTree = "<group>"; };
 		D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntrospectExtension.swift; sourceTree = "<group>"; };
 		D5989BA526F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+MarkdownEditorView.swift"; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 			children = (
 				D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */,
 				D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */,
+				D56D04CC27BDCCBE001A21B7 /* MarkdownEditorDelegate.swift */,
 			);
 			path = Markdown;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				68871BA026B0B3750001421E /* Sources */,
 				68871BA126B0B3750001421E /* Frameworks */,
 				68871BA226B0B3750001421E /* Resources */,
+				D52D3C4927C0BE9C005D1305 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -310,6 +314,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D52D3C4927C0BE9C005D1305 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\n\nif which swiftlint >/dev/null; then\n  swiftlint --fix && swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		68871BA026B0B3750001421E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -323,6 +348,7 @@
 				68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */,
 				D5AA200227ADEA5300DB2EE1 /* OSLogExtension.swift in Sources */,
 				683D922726B0F48200E5EF82 /* WebView.swift in Sources */,
+				D56D04CD27BDCCBE001A21B7 /* MarkdownEditorDelegate.swift in Sources */,
 				D5989BA626F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift in Sources */,
 				D5AA200427ADF57100DB2EE1 /* NotificationName+Persistence.swift in Sources */,
 				D5CE033426F4314E00CB86E5 /* MarkdownEditorController.swift in Sources */,

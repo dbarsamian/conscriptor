@@ -24,7 +24,7 @@ struct ConscriptorDocument: FileDocument {
     static var readableContentTypes: [UTType] {
         [
             UTType("net.daringfireball.markdown") ?? .plainText,
-            .plainText,
+            .plainText
         ]
     }
 

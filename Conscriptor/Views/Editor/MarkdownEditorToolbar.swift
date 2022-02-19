@@ -5,15 +5,15 @@
 //  Created by David Barsamian on 10/7/21.
 //
 
+import AppKit
 import Foundation
 import SwiftUI
-import AppKit
 
 struct MarkdownEditorToolbar: CustomizableToolbarContent {
     @Binding var document: ConscriptorDocument
     @Binding var showingPreview: Bool
     let textView: NSTextView?
-    
+
     var body: some CustomizableToolbarContent {
         ToolbarItem(id: "spacer") {
             Spacer()
@@ -54,7 +54,6 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
                         Label("Code", systemImage: "chevron.left.slash.chevron.right") // Legacy name
                             .foregroundColor(Color(NSColor.secondaryLabelColor))
                     }
-                    
                 }
             }
         }

@@ -10,11 +10,12 @@ import SwiftUI
 @main
 struct ConscriptorApp: App {
     let persistenceController = PersistenceController.shared
-    
+    let notificationCenter = NotificationCenter.default
+
     @Environment(\.scenePhase) var scenePhase
     @State var templateToUse: Template?
     @State private var showingAlert = false
-    
+
     var body: some Scene {
         WindowGroup("Templates") {
             OpenTemplateView(templateToUse: $templateToUse)
@@ -30,13 +31,13 @@ struct ConscriptorApp: App {
         .onChange(of: scenePhase) { _ in
             let results = persistenceController.save()
             switch results {
-            case .Error:
+            case .error:
                 showingAlert.toggle()
             default:
                 break
             }
         }
-        
+
         DocumentGroup(newDocument: ConscriptorDocument(text: templateToUse?.document ?? "")) { file in
             MarkdownEditorView(conscriptorDocument: file.$document)
                 .frame(minWidth: 650, minHeight: 800)
@@ -48,8 +49,7 @@ struct ConscriptorApp: App {
             TextEditingCommands()
             CommandGroup(after: .saveItem) {
                 Button {
-                    let nc = NotificationCenter.default
-                    nc.post(name: .saveNewTemplate, object: nil)
+                    notificationCenter.post(name: .saveNewTemplate, object: nil)
                 } label: {
                     Text("Save as Template")
                 }
@@ -57,51 +57,45 @@ struct ConscriptorApp: App {
             }
             CommandGroup(replacing: .textFormatting) {
                 Button {
-                    let nc = NotificationCenter.default
-                    nc.post(name: .formatBold, object: nil)
+                    notificationCenter.post(name: .formatBold, object: nil)
                 } label: {
                     Text("Bold")
                 }
                 .keyboardShortcut("b", modifiers: .command)
 
                 Button {
-                    let nc = NotificationCenter.default
-                    nc.post(name: .formatItalic, object: nil)
+                    notificationCenter.post(name: .formatItalic, object: nil)
                 } label: {
                     Text("Italic")
                 }
                 .keyboardShortcut("i", modifiers: .command)
 
                 Button {
-                    let nc = NotificationCenter.default
-                    nc.post(name: .formatStrikethrough, object: nil)
+                    notificationCenter.post(name: .formatStrikethrough, object: nil)
                 } label: {
                     Text("Strikethrough")
                 }
                 .keyboardShortcut("k", modifiers: .command)
 
                 Button {
-                    let nc = NotificationCenter.default
-                    nc.post(name: .formatInlineCode, object: nil)
+                    notificationCenter.post(name: .formatInlineCode, object: nil)
                 } label: {
                     Text("Inline Code")
                 }
                 .keyboardShortcut("/", modifiers: .command)
-                
+
                 Divider()
-                
+
                 Button {
-//                    let nc = NotificationCenter.default
-//                    nc.post(name: .insertImage, object: nil)
+//                    notificationCenter.post(name: .insertImage, object: nil)
                 } label: {
                     Text("Insert Image")
                 }
                 .keyboardShortcut("i", modifiers: .option)
                 .disabled(true)
-                
+
                 Button {
-//                    let nc = NotificationCenter.default
-//                    nc.post(name: .insertLink, object: nil)
+//                    notificationCenter.post(name: .insertLink, object: nil)
                 } label: {
                     Text("Add Link")
                 }

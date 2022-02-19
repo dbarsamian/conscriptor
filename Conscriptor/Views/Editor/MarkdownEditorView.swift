@@ -31,6 +31,9 @@ struct MarkdownEditorView: View {
         return parser.html(from: conscriptorDocument.text)
     }
 
+    let editorDelegate = MarkdownEditorDelegate()
+    let notificationCenter = NotificationCenter.default
+
     // MARK: Body
 
     var body: some View {
@@ -54,10 +57,14 @@ struct MarkdownEditorView: View {
                     }
                 }
                 .toolbar(id: "editorControls") {
-                    MarkdownEditorToolbar(document: $conscriptorDocument, showingPreview: $showingPreview, textView: textView)
+                    MarkdownEditorToolbar(document: $conscriptorDocument,
+                                          showingPreview: $showingPreview,
+                                          textView: textView)
                 }
                 .alert(isPresented: $showingErrorAlert) {
-                    Alert(title: Text("Error"), message: Text("Couldn't generate a live preview for the text entered. Please try again."), dismissButton: .cancel())
+                    Alert(title: Text("Error"),
+                          message: Text("Couldn't generate a live preview for the text entered. Please try again."),
+                          dismissButton: .cancel())
                 }
                 .onAppear {
                     setupNotifications()
@@ -65,10 +72,14 @@ struct MarkdownEditorView: View {
             } else {
                 editorContent()
                     .toolbar(id: "editorControls") {
-                        MarkdownEditorToolbar(document: $conscriptorDocument, showingPreview: $showingPreview, textView: textView)
+                        MarkdownEditorToolbar(document: $conscriptorDocument,
+                                              showingPreview: $showingPreview,
+                                              textView: textView)
                     }
                     .alert(isPresented: $showingErrorAlert) {
-                        Alert(title: Text("Error"), message: Text("Couldn't generate a live preview for the text entered. Please try again."), dismissButton: .cancel())
+                        Alert(title: Text("Error"),
+                              message: Text("Couldn't generate a live preview for the text entered. Please try again."),
+                              dismissButton: .cancel())
                     }
                     .onAppear {
                         setupNotifications()
@@ -113,6 +124,7 @@ struct MarkdownEditorView: View {
                 self.textView = textView
                 textView.textContainerInset = .init(width: 30, height: 40)
                 textView.usesFontPanel = false
+                textView.usesFindPanel = true
                 if let scrollView = textView.enclosingScrollView {
                     scrollView.autohidesScrollers = true
                 }
@@ -136,20 +148,19 @@ struct MarkdownEditorView: View {
     // MARK: - View Config
 
     public func setupNotifications() {
-        let nc = NotificationCenter.default
-        nc.addObserver(forName: .formatBold, object: nil, queue: .main) { _ in
+        notificationCenter.addObserver(forName: .formatBold, object: nil, queue: .main) { _ in
             MarkdownEditorController.format(&conscriptorDocument, with: .bold, in: textView)
         }
-        nc.addObserver(forName: .formatItalic, object: nil, queue: .main) { _ in
+        notificationCenter.addObserver(forName: .formatItalic, object: nil, queue: .main) { _ in
             MarkdownEditorController.format(&conscriptorDocument, with: .italic, in: textView)
         }
-        nc.addObserver(forName: .formatStrikethrough, object: nil, queue: .main) { _ in
+        notificationCenter.addObserver(forName: .formatStrikethrough, object: nil, queue: .main) { _ in
             MarkdownEditorController.format(&conscriptorDocument, with: .strikethrough, in: textView)
         }
-        nc.addObserver(forName: .formatInlineCode, object: nil, queue: .main) { _ in
+        notificationCenter.addObserver(forName: .formatInlineCode, object: nil, queue: .main) { _ in
             MarkdownEditorController.format(&conscriptorDocument, with: .code, in: textView)
         }
-        nc.addObserver(forName: .saveNewTemplate, object: nil, queue: .main) { _ in
+        notificationCenter.addObserver(forName: .saveNewTemplate, object: nil, queue: .main) { _ in
             showingTemplateSaveAlert.toggle()
         }
     }
@@ -157,6 +168,8 @@ struct MarkdownEditorView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        MarkdownEditorView(conscriptorDocument: .constant(ConscriptorDocument()))
+        // swiftlint:disable:next line_length
+        MarkdownEditorView(conscriptorDocument: .constant(ConscriptorDocument(text: "# Preview\n\nThis is a **preview** document. It will *display* in the ~~UIKit~~ SwiftUI preview. It is of type `ConscriptorDocument` and is constant. Here's a picture:\n\n![alt text](https://i.kym-cdn.com/entries/icons/mobile/000/012/982/039.jpg)")))
+            .previewLayout(.fixed(width: 600, height: 600))
     }
 }

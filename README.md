@@ -14,14 +14,14 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 - **Syntax highlighting** to make styling **stand out**.
 - Customizable toolbar with quick access to common syntax to make editing approachable.
 - Keyboard shortcuts for common syntax to make editing quicker.
-- Insert tables pre-populated with placeholders to make writing tables quicker.
 - Inline HTML tags for adding in custom elements.
-- Templates to get you started quickly.
+- Templates to get you started quickly, with custom template creation and management to make writing common documents easy.
 
 ### Planned Additions
 
 - Auto-completion for symmetrical syntax, like **bold**, *italic*, ~~strikethrough~~, and `code`.
-- Template creation and management to make writing common documents easy.
+- Insert tables pre-populated with placeholders to make writing tables quicker.
+- Insert image button to make adding images to documents simpler.
 
 ## Getting Started
 

@@ -10,12 +10,12 @@ import SwiftUI
 
 struct TemplateView: View {
     let template: Template
-    
+
     var html: String {
         let parser = MarkdownParser()
         return parser.html(from: template.document)
     }
-    
+
     var body: some View {
         WebView(html: html)
             .frame(width: 280 * 2, height: 360 * 2)
