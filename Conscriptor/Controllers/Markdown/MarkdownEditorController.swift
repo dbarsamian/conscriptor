@@ -4,7 +4,7 @@
 //
 //  Created by David Barsamian on 9/16/21.
 //
-//  swiftlint:disable:line_length
+//  swiftlint:disable line_length
 
 import AppKit
 import Foundation
