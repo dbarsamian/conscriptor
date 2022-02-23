@@ -148,42 +148,49 @@ struct MarkdownEditorView: View {
             .frame(width: 300, height: 150)
         }
         .sheet(isPresented: $showingInsertImageSheet) {
-            VStack {
-                Text("Insert Image")
-                    .font(.title2)
-                Spacer()
-                if let imageUrl = URL(string: newImageLocation) {
-                    AsyncImage(url: imageUrl) { image in
-                        image.resizable()
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .aspectRatio(contentMode: .fit)
-                    .frame(height: 200)
+            HStack {
+                AsyncImage(url: URL(string: newImageLocation)) { image in
+                    image.resizable()
+                } placeholder: {
+                    Color(NSColor.windowBackgroundColor)
+                }
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 400, height: 400, alignment: .center)
 
-                }
-                Spacer()
-                TextField("Image Alt Text", text: $newImageAlt, prompt: Text("Enter a title for the link..."))
-                TextField("Image URL", text: $newImageLocation, prompt: Text("Enter the URL for the link..."))
-                HStack {
-                    Button("Cancel", role: .cancel) {
-                        showingInsertImageSheet.toggle()
-                    }
+                VStack(alignment: .leading) {
+                    Text("Insert Image")
+                        .font(.title)
                     Spacer()
-                    Button("Insert") {
-                        MarkdownEditorController.insert(image: newImageLocation,
-                                                        withAlt: newImageAlt,
-                                                        in: textView,
-                                                        update: &conscriptorDocument)
-                        newImageLocation = ""
-                        newImageAlt = ""
-                        showingInsertImageSheet.toggle()
+                    Text("URL")
+                        .font(.headline)
+                    TextField("Image URL",
+                              text: $newImageLocation,
+                              prompt: Text("https://en.wikipedia.org/wiki/Wikipedia#/media/File:Wikipedia-logo-v2.svg"))
+                    Text("Alt Text")
+                        .font(.headline)
+                    TextField("Image Alt Text",
+                              text: $newImageAlt,
+                              prompt: Text("Optional"))
+                    HStack {
+                        Button("Cancel", role: .cancel) {
+                            showingInsertImageSheet.toggle()
+                        }
+                        Spacer()
+                        Button("Insert") {
+                            MarkdownEditorController.insert(image: newImageLocation,
+                                                            withAlt: newImageAlt,
+                                                            in: textView,
+                                                            update: &conscriptorDocument)
+                            newImageLocation = ""
+                            newImageAlt = ""
+                            showingInsertImageSheet.toggle()
+                        }
+                        .disabled(newImageLocation.isEmpty)
                     }
-                    .disabled(newImageLocation.isEmpty || newImageAlt.isEmpty)
                 }
+                .padding()
             }
-            .padding()
-            .frame(width: 400, height: 400)
+            .frame(width: 600, height: 400)
         }
     }
 
