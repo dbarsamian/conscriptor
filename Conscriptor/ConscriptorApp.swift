@@ -87,20 +87,18 @@ struct ConscriptorApp: App {
                 Divider()
 
                 Button {
-//                    notificationCenter.post(name: .insertImage, object: nil)
+                    notificationCenter.post(name: .insertImage, object: nil)
                 } label: {
                     Text("Insert Image")
                 }
                 .keyboardShortcut("i", modifiers: .option)
-                .disabled(true)
 
                 Button {
-//                    notificationCenter.post(name: .insertLink, object: nil)
+                    notificationCenter.post(name: .insertLink, object: nil)
                 } label: {
                     Text("Add Link")
                 }
                 .keyboardShortcut("l", modifiers: .command)
-                .disabled(true)
             }
         }
     }

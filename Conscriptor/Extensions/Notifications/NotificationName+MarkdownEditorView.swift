@@ -12,4 +12,6 @@ extension Notification.Name {
     static let formatItalic = Notification.Name("formatItalic")
     static let formatStrikethrough = Notification.Name("formatStrikethrough")
     static let formatInlineCode = Notification.Name("formatInlineCode")
+    static let insertImage = Notification.Name("insertImage")
+    static let insertLink = Notification.Name("insertLink")
 }

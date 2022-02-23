@@ -10,9 +10,8 @@ import Foundation
 import SwiftUI
 
 struct MarkdownEditorToolbar: CustomizableToolbarContent {
-    @Binding var document: ConscriptorDocument
     @Binding var showingPreview: Bool
-    let textView: NSTextView?
+    let notificationCenter = NotificationCenter.default
 
     var body: some CustomizableToolbarContent {
         ToolbarItem(id: "spacer") {
@@ -21,7 +20,7 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
         Group {
             ToolbarItem(id: "bold") {
                 Button {
-                    MarkdownEditorController.format(&document, with: .bold, in: textView)
+                    notificationCenter.post(name: .formatBold, object: nil)
                 } label: {
                     Label("Bold", systemImage: "bold")
                         .foregroundColor(Color(NSColor.secondaryLabelColor))
@@ -29,7 +28,7 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
             }
             ToolbarItem(id: "italic") {
                 Button {
-                    MarkdownEditorController.format(&document, with: .italic, in: textView)
+                    notificationCenter.post(name: .formatItalic, object: nil)
                 } label: {
                     Label("Italic", systemImage: "italic")
                         .foregroundColor(Color(NSColor.secondaryLabelColor))
@@ -37,7 +36,7 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
             }
             ToolbarItem(id: "strikethrough") {
                 Button {
-                    MarkdownEditorController.format(&document, with: .strikethrough, in: textView)
+                    notificationCenter.post(name: .formatStrikethrough, object: nil)
                 } label: {
                     Label("Strikethrough", systemImage: "strikethrough")
                         .foregroundColor(Color(NSColor.secondaryLabelColor))
@@ -45,7 +44,7 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
             }
             ToolbarItem(id: "inlineCode") {
                 Button {
-                    MarkdownEditorController.format(&document, with: .code, in: textView)
+                    notificationCenter.post(name: .formatInlineCode, object: nil)
                 } label: {
                     if #available(macOS 12.0, *) {
                         Label("Code", systemImage: "chevron.left.forwardslash.chevron.right") // Monterey+
@@ -63,17 +62,19 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
         Group {
             ToolbarItem(id: "link") {
                 Button {
-                    print("Link")
+                    notificationCenter.post(name: .insertLink, object: nil)
                 } label: {
                     Label("Add Link", systemImage: "link.badge.plus")
-                }.disabled(true)
+                        .foregroundColor(Color(NSColor.secondaryLabelColor))
+                }
             }
             ToolbarItem(id: "picture") {
                 Button {
-                    print("Picture")
+                    notificationCenter.post(name: .insertImage, object: nil)
                 } label: {
                     Label("Add Picture", systemImage: "photo")
-                }.disabled(true)
+                        .foregroundColor(Color(NSColor.secondaryLabelColor))
+                }
             }
             ToolbarItem(id: "table") {
                 Button {

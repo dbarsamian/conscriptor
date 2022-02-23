@@ -17,10 +17,21 @@ struct MarkdownEditorView: View {
 
     @Binding var conscriptorDocument: ConscriptorDocument
 
+    // Alerts
     @State private var showingPreview = true
     @State private var showingErrorAlert = false
     @State private var showingTemplateSaveAlert = false
+    @State private var showingInsertImageSheet = false
+    @State private var showingInsertLinkSheet = false
+
+    // Data
     @State private var newTemplateName = ""
+    @State private var newLinkTitle = ""
+    @State private var newLinkLocation = ""
+    @State private var newImageAlt = ""
+    @State private var newImageLocation = ""
+
+    // Internal Views
     @State private var textView: NSTextView?
     @State private var webScrollView: NSScrollView?
     @State private var splitView: NSSplitView?
@@ -57,9 +68,7 @@ struct MarkdownEditorView: View {
                     }
                 }
                 .toolbar(id: "editorControls") {
-                    MarkdownEditorToolbar(document: $conscriptorDocument,
-                                          showingPreview: $showingPreview,
-                                          textView: textView)
+                    MarkdownEditorToolbar(showingPreview: $showingPreview)
                 }
                 .alert(isPresented: $showingErrorAlert) {
                     Alert(title: Text("Error"),
@@ -72,9 +81,7 @@ struct MarkdownEditorView: View {
             } else {
                 editorContent()
                     .toolbar(id: "editorControls") {
-                        MarkdownEditorToolbar(document: $conscriptorDocument,
-                                              showingPreview: $showingPreview,
-                                              textView: textView)
+                        MarkdownEditorToolbar(showingPreview: $showingPreview)
                     }
                     .alert(isPresented: $showingErrorAlert) {
                         Alert(title: Text("Error"),
@@ -114,6 +121,70 @@ struct MarkdownEditorView: View {
             }
             .padding()
         }
+        .sheet(isPresented: $showingInsertLinkSheet) {
+            VStack {
+                Text("Insert Link")
+                    .font(.title2)
+                TextField("Link Title", text: $newLinkTitle, prompt: Text("Enter a title for the link..."))
+                TextField("Link URL", text: $newLinkLocation, prompt: Text("Enter the URL for the link..."))
+                HStack {
+                    Button("Cancel", role: .cancel) {
+                        showingInsertLinkSheet.toggle()
+                    }
+                    Spacer()
+                    Button("Insert") {
+                        MarkdownEditorController.insert(link: newLinkLocation,
+                                                        withTitle: newLinkTitle,
+                                                        in: textView,
+                                                        update: &conscriptorDocument)
+                        newLinkLocation = ""
+                        newLinkTitle = ""
+                        showingInsertLinkSheet.toggle()
+                    }
+                    .disabled(newLinkTitle.isEmpty || newLinkLocation.isEmpty)
+                }
+            }
+            .padding()
+            .frame(width: 300, height: 150)
+        }
+        .sheet(isPresented: $showingInsertImageSheet) {
+            VStack {
+                Text("Insert Image")
+                    .font(.title2)
+                Spacer()
+                if let imageUrl = URL(string: newImageLocation) {
+                    AsyncImage(url: imageUrl) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 200)
+
+                }
+                Spacer()
+                TextField("Image Alt Text", text: $newImageAlt, prompt: Text("Enter a title for the link..."))
+                TextField("Image URL", text: $newImageLocation, prompt: Text("Enter the URL for the link..."))
+                HStack {
+                    Button("Cancel", role: .cancel) {
+                        showingInsertImageSheet.toggle()
+                    }
+                    Spacer()
+                    Button("Insert") {
+                        MarkdownEditorController.insert(image: newImageLocation,
+                                                        withAlt: newImageAlt,
+                                                        in: textView,
+                                                        update: &conscriptorDocument)
+                        newImageLocation = ""
+                        newImageAlt = ""
+                        showingInsertImageSheet.toggle()
+                    }
+                    .disabled(newImageLocation.isEmpty || newImageAlt.isEmpty)
+                }
+            }
+            .padding()
+            .frame(width: 400, height: 400)
+        }
     }
 
     @ViewBuilder
@@ -148,6 +219,7 @@ struct MarkdownEditorView: View {
     // MARK: - View Config
 
     public func setupNotifications() {
+        // Text Formatting
         notificationCenter.addObserver(forName: .formatBold, object: nil, queue: .main) { _ in
             MarkdownEditorController.format(&conscriptorDocument, with: .bold, in: textView)
         }
@@ -160,6 +232,16 @@ struct MarkdownEditorView: View {
         notificationCenter.addObserver(forName: .formatInlineCode, object: nil, queue: .main) { _ in
             MarkdownEditorController.format(&conscriptorDocument, with: .code, in: textView)
         }
+
+        // Insertion
+        notificationCenter.addObserver(forName: .insertLink, object: nil, queue: .main) { _ in
+            showingInsertLinkSheet.toggle()
+        }
+        notificationCenter.addObserver(forName: .insertImage, object: nil, queue: .main) { _ in
+            showingInsertImageSheet.toggle()
+        }
+
+        // Other
         notificationCenter.addObserver(forName: .saveNewTemplate, object: nil, queue: .main) { _ in
             showingTemplateSaveAlert.toggle()
         }

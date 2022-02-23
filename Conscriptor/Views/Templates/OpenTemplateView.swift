@@ -44,7 +44,7 @@ struct OpenTemplateView: View {
                 NavigationLink {
                     templateGrid(displaying: category)
                 } label: {
-                    Label(category.rawValue, systemImage: TemplateCategory.getIcon(for: category))
+                    Label(category.rawValue.localizedCapitalized, systemImage: TemplateCategory.getIcon(for: category))
                 }
             }
             .frame(width: 200)
