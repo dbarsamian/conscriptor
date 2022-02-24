@@ -19,6 +19,7 @@ struct MarkdownEditorView: View {
 
     // Alerts
     @State private var showingPreview = true
+    @State private var showingTablePopover = false
     @State private var showingErrorAlert = false
     @State private var showingTemplateSaveAlert = false
     @State private var showingInsertImageSheet = false
@@ -30,6 +31,7 @@ struct MarkdownEditorView: View {
     @State private var newLinkLocation = ""
     @State private var newImageAlt = ""
     @State private var newImageLocation = ""
+    @State private var newTableSize = (0, 0)
 
     // Internal Views
     @State private var textView: NSTextView?
@@ -68,7 +70,9 @@ struct MarkdownEditorView: View {
                     }
                 }
                 .toolbar(id: "editorControls") {
-                    MarkdownEditorToolbar(showingPreview: $showingPreview)
+                    MarkdownEditorToolbar(showingPreview: $showingPreview,
+                                          showingTablePopover: $showingTablePopover,
+                                          newTableSize: $newTableSize)
                 }
                 .alert(isPresented: $showingErrorAlert) {
                     Alert(title: Text("Error"),
@@ -81,7 +85,9 @@ struct MarkdownEditorView: View {
             } else {
                 editorContent()
                     .toolbar(id: "editorControls") {
-                        MarkdownEditorToolbar(showingPreview: $showingPreview)
+                        MarkdownEditorToolbar(showingPreview: $showingPreview,
+                                              showingTablePopover: $showingTablePopover,
+                                              newTableSize: $newTableSize)
                     }
                     .alert(isPresented: $showingErrorAlert) {
                         Alert(title: Text("Error"),
@@ -246,6 +252,9 @@ struct MarkdownEditorView: View {
         }
         notificationCenter.addObserver(forName: .insertImage, object: nil, queue: .main) { _ in
             showingInsertImageSheet.toggle()
+        }
+        notificationCenter.addObserver(forName: .insertTable, object: nil, queue: .main) { _ in
+            MarkdownEditorController.insert(table: newTableSize, in: textView, update: &conscriptorDocument)
         }
 
         // Other

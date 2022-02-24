@@ -11,6 +11,8 @@ import SwiftUI
 
 struct MarkdownEditorToolbar: CustomizableToolbarContent {
     @Binding var showingPreview: Bool
+    @Binding var showingTablePopover: Bool
+    @Binding var newTableSize: (Int, Int)
     let notificationCenter = NotificationCenter.default
 
     var body: some CustomizableToolbarContent {
@@ -78,10 +80,49 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
             }
             ToolbarItem(id: "table") {
                 Button {
-                    print("Insert Table")
+                    newTableSize = (0, 0)
+                    showingTablePopover.toggle()
                 } label: {
                     Label("Insert Table", systemImage: "tablecells")
-                }.disabled(true)
+                        .foregroundColor(Color(NSColor.secondaryLabelColor))
+                }
+                .popover(isPresented: $showingTablePopover) {
+                    VStack {
+                        Text("\(newTableSize.0) x \(newTableSize.1)")
+                        VStack {
+                            ForEach(0 ..< 5) { row in
+                                HStack {
+                                    ForEach(0 ..< 5) { col in
+                                        if newTableSize.0 >= col + 1 && newTableSize.1 >= row + 1 {
+                                            RoundedRectangle(cornerRadius: 3)
+                                                .fill(Color.blue)
+                                                .frame(width: 15, height: 15)
+                                                .onHover { _ in
+                                                    newTableSize = (col + 1, row + 1)
+                                                }
+                                                .onTapGesture {
+                                                    NotificationCenter.default.post(name: .insertTable, object: nil)
+                                                    showingTablePopover.toggle()
+                                                }
+                                        } else {
+                                            RoundedRectangle(cornerRadius: 3)
+                                                .stroke(Color.secondary)
+                                                .frame(width: 15, height: 15)
+                                                .onHover { _ in
+                                                    newTableSize = (col + 1, row + 1)
+                                                }
+                                                .onTapGesture {
+                                                    NotificationCenter.default.post(name: .insertTable, object: nil)
+                                                    showingTablePopover.toggle()
+                                                }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .padding()
+                }
             }
         }
         ToolbarItem(id: "spacer") {

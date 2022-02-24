@@ -14,4 +14,5 @@ extension Notification.Name {
     static let formatInlineCode = Notification.Name("formatInlineCode")
     static let insertImage = Notification.Name("insertImage")
     static let insertLink = Notification.Name("insertLink")
+    static let insertTable = Notification.Name("insertTable")
 }

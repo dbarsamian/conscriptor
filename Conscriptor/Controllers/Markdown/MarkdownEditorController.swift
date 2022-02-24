@@ -100,4 +100,47 @@ struct MarkdownEditorController {
         }
         document.text = textView.string
     }
+
+    /// Inserts a Markdown-syntax `table` of a given size in a `textView`.
+    /// The header is taken into consideration when calculating how many rows to insert.
+    ///
+    /// Example: A `table` of size `(3, 3)` insert the following text:
+    /// ```
+    /// | Header | Header | Header |
+    /// | ------ | ------ | ------ |
+    /// | Body   | Body   | Body   |
+    /// | Body   | Body   | Body   |
+    /// ```
+    ///
+    /// - Parameters:
+    ///     - table: A tuple containing the rows and columns of the table.
+    ///     - textView: The `NSTextView` to update
+    ///     - document: The `ConscriptorDocument` to update
+    public static func insert(table: (Int, Int),
+                              in textView: NSTextView?,
+                              update document: inout ConscriptorDocument) {
+        guard let textView = textView else {
+            return
+        }
+
+        var insertion = ""
+        for row in 0 ..< table.1 + 1 { // Add one to account for header border row
+            for _ in 0 ..< table.0 {
+                if row == 0 {
+                    insertion += "| Header "
+                } else if row == 1 {
+                    insertion += "| --- "
+                } else {
+                    insertion += "| Cell "
+                }
+            }
+            insertion += "|\n"
+        }
+
+        let ranges = textView.selectedRanges.map { $0.rangeValue }
+        for range in ranges {
+            textView.insertText(insertion, replacementRange: NSRange(location: range.location, length: 0))
+        }
+        document.text = textView.string
+    }
 }
