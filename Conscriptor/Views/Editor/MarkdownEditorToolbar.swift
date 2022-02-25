@@ -86,7 +86,7 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
                     Label("Insert Table", systemImage: "tablecells")
                         .foregroundColor(Color(NSColor.secondaryLabelColor))
                 }
-                .popover(isPresented: $showingTablePopover) {
+                .popover(isPresented: $showingTablePopover, arrowEdge: .bottom) {
                     VStack {
                         Text("\(newTableSize.0) x \(newTableSize.1)")
                         VStack {

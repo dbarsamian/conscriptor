@@ -16,12 +16,12 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 - Keyboard shortcuts for common syntax to make editing quicker.
 - Inline HTML tags for adding in custom elements.
 - Templates to get you started quickly, with custom template creation and management to make writing common documents easy.
+- Insert tables pre-populated with placeholders to make writing tables quicker.
+- Insert image button to make adding images to documents simpler.
 
 ### Planned Additions
 
 - Auto-completion for symmetrical syntax, like **bold**, *italic*, ~~strikethrough~~, and `code`.
-- Insert tables pre-populated with placeholders to make writing tables quicker.
-- Insert image button to make adding images to documents simpler.
 
 ## Getting Started
 
@@ -36,6 +36,14 @@ To setup *Conscriptor* for development...
 - Swift 5.5
 - SwiftUI
 - Xcode 13.2.1
+
+## Versions
+
+| Ver. # | Release Date | Major Features |
+| --- | --- | --- |
+| 0.4 | 6 January 2022 | Editor; Live Preview; Keyboard Shortcuts; Basic Templates |
+| 0.5 | 15 February 2022 | Custom Templates; Link, Image, and Table Insertion |
+
 
 ## Authors
 
