@@ -19,10 +19,6 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 - Insert tables pre-populated with placeholders to make writing tables quicker.
 - Insert image button to make adding images to documents simpler.
 
-### Planned Additions
-
-- Auto-completion for symmetrical syntax, like **bold**, *italic*, ~~strikethrough~~, and `code`.
-
 ## Getting Started
 
 To setup *Conscriptor* for development...
