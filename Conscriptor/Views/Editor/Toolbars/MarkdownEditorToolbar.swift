@@ -10,7 +10,8 @@ import Foundation
 import SwiftUI
 
 struct MarkdownEditorToolbar: CustomizableToolbarContent {
-    @Binding var showingPreview: Bool
+//    @Binding var showingPreview: Bool
+    @Binding var rightSplitItem: NSSplitViewItem?
     @Binding var showingTablePopover: Bool
     @Binding var newTableSize: (Int, Int)
     let notificationCenter = NotificationCenter.default
@@ -131,7 +132,9 @@ struct MarkdownEditorToolbar: CustomizableToolbarContent {
         Group {
             ToolbarItem(id: "sidebar") {
                 Button {
-                    showingPreview.toggle()
+                    if let rightSplitItem = rightSplitItem {
+                        rightSplitItem.animator().isCollapsed.toggle()
+                    }
                 } label: {
                     Label("Toggle Preview", systemImage: "sidebar.right")
                         .foregroundColor(Color(NSColor.secondaryLabelColor))

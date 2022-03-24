@@ -36,6 +36,8 @@ struct MarkdownEditorView: View {
     // Internal Views
     @State private var textView: NSTextView?
     @State private var splitView: NSSplitView?
+    @State private var leftSplitItem: NSSplitViewItem?
+    @State private var rightSplitItem: NSSplitViewItem?
 
     var html: String {
         let parser = MarkdownParser()
@@ -48,66 +50,54 @@ struct MarkdownEditorView: View {
     // MARK: Body
 
     var body: some View {
-        Group {
-            if showingPreview {
-                GeometryReader { geo in
-                    if geo.size.width > 900 {
-                        HSplitView {
-                            editorContent()
-                            livePreview()
-                                .background(Color(NSColor.textBackgroundColor))
-                        }
-                        .introspectSplitView { spv in
-                            splitView = spv
-                            splitView?.autosaveName = "com.davidbarsam.Conscriptor.editorSplitView"
-                        }
-                    } else {
-                        VSplitView {
-                            editorContent()
-                            livePreview()
-                                .background(Color(NSColor.textBackgroundColor))
-                        }
-                        .introspectSplitView { spv in
-                            splitView = spv
-                            splitView?.autosaveName = "com.davidbarsam.Conscriptor.editorSplitView"
-                        }
+        GeometryReader { geo in
+            Group {
+                if geo.size.width > 900 {
+                    HSplitView {
+                        editorContent()
+                        livePreview()
+                            .background(Color(NSColor.textBackgroundColor))
+                    }
+                } else {
+                    VSplitView {
+                        editorContent()
+                        livePreview()
+                            .background(Color(NSColor.textBackgroundColor))
                     }
                 }
-                .toolbar(id: "editorControls") {
-                    MarkdownEditorToolbar(showingPreview: $showingPreview,
-                                          showingTablePopover: $showingTablePopover,
-                                          newTableSize: $newTableSize)
-                }
-                .alert(isPresented: $showingErrorAlert) {
-                    Alert(title: Text("Error"),
-                          message: Text("Couldn't generate a live preview for the text entered. Please try again."),
-                          dismissButton: .cancel())
-                }
-                .onAppear {
-                    setupNotifications()
-                }
-            } else {
-                editorContent()
-                    .toolbar(id: "editorControls") {
-                        MarkdownEditorToolbar(showingPreview: $showingPreview,
-                                              showingTablePopover: $showingTablePopover,
-                                              newTableSize: $newTableSize)
-                    }
-                    .alert(isPresented: $showingErrorAlert) {
-                        Alert(title: Text("Error"),
-                              message: Text("Couldn't generate a live preview for the text entered. Please try again."),
-                              dismissButton: .cancel())
-                    }
-                    .onAppear {
-                        setupNotifications()
-                    }
             }
+            .introspectSplitView { spv in
+                splitView = spv
+                splitView?.autosaveName = "com.davidbarsam.Conscriptor.editorSplitView"
+                let splitViewController = splitView?.delegate as? NSSplitViewController
+                let thickness = geo.size.width / 2
+                leftSplitItem = splitViewController?.splitViewItems[0]
+                leftSplitItem?.canCollapse = false
+                leftSplitItem?.minimumThickness = thickness
+                rightSplitItem = splitViewController?.splitViewItems[1]
+                rightSplitItem?.canCollapse = true
+                rightSplitItem?.collapseBehavior = .preferResizingSiblingsWithFixedSplitView
+                rightSplitItem?.minimumThickness = thickness / 2
+                rightSplitItem?.preferredThicknessFraction = 0.5
+            }
+        }
+        .toolbar(id: "editorControls") {
+            MarkdownEditorToolbar(rightSplitItem: $rightSplitItem,
+                                  showingTablePopover: $showingTablePopover,
+                                  newTableSize: $newTableSize)
+        }
+        .alert(isPresented: $showingErrorAlert) {
+            Alert(title: Text("Error"),
+                  message: Text("Couldn't generate a live preview for the text entered. Please try again."),
+                  dismissButton: .cancel())
+        }
+        .onAppear {
+            setupNotifications()
         }
         .sheet(isPresented: $showingTemplateSaveAlert) {
             SaveTemplateSheet(conscriptorDocument: $conscriptorDocument,
                               newTemplateName: $newTemplateName,
                               showingTemplateSaveAlert: $showingTemplateSaveAlert)
-            // TODO try replacing with environmentObjects
         }
         .sheet(isPresented: $showingInsertLinkSheet) {
             InsertLinkSheet(conscriptorDocument: $conscriptorDocument,
