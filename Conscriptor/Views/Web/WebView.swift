@@ -9,13 +9,50 @@ import SwiftUI
 import WebKit
 
 struct WebView: NSViewRepresentable {
-    var html: String
 
-    init(html: String) {
-        self.html = html
+    enum WebContentType {
+        case html
+        case url
+    }
+
+    var contentType: WebContentType
+    var content: String
+
+    init(_ content: String, type: WebContentType) {
+        self.contentType = type
+        self.content = content
     }
 
     func makeNSView(context: Context) -> WKWebView {
+        switch contentType {
+        case .html:
+            return htmlWebView(context: context)
+        case .url:
+            return urlWebView(context: context)
+        }
+    }
+
+    func updateNSView(_ nsView: WKWebView, context: Context) {
+        switch contentType {
+        case .html:
+            if let userScript = generateStyleScript(context: context) {
+                nsView.configuration.userContentController.addUserScript(userScript)
+            }
+            nsView.loadHTMLString(content, baseURL: nil)
+        case .url:
+            var urlString = content
+            if !urlString.hasPrefix("http://") && !urlString.hasPrefix("https://") {
+                urlString = "https://\(content)"
+            }
+            guard let url = URL(string: urlString) else {
+                return
+            }
+            let urlRequest = URLRequest(url: url)
+            nsView.load(urlRequest)
+        }
+    }
+
+    private func htmlWebView(context: Context) -> WKWebView {
         // swiftlint:disable:next line_length
         // See https://stackoverflow.com/questions/33123093/insert-css-into-loaded-html-in-uiwebview-wkwebview for details
 
@@ -37,18 +74,17 @@ struct WebView: NSViewRepresentable {
         webView.configuration.limitsNavigationsToAppBoundDomains = true
         // Thanks https://stackoverflow.com/questions/27211561/transparent-background-wkwebview-nsview/40267954 for this
         webView.setValue(false, forKey: "drawsBackground")
-
         webView.navigationDelegate = context.coordinator
 
         return webView
     }
 
-    func updateNSView(_ nsView: WKWebView, context: Context) {
-        if let userScript = generateStyleScript(context: context) {
-            nsView.configuration.userContentController.addUserScript(userScript)
-        }
+    private func urlWebView(context: Context) -> WKWebView {
+        let webView = WKWebView(frame: .zero)
+        webView.configuration.limitsNavigationsToAppBoundDomains = false
+        webView.setValue(false, forKey: "drawsBackground")
 
-        nsView.loadHTMLString(html, baseURL: nil)
+        return webView
     }
 
     /// Custom Coordinator which handles persistent scroll position in the WebView.

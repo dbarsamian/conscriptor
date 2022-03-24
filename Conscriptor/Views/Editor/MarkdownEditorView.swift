@@ -35,9 +35,7 @@ struct MarkdownEditorView: View {
 
     // Internal Views
     @State private var textView: NSTextView?
-    @State private var webScrollView: NSScrollView?
     @State private var splitView: NSSplitView?
-    @State private var scrollPosition = NSPoint.zero
 
     var html: String {
         let parser = MarkdownParser()
@@ -53,19 +51,25 @@ struct MarkdownEditorView: View {
         Group {
             if showingPreview {
                 GeometryReader { geo in
-                    if geo.size.width > 800 {
-                        HStack(spacing: 0) {
+                    if geo.size.width > 900 {
+                        HSplitView {
                             editorContent()
-                            Divider()
                             livePreview()
                                 .background(Color(NSColor.textBackgroundColor))
                         }
+                        .introspectSplitView { spv in
+                            splitView = spv
+                            splitView?.autosaveName = "com.davidbarsam.Conscriptor.editorSplitView"
+                        }
                     } else {
-                        VStack(spacing: 0) {
+                        VSplitView {
                             editorContent()
-                            Divider()
                             livePreview()
                                 .background(Color(NSColor.textBackgroundColor))
+                        }
+                        .introspectSplitView { spv in
+                            splitView = spv
+                            splitView?.autosaveName = "com.davidbarsam.Conscriptor.editorSplitView"
                         }
                     }
                 }
@@ -100,102 +104,25 @@ struct MarkdownEditorView: View {
             }
         }
         .sheet(isPresented: $showingTemplateSaveAlert) {
-            VStack {
-                Text("Save as Template")
-                    .font(.title2)
-                TextField("Template Title", text: $newTemplateName, prompt: Text("Enter a name for this template..."))
-                    .padding(.vertical)
-                HStack {
-                    Button("Cancel", role: .cancel) {
-                        showingTemplateSaveAlert.toggle()
-                    }
-                    Spacer()
-                    Button("Save") {
-                        let template = UserTemplate(context: managedObjectContext)
-                        template.id = UUID()
-                        template.name = newTemplateName
-                        template.document = conscriptorDocument.text
-
-                        if managedObjectContext.hasChanges {
-                            try? managedObjectContext.save()
-                        }
-
-                        showingTemplateSaveAlert.toggle()
-                    }
-                    .disabled(newTemplateName.isEmpty)
-                }
-            }
-            .padding()
+            SaveTemplateSheet(conscriptorDocument: $conscriptorDocument,
+                              newTemplateName: $newTemplateName,
+                              showingTemplateSaveAlert: $showingTemplateSaveAlert)
+            // TODO try replacing with environmentObjects
         }
         .sheet(isPresented: $showingInsertLinkSheet) {
-            VStack {
-                Text("Insert Link")
-                    .font(.title2)
-                TextField("Link Title", text: $newLinkTitle, prompt: Text("Enter a title for the link..."))
-                TextField("Link URL", text: $newLinkLocation, prompt: Text("Enter the URL for the link..."))
-                HStack {
-                    Button("Cancel", role: .cancel) {
-                        showingInsertLinkSheet.toggle()
-                    }
-                    Spacer()
-                    Button("Insert") {
-                        MarkdownEditorController.insert(link: newLinkLocation,
-                                                        withTitle: newLinkTitle,
-                                                        in: textView,
-                                                        update: &conscriptorDocument)
-                        newLinkLocation = ""
-                        newLinkTitle = ""
-                        showingInsertLinkSheet.toggle()
-                    }
-                    .disabled(newLinkTitle.isEmpty || newLinkLocation.isEmpty)
-                }
-            }
-            .padding()
-            .frame(width: 300, height: 150)
+            InsertLinkSheet(conscriptorDocument: $conscriptorDocument,
+                            newLinkTitle: $newLinkTitle,
+                            newLinkLocation: $newLinkLocation,
+                            showingInsertLinkSheet: $showingInsertLinkSheet,
+                            textView: textView)
+            .frame(width: 600, height: 400)
         }
         .sheet(isPresented: $showingInsertImageSheet) {
-            HStack {
-                AsyncImage(url: URL(string: newImageLocation)) { image in
-                    image.resizable()
-                } placeholder: {
-                    Color(NSColor.windowBackgroundColor)
-                }
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 400, height: 400, alignment: .center)
-
-                VStack(alignment: .leading) {
-                    Text("Insert Image")
-                        .font(.title)
-                    Spacer()
-                    Text("URL")
-                        .font(.headline)
-                    TextField("Image URL",
-                              text: $newImageLocation,
-                              prompt: Text("https://en.wikipedia.org/wiki/Wikipedia#/media/File:Wikipedia-logo-v2.svg"))
-                    Text("Alt Text")
-                        .font(.headline)
-                    TextField("Image Alt Text",
-                              text: $newImageAlt,
-                              prompt: Text("Optional"))
-                    HStack {
-                        Button("Cancel", role: .cancel) {
-                            showingInsertImageSheet.toggle()
-                        }
-                        Spacer()
-                        Button("Insert") {
-                            MarkdownEditorController.insert(image: newImageLocation,
-                                                            withAlt: newImageAlt,
-                                                            in: textView,
-                                                            update: &conscriptorDocument)
-                            newImageLocation = ""
-                            newImageAlt = ""
-                            showingInsertImageSheet.toggle()
-                        }
-                        .disabled(newImageLocation.isEmpty)
-                    }
-                }
-                .padding()
-            }
+            InsertImageSheet(newImageLocation: $newImageLocation,
+                             newImageAlt: $newImageAlt,
+                             showingInsertImageSheet: $showingInsertImageSheet,
+                             conscriptorDocument: $conscriptorDocument,
+                             textView: textView)
             .frame(width: 600, height: 400)
         }
     }
@@ -203,7 +130,7 @@ struct MarkdownEditorView: View {
     @ViewBuilder
     func editorContent() -> some View {
         HighlightedTextEditor(text: $conscriptorDocument.text, highlightRules: .markdown)
-            .frame(minWidth: 300)
+            .frame(minWidth: 450)
             .introspectTextView { textView in
                 self.textView = textView
                 textView.textContainerInset = .init(width: 30, height: 40)
@@ -219,14 +146,12 @@ struct MarkdownEditorView: View {
     func livePreview() -> some View {
         GeometryReader { geo in
             ScrollView {
-                WebView(html: html)
-                    .frame(minWidth: 300, idealHeight: geo.size.height)
+                WebView(html, type: .html)
+                    .frame(width: geo.size.width, height: geo.size.height)
             }
             .frame(height: geo.size.height)
-            .introspectScrollView { scrollView in
-                self.webScrollView = scrollView
-            }
         }
+        .frame(minWidth: 450)
     }
 
     // MARK: - View Config
@@ -268,6 +193,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         // swiftlint:disable:next line_length
         MarkdownEditorView(conscriptorDocument: .constant(ConscriptorDocument(text: "# Preview\n\nThis is a **preview** document. It will *display* in the ~~UIKit~~ SwiftUI preview. It is of type `ConscriptorDocument` and is constant. Here's a picture:\n\n![alt text](https://i.kym-cdn.com/entries/icons/mobile/000/012/982/039.jpg)")))
-            .previewLayout(.fixed(width: 600, height: 600))
+            .previewLayout(.fixed(width: 801, height: 600))
     }
 }

@@ -85,7 +85,7 @@ struct TemplateGridView: View {
                     templateView(displaying: preset)
                     templateName(displaying: preset)
                     if filter == .allTemplates {
-                        Text(preset.templateType.rawValue)
+                        Text(preset.templateType.rawValue.capitalized)
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }

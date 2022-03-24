@@ -17,7 +17,7 @@ struct TemplateView: View {
     }
 
     var body: some View {
-        WebView(html: html)
+        WebView(html, type: .html)
             .frame(width: 280 * 2, height: 360 * 2)
     }
 }

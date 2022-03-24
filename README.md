@@ -19,6 +19,10 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 - Insert tables pre-populated with placeholders to make writing tables quicker.
 - Insert image button to make adding images to documents simpler.
 
+### Upcoming Additions
+
+- QuickLook integration that displays live previews of Markdown documents.
+
 ## Getting Started
 
 To setup *Conscriptor* for development...
