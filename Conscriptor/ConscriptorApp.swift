@@ -91,14 +91,14 @@ struct ConscriptorApp: App {
                 } label: {
                     Text("Insert Image")
                 }
-                .keyboardShortcut("i", modifiers: .option)
+                .keyboardShortcut("i", modifiers: [.command, .option])
 
                 Button {
                     notificationCenter.post(name: .insertLink, object: nil)
                 } label: {
                     Text("Add Link")
                 }
-                .keyboardShortcut("l", modifiers: .command)
+                .keyboardShortcut("l", modifiers: [.command, .option])
             }
         }
     }

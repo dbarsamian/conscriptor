@@ -68,5 +68,8 @@ struct InsertImageSheet: View {
                 newImageAlt = selection
             }
         }
+        .onExitCommand {
+            showingInsertImageSheet.toggle()
+        }
     }
 }

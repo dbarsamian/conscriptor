@@ -65,5 +65,8 @@ struct InsertLinkSheet: View {
                 newLinkTitle = selection
             }
         }
+        .onExitCommand {
+            showingInsertLinkSheet.toggle()
+        }
     }
 }
