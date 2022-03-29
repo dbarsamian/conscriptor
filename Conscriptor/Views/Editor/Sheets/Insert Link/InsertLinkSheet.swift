@@ -11,6 +11,7 @@ struct InsertLinkSheet: View {
     @Binding var conscriptorDocument: ConscriptorDocument
     @Binding var newLinkTitle: String
     @Binding var newLinkLocation: String
+    @Binding var newLinkSelection: NSRange
     @Binding var showingInsertLinkSheet: Bool
     let textView: NSTextView?
 
@@ -34,7 +35,6 @@ struct InsertLinkSheet: View {
                 Text("URL")
                     .font(.headline)
                 TextField("Link URL", text: $newLinkLocation, prompt: Text("https://wikipedia.com"))
-
                 HStack {
                     Button("Cancel", role: .cancel) {
                         showingInsertLinkSheet.toggle()
@@ -43,10 +43,12 @@ struct InsertLinkSheet: View {
                     Button("Insert") {
                         MarkdownEditorController.insert(link: newLinkLocation,
                                                         withTitle: newLinkTitle,
+                                                        range: newLinkSelection,
                                                         in: textView,
                                                         update: &conscriptorDocument)
                         newLinkLocation = ""
                         newLinkTitle = ""
+                        newLinkSelection = NSRange()
                         showingInsertLinkSheet.toggle()
                     }
                     .disabled(newLinkTitle.isEmpty || newLinkLocation.isEmpty)
@@ -54,6 +56,14 @@ struct InsertLinkSheet: View {
             }
             .padding()
             .frame(maxWidth: 200)
+        }
+        .onAppear {
+            let selection = textView!.textStorage!.string[Range(newLinkSelection)!]
+            if selection.hasPrefix("http://") || selection.hasPrefix("https://") {
+                newLinkLocation = selection
+            } else {
+                newLinkTitle = selection
+            }
         }
     }
 }

@@ -62,16 +62,14 @@ struct MarkdownEditorController {
     ///     - document: The `ConscriptorDocument` to update
     public static func insert(link: String,
                               withTitle title: String,
+                              range: NSRange,
                               in textView: NSTextView?,
                               update document: inout ConscriptorDocument) {
         guard let textView = textView else {
             return
         }
-        let ranges = textView.selectedRanges.map { $0.rangeValue }
-        for range in ranges {
-            let insertion = "[\(title)](\(link))"
-            textView.insertText(insertion, replacementRange: NSRange(location: range.location, length: 0))
-        }
+        let insertion = "[\(title)](\(link))"
+        textView.insertText(insertion, replacementRange: NSRange(location: range.location, length: range.length))
         document.text = textView.string
     }
 
@@ -88,16 +86,14 @@ struct MarkdownEditorController {
     ///     - document: The `ConscriptorDocument` to update
     public static func insert(image: String,
                               withAlt alt: String,
+                              range: NSRange,
                               in textView: NSTextView?,
                               update document: inout ConscriptorDocument) {
         guard let textView = textView else {
             return
         }
-        let ranges = textView.selectedRanges.map { $0.rangeValue }
-        for range in ranges {
-            let insertion = "![\(alt)](\(image))"
-            textView.insertText(insertion, replacementRange: NSRange(location: range.location, length: 0))
-        }
+        let insertion = "![\(alt)](\(image))"
+        textView.insertText(insertion, replacementRange: NSRange(location: range.location, length: range.length))
         document.text = textView.string
     }
 

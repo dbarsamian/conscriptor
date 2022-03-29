@@ -29,8 +29,10 @@ struct MarkdownEditorView: View {
     @State private var newTemplateName = ""
     @State private var newLinkTitle = ""
     @State private var newLinkLocation = ""
+    @State private var newLinkSelection = NSRange()
     @State private var newImageAlt = ""
     @State private var newImageLocation = ""
+    @State private var newImageSelection = NSRange()
     @State private var newTableSize = (0, 0)
 
     // Internal Views
@@ -103,17 +105,19 @@ struct MarkdownEditorView: View {
             InsertLinkSheet(conscriptorDocument: $conscriptorDocument,
                             newLinkTitle: $newLinkTitle,
                             newLinkLocation: $newLinkLocation,
+                            newLinkSelection: $newLinkSelection,
                             showingInsertLinkSheet: $showingInsertLinkSheet,
                             textView: textView)
-            .frame(width: 600, height: 400)
+                .frame(width: 600, height: 400)
         }
         .sheet(isPresented: $showingInsertImageSheet) {
             InsertImageSheet(newImageLocation: $newImageLocation,
                              newImageAlt: $newImageAlt,
+                             newImageSelection: $newImageSelection,
                              showingInsertImageSheet: $showingInsertImageSheet,
                              conscriptorDocument: $conscriptorDocument,
                              textView: textView)
-            .frame(width: 600, height: 400)
+                .frame(width: 600, height: 400)
         }
     }
 
@@ -163,9 +167,17 @@ struct MarkdownEditorView: View {
 
         // Insertion
         notificationCenter.addObserver(forName: .insertLink, object: nil, queue: .main) { _ in
+            if let textView = textView,
+               let selectedRange = textView.selectedRanges.map({ $0.rangeValue }).first {
+                newLinkSelection = selectedRange
+            }
             showingInsertLinkSheet.toggle()
         }
         notificationCenter.addObserver(forName: .insertImage, object: nil, queue: .main) { _ in
+            if let textView = textView,
+               let selectedRange = textView.selectedRanges.map({ $0.rangeValue }).first {
+                newImageSelection = selectedRange
+            }
             showingInsertImageSheet.toggle()
         }
         notificationCenter.addObserver(forName: .insertTable, object: nil, queue: .main) { _ in

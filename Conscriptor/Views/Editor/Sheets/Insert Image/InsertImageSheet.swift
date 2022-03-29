@@ -10,6 +10,7 @@ import SwiftUI
 struct InsertImageSheet: View {
     @Binding var newImageLocation: String
     @Binding var newImageAlt: String
+    @Binding var newImageSelection: NSRange
     @Binding var showingInsertImageSheet: Bool
     @Binding var conscriptorDocument: ConscriptorDocument
     let textView: NSTextView?
@@ -46,16 +47,26 @@ struct InsertImageSheet: View {
                     Button("Insert") {
                         MarkdownEditorController.insert(image: newImageLocation,
                                                         withAlt: newImageAlt,
+                                                        range: newImageSelection,
                                                         in: textView,
                                                         update: &conscriptorDocument)
                         newImageLocation = ""
                         newImageAlt = ""
+                        newImageSelection = NSRange()
                         showingInsertImageSheet.toggle()
                     }
                     .disabled(newImageLocation.isEmpty)
                 }
             }
             .padding()
+        }
+        .onAppear {
+            let selection = textView!.textStorage!.string[Range(newImageSelection)!]
+            if selection.hasPrefix("http://") || selection.hasPrefix("https://") {
+                newImageLocation = selection
+            } else {
+                newImageAlt = selection
+            }
         }
     }
 }
