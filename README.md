@@ -43,6 +43,7 @@ To setup *Conscriptor* for development...
 | --- | --- | --- |
 | 0.4 | 6 January 2022 | Editor; Live Preview; Keyboard Shortcuts; Basic Templates |
 | 0.5 | 15 February 2022 | Custom Templates; Link, Image, and Table Insertion |
+| 0.6 | 26 March 2022 | Image, Link Insertion; Engine Improvement; Layout Improvement |
 
 
 ## Authors
