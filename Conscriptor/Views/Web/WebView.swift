@@ -82,6 +82,8 @@ struct WebView: NSViewRepresentable {
     private func urlWebView(context: Context) -> WKWebView {
         let webView = WKWebView(frame: .zero)
         webView.configuration.limitsNavigationsToAppBoundDomains = false
+        webView.configuration.preferences.isTextInteractionEnabled = false
+        webView.configuration.suppressesIncrementalRendering = true
         webView.setValue(false, forKey: "drawsBackground")
 
         return webView

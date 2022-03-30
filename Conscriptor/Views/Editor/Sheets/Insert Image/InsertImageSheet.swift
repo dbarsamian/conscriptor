@@ -41,6 +41,7 @@ struct InsertImageSheet: View {
                           prompt: Text("Optional"))
                 HStack {
                     Button("Cancel", role: .cancel) {
+                        clearFields()
                         showingInsertImageSheet.toggle()
                     }
                     Spacer()
@@ -50,9 +51,7 @@ struct InsertImageSheet: View {
                                                         range: newImageSelection,
                                                         in: textView,
                                                         update: &conscriptorDocument)
-                        newImageLocation = ""
-                        newImageAlt = ""
-                        newImageSelection = NSRange()
+                        clearFields()
                         showingInsertImageSheet.toggle()
                     }
                     .disabled(newImageLocation.isEmpty)
@@ -71,5 +70,11 @@ struct InsertImageSheet: View {
         .onExitCommand {
             showingInsertImageSheet.toggle()
         }
+    }
+    
+    private func clearFields() {
+        newImageLocation = ""
+        newImageAlt = ""
+        newImageSelection = NSRange()
     }
 }

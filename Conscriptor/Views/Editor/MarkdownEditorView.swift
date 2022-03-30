@@ -125,6 +125,7 @@ struct MarkdownEditorView: View {
     func editorContent() -> some View {
         HighlightedTextEditor(text: $conscriptorDocument.text, highlightRules: .markdown)
             .frame(minWidth: 450)
+            .id("TextEdtior")
             .introspectTextView { textView in
                 self.textView = textView
                 textView.textContainerInset = .init(width: 30, height: 40)
@@ -142,6 +143,7 @@ struct MarkdownEditorView: View {
             ScrollView {
                 WebView(html, type: .html)
                     .frame(width: geo.size.width, height: geo.size.height)
+                    .id("LivePreview")
             }
             .frame(height: geo.size.height)
         }

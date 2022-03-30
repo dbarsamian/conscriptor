@@ -37,6 +37,7 @@ struct InsertLinkSheet: View {
                 TextField("Link URL", text: $newLinkLocation, prompt: Text("https://wikipedia.com"))
                 HStack {
                     Button("Cancel", role: .cancel) {
+                        clearFields()
                         showingInsertLinkSheet.toggle()
                     }
                     Spacer()
@@ -46,9 +47,7 @@ struct InsertLinkSheet: View {
                                                         range: newLinkSelection,
                                                         in: textView,
                                                         update: &conscriptorDocument)
-                        newLinkLocation = ""
-                        newLinkTitle = ""
-                        newLinkSelection = NSRange()
+                        clearFields()
                         showingInsertLinkSheet.toggle()
                     }
                     .disabled(newLinkTitle.isEmpty || newLinkLocation.isEmpty)
@@ -68,5 +67,11 @@ struct InsertLinkSheet: View {
         .onExitCommand {
             showingInsertLinkSheet.toggle()
         }
+    }
+    
+    private func clearFields() {
+        newLinkLocation = ""
+        newLinkTitle = ""
+        newLinkSelection = NSRange()
     }
 }
