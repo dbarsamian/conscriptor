@@ -71,7 +71,7 @@ struct InsertImageSheet: View {
             showingInsertImageSheet.toggle()
         }
     }
-    
+
     private func clearFields() {
         newImageLocation = ""
         newImageAlt = ""

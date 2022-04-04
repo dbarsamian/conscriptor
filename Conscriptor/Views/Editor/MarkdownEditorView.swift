@@ -7,7 +7,8 @@
 
 import Combine
 import HighlightedTextEditor
-import Ink
+// import Ink
+import Parsley
 import Introspect
 import SwiftUI
 
@@ -42,8 +43,11 @@ struct MarkdownEditorView: View {
     @State private var rightSplitItem: NSSplitViewItem?
 
     var html: String {
-        let parser = MarkdownParser()
-        return parser.html(from: conscriptorDocument.text)
+        do {
+            return try Parsley.html(conscriptorDocument.text)
+        } catch {
+            return ""
+        }
     }
 
     let editorDelegate = MarkdownEditorDelegate()

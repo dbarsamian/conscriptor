@@ -27,8 +27,7 @@ body {
     line-height: 1.6;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: rgba(255, 255, 255, 0.01); /* workaround for getting scrollers to be correct color with transparent background*/
-    /*  background-color: transparent;*/
+    background-color: #ffffff;
     padding: 30px;
     color: #333;
 }
@@ -418,8 +417,7 @@ pre code, pre tt {
         line-height: 1.6;
         padding-top: 10px;
         padding-bottom: 10px;
-        background-color: rgba(13, 17, 23, 0.01); /* workaround for getting scrollers to be correct color with transparent background*/
-        /*  background-color: transparent;*/
+        background-color: #0d1117;
         padding: 30px;
         color: #cad1d8;
     }

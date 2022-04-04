@@ -68,7 +68,7 @@ struct InsertLinkSheet: View {
             showingInsertLinkSheet.toggle()
         }
     }
-    
+
     private func clearFields() {
         newLinkLocation = ""
         newLinkTitle = ""

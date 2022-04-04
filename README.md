@@ -21,7 +21,8 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 
 ### Upcoming Additions
 
-- QuickLook integration that displays live previews of Markdown documents.
+- Quick Look integration that displays live previews of Markdown documents.
+- Customization of keyboard shortcuts.
 
 ## Getting Started
 
