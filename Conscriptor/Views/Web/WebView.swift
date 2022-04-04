@@ -9,7 +9,6 @@ import SwiftUI
 import WebKit
 
 struct WebView: NSViewRepresentable {
-
     enum WebContentType {
         case html
         case url
@@ -39,9 +38,10 @@ struct WebView: NSViewRepresentable {
                 nsView.configuration.userContentController.addUserScript(userScript)
             }
             nsView.loadHTMLString(content, baseURL: nil)
+            print(content)
         case .url:
             var urlString = content
-            if !urlString.hasPrefix("http://") && !urlString.hasPrefix("https://") {
+            if !urlString.hasPrefix("http://"), !urlString.hasPrefix("https://") {
                 urlString = "https://\(content)"
             }
             guard let url = URL(string: urlString) else {
@@ -153,10 +153,8 @@ struct WebView: NSViewRepresentable {
     }
 
     private func generateStyleScript(context: Context) -> WKUserScript? {
-        guard let path = Bundle.main.path(forResource: context.environment.colorScheme == .light
-            ? "github-light"
-            : "github-dark",
-            ofType: "css"),
+        guard let path = Bundle.main.path(forResource: "github",
+                                          ofType: "css"),
             let cssString = try? String(contentsOfFile: path, encoding: .utf8)
             .components(separatedBy: .newlines)
             .joined()
