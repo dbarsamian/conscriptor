@@ -8,6 +8,8 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 
 *Conscriptor* is a Markdown editor designed to make editing Markdown documents easier, more approachable, and faster.
 
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+
 ### Features
 
 - Live preview styled with [GitHub's CSS](https://github.com/sindresorhus/github-markdown-css) so you can see what your document looks like in real-time.
@@ -53,10 +55,17 @@ To setup *Conscriptor* for development...
 
 ## License
 
-This project is licensed under the GNU GPL 3.0 License - see the `LICENSE.md` file for details.
+This work is licensed under a
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
+
+[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
 
 ## Acknowledgements
 
 - [HighlightedTextEditor](https://github.com/kyle-n/HighlightedTextEditor) by Kyle Nazario
 - [MarkdownSyntax](https://github.com/hebertialmeida/MarkdownSyntax) by Heberti Almeida
 - [github.css](https://gist.github.com/tuzz/3331384) by Chris Patuzzo
+
+[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
+[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
+[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
