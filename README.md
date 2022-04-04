@@ -18,10 +18,10 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 - Templates to get you started quickly, with custom template creation and management to make writing common documents easy.
 - Insert tables pre-populated with placeholders to make writing tables quicker.
 - Insert image button to make adding images to documents simpler.
+- Quick Look integration that displays live previews of Markdown documents.
 
 ### Upcoming Additions
 
-- Quick Look integration that displays live previews of Markdown documents.
 - Customization of keyboard shortcuts.
 
 ## Getting Started
