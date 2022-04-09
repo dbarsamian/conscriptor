@@ -23,15 +23,11 @@
 		D51B6297270F692800DAC0C6 /* MarkdownEditorToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */; };
 		D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = D53C190926E0CF3100E7934B /* HighlightedTextEditor */; };
 		D53EE53C27FAD187007ED1C0 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3A3A827E30C81006942D6 /* Quartz.framework */; };
-		D53EE53F27FAD187007ED1C0 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EE53E27FAD187007ED1C0 /* PreviewViewController.swift */; };
 		D53EE54127FAD187007ED1C0 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EE54027FAD187007ED1C0 /* PreviewProvider.swift */; };
-		D53EE54427FAD187007ED1C0 /* PreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D53EE54227FAD187007ED1C0 /* PreviewViewController.xib */; };
 		D53EE54927FAD187007ED1C0 /* QLExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D53EE53B27FAD187007ED1C0 /* QLExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		D53EE54E27FAD213007ED1C0 /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = D53EE54D27FAD213007ED1C0 /* Ink */; };
 		D56601FD26EB3F3D0071C6E3 /* StringSubscriptExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56601FC26EB3F3D0071C6E3 /* StringSubscriptExtension.swift */; };
 		D56D04CD27BDCCBE001A21B7 /* MarkdownEditorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D56D04CC27BDCCBE001A21B7 /* MarkdownEditorDelegate.swift */; };
 		D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */; };
-		D585951E273FAA3C0017586F /* Ink in Frameworks */ = {isa = PBXBuildFile; productRef = D585951D273FAA3C0017586F /* Ink */; };
 		D5989BA626F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5989BA526F45E5D00D9E496 /* NotificationName+MarkdownEditorView.swift */; };
 		D5A5B89C27EA835300741D3F /* SaveTemplateSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A5B89B27EA835300741D3F /* SaveTemplateSheet.swift */; };
 		D5A5B89E27EA837E00741D3F /* InsertLinkSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5A5B89D27EA837E00741D3F /* InsertLinkSheet.swift */; };
@@ -41,11 +37,17 @@
 		D5AA200027ADE80900DB2EE1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA1FFF27ADE80900DB2EE1 /* Persistence.swift */; };
 		D5AA200227ADEA5300DB2EE1 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA200127ADEA5300DB2EE1 /* OSLogExtension.swift */; };
 		D5AA200427ADF57100DB2EE1 /* NotificationName+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA200327ADF57100DB2EE1 /* NotificationName+Persistence.swift */; };
+		D5B76DB827FFBDB20050C201 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B76DB727FFBDB20050C201 /* Shortcuts.swift */; };
+		D5B76DC327FFDC570050C201 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = D5B76DC227FFDC570050C201 /* KeyboardShortcuts */; };
 		D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */; };
 		D5CE033426F4314E00CB86E5 /* MarkdownEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */; };
 		D5D6747726F1C3F000871617 /* CMarkdown.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6747626F1C3F000871617 /* CMarkdown.swift */; };
+		D5D6BB8127FB87AF00E31E9B /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6BB8027FB87AF00E31E9B /* PreferencesView.swift */; };
+		D5D6BB8327FB89D600E31E9B /* GeneralPreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6BB8227FB89D600E31E9B /* GeneralPreferencesView.swift */; };
+		D5D6BB8527FB89DF00E31E9B /* KeyBindingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6BB8427FB89DF00E31E9B /* KeyBindingsView.swift */; };
 		D5D903DB278859AB00EC7B85 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D903DA278859AB00EC7B85 /* Template.swift */; };
 		D5D903DF2789200300EC7B85 /* TemplateGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D903DE2789200300EC7B85 /* TemplateGridView.swift */; };
+		D5DB4C8627FD175200C79779 /* Parsley in Frameworks */ = {isa = PBXBuildFile; productRef = D5DB4C8527FD175200C79779 /* Parsley */; };
 		D5F031A427881C2B007A55C2 /* OpenTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F031A327881C2B007A55C2 /* OpenTemplateView.swift */; };
 /* End PBXBuildFile section */
 
@@ -89,9 +91,7 @@
 		D5158F2927EC0D89008B7C92 /* ViewSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSnapshot.swift; sourceTree = "<group>"; };
 		D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorToolbar.swift; sourceTree = "<group>"; };
 		D53EE53B27FAD187007ED1C0 /* QLExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QLExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		D53EE53E27FAD187007ED1C0 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		D53EE54027FAD187007ED1C0 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
-		D53EE54327FAD187007ED1C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreviewViewController.xib; sourceTree = "<group>"; };
 		D53EE54527FAD187007ED1C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D53EE54627FAD187007ED1C0 /* QLExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = QLExtension.entitlements; sourceTree = "<group>"; };
 		D56601FC26EB3F3D0071C6E3 /* StringSubscriptExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringSubscriptExtension.swift; sourceTree = "<group>"; };
@@ -106,9 +106,13 @@
 		D5AA1FFF27ADE80900DB2EE1 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D5AA200127ADEA5300DB2EE1 /* OSLogExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExtension.swift; sourceTree = "<group>"; };
 		D5AA200327ADF57100DB2EE1 /* NotificationName+Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Persistence.swift"; sourceTree = "<group>"; };
+		D5B76DB727FFBDB20050C201 /* Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownFormatter.swift; sourceTree = "<group>"; };
 		D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorController.swift; sourceTree = "<group>"; };
 		D5D6747626F1C3F000871617 /* CMarkdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMarkdown.swift; sourceTree = "<group>"; };
+		D5D6BB8027FB87AF00E31E9B /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		D5D6BB8227FB89D600E31E9B /* GeneralPreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPreferencesView.swift; sourceTree = "<group>"; };
+		D5D6BB8427FB89DF00E31E9B /* KeyBindingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyBindingsView.swift; sourceTree = "<group>"; };
 		D5D903DA278859AB00EC7B85 /* Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
 		D5D903DE2789200300EC7B85 /* TemplateGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateGridView.swift; sourceTree = "<group>"; };
 		D5E3A3A827E30C81006942D6 /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
@@ -120,8 +124,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D585951E273FAA3C0017586F /* Ink in Frameworks */,
 				D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */,
+				D5B76DC327FFDC570050C201 /* KeyboardShortcuts in Frameworks */,
 				683D922A26B107EB00E5EF82 /* Introspect in Frameworks */,
 				D51365ED27FAE2260080D5F5 /* Parsley in Frameworks */,
 			);
@@ -132,7 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D53EE53C27FAD187007ED1C0 /* Quartz.framework in Frameworks */,
-				D53EE54E27FAD213007ED1C0 /* Ink in Frameworks */,
+				D5DB4C8627FD175200C79779 /* Parsley in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +146,7 @@
 		68871B9B26B0B3750001421E = {
 			isa = PBXGroup;
 			children = (
+				D5B76DBD27FFD4E20050C201 /* Packages */,
 				68871BA626B0B3750001421E /* Conscriptor */,
 				D53EE53D27FAD187007ED1C0 /* QLExtension */,
 				D5E3A3A727E30C81006942D6 /* Frameworks */,
@@ -187,9 +192,7 @@
 		D53EE53D27FAD187007ED1C0 /* QLExtension */ = {
 			isa = PBXGroup;
 			children = (
-				D53EE53E27FAD187007ED1C0 /* PreviewViewController.swift */,
 				D53EE54027FAD187007ED1C0 /* PreviewProvider.swift */,
-				D53EE54227FAD187007ED1C0 /* PreviewViewController.xib */,
 				D53EE54527FAD187007ED1C0 /* Info.plist */,
 				D53EE54627FAD187007ED1C0 /* QLExtension.entitlements */,
 				D51365F127FAE6F50080D5F5 /* github-preview.css */,
@@ -200,6 +203,7 @@
 		D5989BA026F45BBA00D9E496 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D5D6BB7F27FB879700E31E9B /* Preferences */,
 				D5F0319E278813E6007A55C2 /* Editor */,
 				D5F031A227881C0D007A55C2 /* Templates */,
 				D5F0319F278813EF007A55C2 /* Web */,
@@ -211,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				D5D6747626F1C3F000871617 /* CMarkdown.swift */,
+				D5B76DB727FFBDB20050C201 /* Shortcuts.swift */,
 				D5AA1FF827ADE52800DB2EE1 /* Documents */,
 				D5AA1FFB27ADE7AB00DB2EE1 /* Templates */,
 			);
@@ -324,6 +329,23 @@
 			path = Templates;
 			sourceTree = "<group>";
 		};
+		D5B76DBD27FFD4E20050C201 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		D5D6BB7F27FB879700E31E9B /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				D5D6BB8027FB87AF00E31E9B /* PreferencesView.swift */,
+				D5D6BB8227FB89D600E31E9B /* GeneralPreferencesView.swift */,
+				D5D6BB8427FB89DF00E31E9B /* KeyBindingsView.swift */,
+			);
+			path = Preferences;
+			sourceTree = "<group>";
+		};
 		D5E3A3A727E30C81006942D6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -382,8 +404,8 @@
 			packageProductDependencies = (
 				683D922926B107EB00E5EF82 /* Introspect */,
 				D53C190926E0CF3100E7934B /* HighlightedTextEditor */,
-				D585951D273FAA3C0017586F /* Ink */,
 				D51365EC27FAE2260080D5F5 /* Parsley */,
+				D5B76DC227FFDC570050C201 /* KeyboardShortcuts */,
 			);
 			productName = Conscriptor;
 			productReference = 68871BA426B0B3750001421E /* Conscriptor.app */;
@@ -403,7 +425,7 @@
 			);
 			name = QLExtension;
 			packageProductDependencies = (
-				D53EE54D27FAD213007ED1C0 /* Ink */,
+				D5DB4C8527FD175200C79779 /* Parsley */,
 			);
 			productName = QLExtension;
 			productReference = D53EE53B27FAD187007ED1C0 /* QLExtension.appex */;
@@ -438,9 +460,9 @@
 			packageReferences = (
 				683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
-				D585951C273FAA3C0017586F /* XCRemoteSwiftPackageReference "Ink" */,
 				D5665F3927F8301B004FBB69 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				D51365EB27FAE2260080D5F5 /* XCRemoteSwiftPackageReference "Parsley" */,
+				D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = 68871BA526B0B3750001421E /* Products */;
 			projectDirPath = "";
@@ -470,7 +492,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D51365F327FAE71C0080D5F5 /* github-preview.css in Resources */,
-				D53EE54427FAD187007ED1C0 /* PreviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +524,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D56601FD26EB3F3D0071C6E3 /* StringSubscriptExtension.swift in Sources */,
+				D5D6BB8527FB89DF00E31E9B /* KeyBindingsView.swift in Sources */,
 				D576840D26E0ACCF00E2A12B /* IntrospectExtension.swift in Sources */,
 				D5A5B8A027EA838A00741D3F /* InsertImageSheet.swift in Sources */,
 				D5AA200027ADE80900DB2EE1 /* Persistence.swift in Sources */,
@@ -518,13 +540,16 @@
 				D5AA1FFA27ADE54500DB2EE1 /* TemplateView.swift in Sources */,
 				68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */,
 				D5A5B89E27EA837E00741D3F /* InsertLinkSheet.swift in Sources */,
+				D5B76DB827FFBDB20050C201 /* Shortcuts.swift in Sources */,
 				D5158F2A27EC0D89008B7C92 /* ViewSnapshot.swift in Sources */,
 				D5D903DF2789200300EC7B85 /* TemplateGridView.swift in Sources */,
 				D51B6297270F692800DAC0C6 /* MarkdownEditorToolbar.swift in Sources */,
 				D5A5B89C27EA835300741D3F /* SaveTemplateSheet.swift in Sources */,
+				D5D6BB8127FB87AF00E31E9B /* PreferencesView.swift in Sources */,
 				D5AA1FFE27ADE7BC00DB2EE1 /* UserTemplate.xcdatamodeld in Sources */,
 				68871BAC26B0B3750001421E /* MarkdownEditorView.swift in Sources */,
 				D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */,
+				D5D6BB8327FB89D600E31E9B /* GeneralPreferencesView.swift in Sources */,
 				D5D6747726F1C3F000871617 /* CMarkdown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,7 +558,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D53EE53F27FAD187007ED1C0 /* PreviewViewController.swift in Sources */,
 				D53EE54127FAD187007ED1C0 /* PreviewProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,17 +571,6 @@
 			targetProxy = D53EE54727FAD187007ED1C0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		D53EE54227FAD187007ED1C0 /* PreviewViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D53EE54327FAD187007ED1C0 /* Base */,
-			);
-			name = PreviewViewController.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		68871BCA26B0B3770001421E /* Debug */ = {
@@ -854,12 +867,12 @@
 				minimumVersion = 5.0.0;
 			};
 		};
-		D585951C273FAA3C0017586F /* XCRemoteSwiftPackageReference "Ink" */ = {
+		D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JohnSundell/Ink";
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.5.1;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -880,15 +893,15 @@
 			package = D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */;
 			productName = HighlightedTextEditor;
 		};
-		D53EE54D27FAD213007ED1C0 /* Ink */ = {
+		D5B76DC227FFDC570050C201 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D585951C273FAA3C0017586F /* XCRemoteSwiftPackageReference "Ink" */;
-			productName = Ink;
+			package = D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
-		D585951D273FAA3C0017586F /* Ink */ = {
+		D5DB4C8527FD175200C79779 /* Parsley */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D585951C273FAA3C0017586F /* XCRemoteSwiftPackageReference "Ink" */;
-			productName = Ink;
+			package = D51365EB27FAE2260080D5F5 /* XCRemoteSwiftPackageReference "Parsley" */;
+			productName = Parsley;
 		};
 /* End XCSwiftPackageProductDependency section */
 

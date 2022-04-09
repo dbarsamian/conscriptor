@@ -5,15 +5,18 @@
 //  Created by David Barsamian on 2/4/22.
 //
 
-import Ink
+import Parsley
 import SwiftUI
 
 struct TemplateView: View {
     let template: Template
 
     var html: String {
-        let parser = MarkdownParser()
-        return parser.html(from: template.document)
+        do {
+            return try Parsley.html(template.document)
+        } catch {
+            return ""
+        }
     }
 
     var body: some View {

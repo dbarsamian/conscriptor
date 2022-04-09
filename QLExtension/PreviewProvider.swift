@@ -6,12 +6,10 @@
 //
 
 import Cocoa
-import Ink
+import Parsley
 import QuickLookUI
 
 class PreviewProvider: QLPreviewProvider, QLPreviewingController {
-    static let markdownParser = MarkdownParser()
-
     /*
      Use a QLPreviewProvider to provide data-based previews.
 
@@ -37,13 +35,14 @@ class PreviewProvider: QLPreviewProvider, QLPreviewingController {
         let reply = QLPreviewReply(dataOfContentType: contentType,
                                    contentSize: CGSize(width: 800, height: 800)) { (replyToUpdate: QLPreviewReply) in
             let fileContents = try String(contentsOf: request.fileURL, encoding: .utf8)
+            let body = try? Parsley.html(fileContents)
             let html = """
             <html>
             <head>
             <link rel=\"stylesheet\" href=\"cid:stylesheet\">
             </head>
             <body>
-            \(Self.markdownParser.html(from: fileContents))
+            \(body ?? "")
             </body>
             </html>
             """

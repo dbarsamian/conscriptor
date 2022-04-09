@@ -10,12 +10,12 @@
       }
     },
     {
-      "identity" : "ink",
+      "identity" : "keyboardshortcuts",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/JohnSundell/Ink",
+      "location" : "https://github.com/sindresorhus/KeyboardShortcuts",
       "state" : {
-        "revision" : "77c3d8953374a9cf5418ef0bd7108524999de85a",
-        "version" : "0.5.1"
+        "branch" : "main",
+        "revision" : "82e9303f5e8ebef3408bc1cc93102e9cb5d246ce"
       }
     },
     {

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Ink
 import SwiftUI
 
 public enum TemplateCategory: String, CaseIterable, Identifiable {

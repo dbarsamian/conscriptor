@@ -38,7 +38,6 @@ struct WebView: NSViewRepresentable {
                 nsView.configuration.userContentController.addUserScript(userScript)
             }
             nsView.loadHTMLString(content, baseURL: nil)
-            print(content)
         case .url:
             var urlString = content
             if !urlString.hasPrefix("http://"), !urlString.hasPrefix("https://") {

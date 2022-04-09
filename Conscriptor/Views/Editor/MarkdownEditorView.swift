@@ -7,21 +7,15 @@
 
 import Combine
 import HighlightedTextEditor
-// import Ink
-import Parsley
 import Introspect
+import Parsley
 import SwiftUI
 
 struct MarkdownEditorView: View {
-    @Environment(\.colorScheme) var colorScheme
-    @Environment(\.managedObjectContext) var managedObjectContext
-
     @Binding var conscriptorDocument: ConscriptorDocument
 
     // Alerts
-    @State private var showingPreview = true
     @State private var showingTablePopover = false
-    @State private var showingErrorAlert = false
     @State private var showingTemplateSaveAlert = false
     @State private var showingInsertImageSheet = false
     @State private var showingInsertLinkSheet = false
@@ -39,7 +33,6 @@ struct MarkdownEditorView: View {
     // Internal Views
     @State private var textView: NSTextView?
     @State private var splitView: NSSplitView?
-    @State private var leftSplitItem: NSSplitViewItem?
     @State private var rightSplitItem: NSSplitViewItem?
 
     var html: String {
@@ -49,8 +42,6 @@ struct MarkdownEditorView: View {
             return ""
         }
     }
-
-    let editorDelegate = MarkdownEditorDelegate()
     let notificationCenter = NotificationCenter.default
 
     // MARK: Body
@@ -77,7 +68,7 @@ struct MarkdownEditorView: View {
                 splitView?.autosaveName = "com.davidbarsam.Conscriptor.editorSplitView"
                 let splitViewController = splitView?.delegate as? NSSplitViewController
                 let thickness = geo.size.width / 2
-                leftSplitItem = splitViewController?.splitViewItems[0]
+                let leftSplitItem = splitViewController?.splitViewItems[0]
                 leftSplitItem?.canCollapse = false
                 leftSplitItem?.minimumThickness = thickness
                 rightSplitItem = splitViewController?.splitViewItems[1]
@@ -91,11 +82,6 @@ struct MarkdownEditorView: View {
             MarkdownEditorToolbar(rightSplitItem: $rightSplitItem,
                                   showingTablePopover: $showingTablePopover,
                                   newTableSize: $newTableSize)
-        }
-        .alert(isPresented: $showingErrorAlert) {
-            Alert(title: Text("Error"),
-                  message: Text("Couldn't generate a live preview for the text entered. Please try again."),
-                  dismissButton: .cancel())
         }
         .onAppear {
             setupNotifications()
@@ -128,30 +114,21 @@ struct MarkdownEditorView: View {
     @ViewBuilder
     func editorContent() -> some View {
         HighlightedTextEditor(text: $conscriptorDocument.text, highlightRules: .markdown)
+            .introspect(callback: { editor in
+                self.textView = editor.textView
+                editor.textView.textContainerInset = NSSize(width: 30, height: 40)
+                editor.textView.usesFontPanel = false
+                editor.textView.usesFindPanel = true
+                editor.scrollView?.autohidesScrollers = true
+            })
             .frame(minWidth: 450)
             .id("TextEdtior")
-            .introspectTextView { textView in
-                self.textView = textView
-                textView.textContainerInset = .init(width: 30, height: 40)
-                textView.usesFontPanel = false
-                textView.usesFindPanel = true
-                if let scrollView = textView.enclosingScrollView {
-                    scrollView.autohidesScrollers = true
-                }
-            }
     }
 
     @ViewBuilder
     func livePreview() -> some View {
-        GeometryReader { geo in
-            ScrollView {
-                WebView(html, type: .html)
-                    .frame(width: geo.size.width, height: geo.size.height)
-                    .id("LivePreview")
-            }
-            .frame(height: geo.size.height)
-        }
-        .frame(minWidth: 450)
+        WebView(html, type: .html)
+            .id("LivePreview")
     }
 
     // MARK: - View Config
@@ -201,6 +178,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         // swiftlint:disable:next line_length
         MarkdownEditorView(conscriptorDocument: .constant(ConscriptorDocument(text: "# Preview\n\nThis is a **preview** document. It will *display* in the ~~UIKit~~ SwiftUI preview. It is of type `ConscriptorDocument` and is constant. Here's a picture:\n\n![alt text](https://i.kym-cdn.com/entries/icons/mobile/000/012/982/039.jpg)")))
-            .previewLayout(.fixed(width: 801, height: 600))
+            .previewLayout(.fixed(width: 1000, height: 600))
     }
 }

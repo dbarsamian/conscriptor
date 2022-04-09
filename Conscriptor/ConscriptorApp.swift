@@ -5,6 +5,7 @@
 //  Created by David Barsamian on 7/27/21.
 //
 
+import KeyboardShortcuts
 import SwiftUI
 
 @main
@@ -101,5 +102,10 @@ struct ConscriptorApp: App {
                 .keyboardShortcut("l", modifiers: [.command, .option])
             }
         }
+
+//        Settings {
+//            PreferencesView()
+//                .frame(width: 450, height: 250)
+//        }
     }
 }
