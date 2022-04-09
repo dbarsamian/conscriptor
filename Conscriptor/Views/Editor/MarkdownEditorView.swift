@@ -14,7 +14,8 @@ import SwiftUI
 struct MarkdownEditorView: View {
     @Binding var conscriptorDocument: ConscriptorDocument
 
-    // Alerts
+    // View State
+    @State private var showingPreview = true
     @State private var showingTablePopover = false
     @State private var showingTemplateSaveAlert = false
     @State private var showingInsertImageSheet = false
@@ -32,8 +33,6 @@ struct MarkdownEditorView: View {
 
     // Internal Views
     @State private var textView: NSTextView?
-    @State private var splitView: NSSplitView?
-    @State private var rightSplitItem: NSSplitViewItem?
 
     var html: String {
         do {
@@ -42,6 +41,7 @@ struct MarkdownEditorView: View {
             return ""
         }
     }
+
     let notificationCenter = NotificationCenter.default
 
     // MARK: Body
@@ -50,36 +50,28 @@ struct MarkdownEditorView: View {
         GeometryReader { geo in
             Group {
                 if geo.size.width > 900 {
-                    HSplitView {
+                    HStack(spacing: 0) {
                         editorContent()
-                        livePreview()
-                            .background(Color(NSColor.textBackgroundColor))
+                        if showingPreview {
+                            Divider()
+                            livePreview()
+                                .background(Color(NSColor.textBackgroundColor))
+                        }
                     }
                 } else {
-                    VSplitView {
+                    VStack(spacing: 0) {
                         editorContent()
-                        livePreview()
-                            .background(Color(NSColor.textBackgroundColor))
+                        if showingPreview {
+                            Divider()
+                            livePreview()
+                                .background(Color(NSColor.textBackgroundColor))
+                        }
                     }
                 }
             }
-            .introspectSplitView { spv in
-                splitView = spv
-                splitView?.autosaveName = "com.davidbarsam.Conscriptor.editorSplitView"
-                let splitViewController = splitView?.delegate as? NSSplitViewController
-                let thickness = geo.size.width / 2
-                let leftSplitItem = splitViewController?.splitViewItems[0]
-                leftSplitItem?.canCollapse = false
-                leftSplitItem?.minimumThickness = thickness
-                rightSplitItem = splitViewController?.splitViewItems[1]
-                rightSplitItem?.canCollapse = true
-                rightSplitItem?.collapseBehavior = .preferResizingSiblingsWithFixedSplitView
-                rightSplitItem?.minimumThickness = thickness / 2
-                rightSplitItem?.preferredThicknessFraction = 0.5
-            }
         }
         .toolbar(id: "editorControls") {
-            MarkdownEditorToolbar(rightSplitItem: $rightSplitItem,
+            MarkdownEditorToolbar(showingPreview: $showingPreview,
                                   showingTablePopover: $showingTablePopover,
                                   newTableSize: $newTableSize)
         }
@@ -115,14 +107,16 @@ struct MarkdownEditorView: View {
     func editorContent() -> some View {
         HighlightedTextEditor(text: $conscriptorDocument.text, highlightRules: .markdown)
             .introspect(callback: { editor in
-                self.textView = editor.textView
-                editor.textView.textContainerInset = NSSize(width: 30, height: 40)
-                editor.textView.usesFontPanel = false
-                editor.textView.usesFindPanel = true
                 editor.scrollView?.autohidesScrollers = true
             })
             .frame(minWidth: 450)
             .id("TextEdtior")
+            .introspectTextView { textView in
+                self.textView = textView
+                textView.textContainerInset = NSSize(width: 30, height: 40)
+                textView.usesFontPanel = false
+                textView.usesFindPanel = true
+            }
     }
 
     @ViewBuilder

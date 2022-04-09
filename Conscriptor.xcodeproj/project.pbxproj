@@ -21,7 +21,6 @@
 		D51365F327FAE71C0080D5F5 /* github-preview.css in Resources */ = {isa = PBXBuildFile; fileRef = D51365F127FAE6F50080D5F5 /* github-preview.css */; };
 		D5158F2A27EC0D89008B7C92 /* ViewSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5158F2927EC0D89008B7C92 /* ViewSnapshot.swift */; };
 		D51B6297270F692800DAC0C6 /* MarkdownEditorToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */; };
-		D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = D53C190926E0CF3100E7934B /* HighlightedTextEditor */; };
 		D53EE53C27FAD187007ED1C0 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3A3A827E30C81006942D6 /* Quartz.framework */; };
 		D53EE54127FAD187007ED1C0 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EE54027FAD187007ED1C0 /* PreviewProvider.swift */; };
 		D53EE54927FAD187007ED1C0 /* QLExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D53EE53B27FAD187007ED1C0 /* QLExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -47,6 +46,7 @@
 		D5D6BB8527FB89DF00E31E9B /* KeyBindingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D6BB8427FB89DF00E31E9B /* KeyBindingsView.swift */; };
 		D5D903DB278859AB00EC7B85 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D903DA278859AB00EC7B85 /* Template.swift */; };
 		D5D903DF2789200300EC7B85 /* TemplateGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5D903DE2789200300EC7B85 /* TemplateGridView.swift */; };
+		D5DA40072801292600015855 /* HighlightedTextEditor in Frameworks */ = {isa = PBXBuildFile; productRef = D5DA40062801292600015855 /* HighlightedTextEditor */; };
 		D5DB4C8627FD175200C79779 /* Parsley in Frameworks */ = {isa = PBXBuildFile; productRef = D5DB4C8527FD175200C79779 /* Parsley */; };
 		D5F031A427881C2B007A55C2 /* OpenTemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5F031A327881C2B007A55C2 /* OpenTemplateView.swift */; };
 /* End PBXBuildFile section */
@@ -124,9 +124,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D53C190A26E0CF3100E7934B /* HighlightedTextEditor in Frameworks */,
 				D5B76DC327FFDC570050C201 /* KeyboardShortcuts in Frameworks */,
 				683D922A26B107EB00E5EF82 /* Introspect in Frameworks */,
+				D5DA40072801292600015855 /* HighlightedTextEditor in Frameworks */,
 				D51365ED27FAE2260080D5F5 /* Parsley in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,9 +403,9 @@
 			name = Conscriptor;
 			packageProductDependencies = (
 				683D922926B107EB00E5EF82 /* Introspect */,
-				D53C190926E0CF3100E7934B /* HighlightedTextEditor */,
 				D51365EC27FAE2260080D5F5 /* Parsley */,
 				D5B76DC227FFDC570050C201 /* KeyboardShortcuts */,
+				D5DA40062801292600015855 /* HighlightedTextEditor */,
 			);
 			productName = Conscriptor;
 			productReference = 68871BA426B0B3750001421E /* Conscriptor.app */;
@@ -459,10 +459,10 @@
 			mainGroup = 68871B9B26B0B3750001421E;
 			packageReferences = (
 				683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
 				D5665F3927F8301B004FBB69 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				D51365EB27FAE2260080D5F5 /* XCRemoteSwiftPackageReference "Parsley" */,
 				D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+				D5DA40052801292600015855 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
 			);
 			productRefGroup = 68871BA526B0B3750001421E /* Products */;
 			projectDirPath = "";
@@ -851,14 +851,6 @@
 				minimumVersion = 0.8.0;
 			};
 		};
-		D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kyle-n/HighlightedTextEditor";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		D5665F3927F8301B004FBB69 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -875,6 +867,14 @@
 				kind = branch;
 			};
 		};
+		D5DA40052801292600015855 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kyle-n/HighlightedTextEditor";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -888,15 +888,15 @@
 			package = D51365EB27FAE2260080D5F5 /* XCRemoteSwiftPackageReference "Parsley" */;
 			productName = Parsley;
 		};
-		D53C190926E0CF3100E7934B /* HighlightedTextEditor */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = D53C190826E0CF3100E7934B /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */;
-			productName = HighlightedTextEditor;
-		};
 		D5B76DC227FFDC570050C201 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
 			productName = KeyboardShortcuts;
+		};
+		D5DA40062801292600015855 /* HighlightedTextEditor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5DA40052801292600015855 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */;
+			productName = HighlightedTextEditor;
 		};
 		D5DB4C8527FD175200C79779 /* Parsley */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -15,7 +15,7 @@ struct OpenTemplateView: View {
     @State var filter: TemplateCategory = .allTemplates
 
     private func templateGrid(displaying filter: TemplateCategory) -> some View {
-        return VStack(alignment: .leading) {
+        return VStack(alignment: .leading, spacing: 0) {
             TemplateGridView(templateToUse: $templateToUse, dismissTemplateWindow: dismiss, filter: filter)
                 .edgesIgnoringSafeArea(.all)
             Divider()
@@ -24,13 +24,13 @@ struct OpenTemplateView: View {
                 Button("Cancel", role: .cancel) {
                     dismiss()
                 }
-                .padding(.bottom, 8)
+                .padding(.vertical)
                 Button("Open") {
                     NSDocumentController.shared.newDocument(self)
                     dismiss()
                 }
                 .disabled(templateToUse == nil)
-                .padding(.bottom, 8)
+                .padding(.vertical)
             }
             .layoutPriority(1)
             .padding()
