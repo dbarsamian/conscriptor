@@ -40,7 +40,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2021 David Barsamian. All rights reserved.</string>
+	<string>Copyright © 2021 David Barsamian</string>
 	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>

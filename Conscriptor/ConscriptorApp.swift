@@ -41,7 +41,7 @@ struct ConscriptorApp: App {
 
         DocumentGroup(newDocument: ConscriptorDocument(text: templateToUse?.document ?? "")) { file in
             MarkdownEditorView(conscriptorDocument: file.$document)
-                .frame(minWidth: 650, minHeight: 800)
+                .frame(minWidth: 650, minHeight: 500)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
         .windowToolbarStyle(.unified)

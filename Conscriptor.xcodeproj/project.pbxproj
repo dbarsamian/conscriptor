@@ -459,7 +459,6 @@
 			mainGroup = 68871B9B26B0B3750001421E;
 			packageReferences = (
 				683D922826B107EB00E5EF82 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				D5665F3927F8301B004FBB69 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				D51365EB27FAE2260080D5F5 /* XCRemoteSwiftPackageReference "Parsley" */,
 				D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				D5DA40052801292600015855 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
@@ -849,14 +848,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.8.0;
-			};
-		};
-		D5665F3927F8301B004FBB69 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SnapKit/SnapKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
 			};
 		};
 		D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {

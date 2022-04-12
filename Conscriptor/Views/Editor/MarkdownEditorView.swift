@@ -15,7 +15,7 @@ struct MarkdownEditorView: View {
     @Binding var conscriptorDocument: ConscriptorDocument
 
     // View State
-    @State private var showingPreview = true
+    @State private var showingPreview = false
     @State private var showingTablePopover = false
     @State private var showingTemplateSaveAlert = false
     @State private var showingInsertImageSheet = false
