@@ -1,4 +1,4 @@
-![App icon](https://raw.githubusercontent.com/dbarsamian/conscriptor/main/Conscriptor/Assets.xcassets/AppIcon.appiconset/icon_128x128.png)
+<a href="https://apps.apple.com/us/app/conscriptor/id1584088887?mt=12&amp;itscg=30200&amp;itsct=apps_box_appicon" style="width: 170px; height: 170px; border-radius: 22%; overflow: hidden; display: inline-block; vertical-align: middle;"><img src="https://raw.githubusercontent.com/dbarsamian/conscriptor/main/Conscriptor/Assets.xcassets/AppIcon.appiconset/icon_128x128%402x%402x.png" alt="Conscriptor" style="width: 128px; height: 128px; overflow: hidden; display: inline-block; vertical-align: middle;"></a>
 
 # Conscriptor
 
@@ -7,6 +7,8 @@
 A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps) markdown editor, built in SwiftUI.
 
 *Conscriptor* is a Markdown editor designed to make editing Markdown documents easier, more approachable, and faster.
+
+<a href="https://apps.apple.com/us/app/conscriptor/id1584088887?mt=12&amp;itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-mac-app-store/black/en-us?size=250x83&amp;releaseDate=1649721600&h=64bb532e72c2c13c1c79da961f2a1168" alt="Download on the Mac App Store" style="border-radius: 13px; width: 250px; height: 83px;"></a>
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
@@ -42,11 +44,13 @@ To setup *Conscriptor* for development...
 
 ## Versions
 
-| Ver. # | Release Date | Major Features |
+| Ver. # | Release Date | Notes |
 | --- | --- | --- |
 | 0.4 | 6 January 2022 | Editor; Live Preview; Keyboard Shortcuts; Basic Templates |
 | 0.5 | 15 February 2022 | Custom Templates; Link, Image, and Table Insertion |
 | 0.6 | 26 March 2022 | Image, Link Insertion; Engine Improvement; Layout Improvement |
+| 0.7 | 4 April 2022 | Quick Look extension, styling changes, new license |
+| 1.0 | 12 April 2022 | Initial Release |
 
 
 ## Authors
