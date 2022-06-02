@@ -2,18 +2,37 @@
 //  Shortcuts.swift
 //  Conscriptor
 //
-//  Created by David Barsamian on 4/7/22.
+//  Created by David Barsamian on 4/26/22.
 //
 
-import KeyboardShortcuts
 import SwiftUI
+import KeyboardShortcuts
 
-extension KeyboardShortcuts.Name {
-    static let saveAsTemplate = Self("saveAsTemplate", default: Shortcut(.s, modifiers: [.control, .shift]))
-    static let formatBold = Self("formatBold", default: Shortcut(.b, modifiers: [.command]))
-    static let formatItalic = Self("formatItalic", default: Shortcut(.i, modifiers: [.command]))
-    static let formatStrikethrough = Self("formatStrikethrough", default: Shortcut(.k, modifiers: [.command]))
-    static let formatInlineCode = Self("formatInlineCode", default: Shortcut(.slash, modifiers: [.command]))
-    static let insertImage = Self("insertImage", default: Shortcut(.i, modifiers: [.command, .option]))
-    static let insertLink = Self("insertLink", default: Shortcut(.l, modifiers: [.command, .option]))
+@MainActor
+final class Shortcuts: ObservableObject {
+    private let notificationCenter = NotificationCenter.default
+
+    init() {
+        KeyboardShortcuts.onKeyUp(for: .saveAsTemplate) { [self] in
+            notificationCenter.post(name: .saveNewTemplate, object: nil)
+        }
+        KeyboardShortcuts.onKeyUp(for: .formatBold) { [self] in
+            notificationCenter.post(name: .formatBold, object: nil)
+        }
+        KeyboardShortcuts.onKeyUp(for: .formatItalic) { [self] in
+            notificationCenter.post(name: .formatItalic, object: nil)
+        }
+        KeyboardShortcuts.onKeyUp(for: .formatStrikethrough) { [self] in
+            notificationCenter.post(name: .formatStrikethrough, object: nil)
+        }
+        KeyboardShortcuts.onKeyUp(for: .formatInlineCode) { [self] in
+            notificationCenter.post(name: .formatInlineCode, object: nil)
+        }
+        KeyboardShortcuts.onKeyUp(for: .insertLink) { [self] in
+            notificationCenter.post(name: .insertLink, object: nil)
+        }
+        KeyboardShortcuts.onKeyUp(for: .insertImage) { [self] in
+            notificationCenter.post(name: .insertImage, object: nil)
+        }
+    }
 }

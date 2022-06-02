@@ -14,7 +14,8 @@ struct ConscriptorApp: App {
     let notificationCenter = NotificationCenter.default
 
     @Environment(\.scenePhase) var scenePhase
-    @State var templateToUse: Template?
+//    @StateObject private var shortcuts = Shortcuts()
+    @State private var templateToUse: Template?
     @State private var showingAlert = false
 
     var body: some Scene {
@@ -54,7 +55,8 @@ struct ConscriptorApp: App {
                 } label: {
                     Text("Save as Template")
                 }
-                .keyboardShortcut("s", modifiers: [.control, .shift])
+//                .keyboardShortcut("s", modifiers: [.control, .shift])
+                .keyboardShortcut(KeyboardShortcuts.Name.saveAsTemplate.shortcut!.transformKey(), modifiers: KeyboardShortcuts.Name.saveAsTemplate.shortcut!.transformModifiers())
             }
             CommandGroup(replacing: .textFormatting) {
                 Button {
@@ -103,9 +105,9 @@ struct ConscriptorApp: App {
             }
         }
 
-//        Settings {
-//            PreferencesView()
-//                .frame(width: 450, height: 250)
-//        }
+        Settings {
+            PreferencesView()
+                .frame(width: 450, height: 250)
+        }
     }
 }

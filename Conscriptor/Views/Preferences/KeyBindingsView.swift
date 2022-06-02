@@ -9,9 +9,14 @@ import KeyboardShortcuts
 import SwiftUI
 
 struct KeyBindingsView: View {
+
     var body: some View {
         Form {
-            KeyboardShortcuts.Recorder("Save As Template", name: .saveAsTemplate)
+            KeyboardShortcuts.Recorder("Save As Template", name: .saveAsTemplate) { shortcut in
+                if let shortcut = shortcut {
+                    //
+                }
+            }
             KeyboardShortcuts.Recorder("Format Bold", name: .formatBold)
             KeyboardShortcuts.Recorder("Format Italic", name: .formatItalic)
             KeyboardShortcuts.Recorder("Format Strikethrough", name: .formatStrikethrough)

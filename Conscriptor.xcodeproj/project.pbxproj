@@ -21,6 +21,9 @@
 		D51365F327FAE71C0080D5F5 /* github-preview.css in Resources */ = {isa = PBXBuildFile; fileRef = D51365F127FAE6F50080D5F5 /* github-preview.css */; };
 		D5158F2A27EC0D89008B7C92 /* ViewSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5158F2927EC0D89008B7C92 /* ViewSnapshot.swift */; };
 		D51B6297270F692800DAC0C6 /* MarkdownEditorToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */; };
+		D52728502818F86B000DCE07 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = D527284F2818F86B000DCE07 /* KeyboardShortcuts */; };
+		D5272852281904FB000DCE07 /* KeyboardShortcutNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5272851281904FB000DCE07 /* KeyboardShortcutNames.swift */; };
+		D527285428190596000DCE07 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D527285328190596000DCE07 /* Shortcuts.swift */; };
 		D53EE53C27FAD187007ED1C0 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5E3A3A827E30C81006942D6 /* Quartz.framework */; };
 		D53EE54127FAD187007ED1C0 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D53EE54027FAD187007ED1C0 /* PreviewProvider.swift */; };
 		D53EE54927FAD187007ED1C0 /* QLExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = D53EE53B27FAD187007ED1C0 /* QLExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -36,7 +39,6 @@
 		D5AA200027ADE80900DB2EE1 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA1FFF27ADE80900DB2EE1 /* Persistence.swift */; };
 		D5AA200227ADEA5300DB2EE1 /* OSLogExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA200127ADEA5300DB2EE1 /* OSLogExtension.swift */; };
 		D5AA200427ADF57100DB2EE1 /* NotificationName+Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5AA200327ADF57100DB2EE1 /* NotificationName+Persistence.swift */; };
-		D5B76DB827FFBDB20050C201 /* Shortcuts.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B76DB727FFBDB20050C201 /* Shortcuts.swift */; };
 		D5B76DC327FFDC570050C201 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = D5B76DC227FFDC570050C201 /* KeyboardShortcuts */; };
 		D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */; };
 		D5CE033426F4314E00CB86E5 /* MarkdownEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */; };
@@ -90,6 +92,8 @@
 		D51365F127FAE6F50080D5F5 /* github-preview.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = "github-preview.css"; sourceTree = "<group>"; };
 		D5158F2927EC0D89008B7C92 /* ViewSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSnapshot.swift; sourceTree = "<group>"; };
 		D51B6296270F692800DAC0C6 /* MarkdownEditorToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorToolbar.swift; sourceTree = "<group>"; };
+		D5272851281904FB000DCE07 /* KeyboardShortcutNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShortcutNames.swift; sourceTree = "<group>"; };
+		D527285328190596000DCE07 /* Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		D53EE53B27FAD187007ED1C0 /* QLExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = QLExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D53EE54027FAD187007ED1C0 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		D53EE54527FAD187007ED1C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,7 +110,6 @@
 		D5AA1FFF27ADE80900DB2EE1 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		D5AA200127ADEA5300DB2EE1 /* OSLogExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OSLogExtension.swift; sourceTree = "<group>"; };
 		D5AA200327ADF57100DB2EE1 /* NotificationName+Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+Persistence.swift"; sourceTree = "<group>"; };
-		D5B76DB727FFBDB20050C201 /* Shortcuts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shortcuts.swift; sourceTree = "<group>"; };
 		D5CE033126F3F9B000CB86E5 /* MarkdownFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownFormatter.swift; sourceTree = "<group>"; };
 		D5CE033326F4314E00CB86E5 /* MarkdownEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownEditorController.swift; sourceTree = "<group>"; };
 		D5D6747626F1C3F000871617 /* CMarkdown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CMarkdown.swift; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 			files = (
 				D5B76DC327FFDC570050C201 /* KeyboardShortcuts in Frameworks */,
 				683D922A26B107EB00E5EF82 /* Introspect in Frameworks */,
+				D52728502818F86B000DCE07 /* KeyboardShortcuts in Frameworks */,
 				D5DA40072801292600015855 /* HighlightedTextEditor in Frameworks */,
 				D51365ED27FAE2260080D5F5 /* Parsley in Frameworks */,
 			);
@@ -215,9 +219,9 @@
 			isa = PBXGroup;
 			children = (
 				D5D6747626F1C3F000871617 /* CMarkdown.swift */,
-				D5B76DB727FFBDB20050C201 /* Shortcuts.swift */,
 				D5AA1FF827ADE52800DB2EE1 /* Documents */,
 				D5AA1FFB27ADE7AB00DB2EE1 /* Templates */,
+				D527285328190596000DCE07 /* Shortcuts.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -239,6 +243,7 @@
 				D576840C26E0ACCF00E2A12B /* IntrospectExtension.swift */,
 				D5AA200127ADEA5300DB2EE1 /* OSLogExtension.swift */,
 				D5158F2927EC0D89008B7C92 /* ViewSnapshot.swift */,
+				D5272851281904FB000DCE07 /* KeyboardShortcutNames.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -406,6 +411,7 @@
 				D51365EC27FAE2260080D5F5 /* Parsley */,
 				D5B76DC227FFDC570050C201 /* KeyboardShortcuts */,
 				D5DA40062801292600015855 /* HighlightedTextEditor */,
+				D527284F2818F86B000DCE07 /* KeyboardShortcuts */,
 			);
 			productName = Conscriptor;
 			productReference = 68871BA426B0B3750001421E /* Conscriptor.app */;
@@ -462,6 +468,7 @@
 				D51365EB27FAE2260080D5F5 /* XCRemoteSwiftPackageReference "Parsley" */,
 				D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 				D5DA40052801292600015855 /* XCRemoteSwiftPackageReference "HighlightedTextEditor" */,
+				D527284E2818F86B000DCE07 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
 			);
 			productRefGroup = 68871BA526B0B3750001421E /* Products */;
 			projectDirPath = "";
@@ -528,6 +535,7 @@
 				D5A5B8A027EA838A00741D3F /* InsertImageSheet.swift in Sources */,
 				D5AA200027ADE80900DB2EE1 /* Persistence.swift in Sources */,
 				D5D903DB278859AB00EC7B85 /* Template.swift in Sources */,
+				D5272852281904FB000DCE07 /* KeyboardShortcutNames.swift in Sources */,
 				D5F031A427881C2B007A55C2 /* OpenTemplateView.swift in Sources */,
 				68871BA826B0B3750001421E /* ConscriptorApp.swift in Sources */,
 				D5AA200227ADEA5300DB2EE1 /* OSLogExtension.swift in Sources */,
@@ -539,7 +547,6 @@
 				D5AA1FFA27ADE54500DB2EE1 /* TemplateView.swift in Sources */,
 				68871BAA26B0B3750001421E /* ConscriptorDocument.swift in Sources */,
 				D5A5B89E27EA837E00741D3F /* InsertLinkSheet.swift in Sources */,
-				D5B76DB827FFBDB20050C201 /* Shortcuts.swift in Sources */,
 				D5158F2A27EC0D89008B7C92 /* ViewSnapshot.swift in Sources */,
 				D5D903DF2789200300EC7B85 /* TemplateGridView.swift in Sources */,
 				D51B6297270F692800DAC0C6 /* MarkdownEditorToolbar.swift in Sources */,
@@ -549,6 +556,7 @@
 				68871BAC26B0B3750001421E /* MarkdownEditorView.swift in Sources */,
 				D5CE033226F3F9B000CB86E5 /* MarkdownFormatter.swift in Sources */,
 				D5D6BB8327FB89D600E31E9B /* GeneralPreferencesView.swift in Sources */,
+				D527285428190596000DCE07 /* Shortcuts.swift in Sources */,
 				D5D6747726F1C3F000871617 /* CMarkdown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,7 +716,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.Conscriptor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -736,7 +744,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.Conscriptor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -763,7 +771,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.Conscriptor.QLExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -792,7 +800,7 @@
 					"@executable_path/../../../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
-				MARKETING_VERSION = 0.8;
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.Conscriptor.QLExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -850,6 +858,14 @@
 				minimumVersion = 0.8.0;
 			};
 		};
+		D527284E2818F86B000DCE07 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
@@ -878,6 +894,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D51365EB27FAE2260080D5F5 /* XCRemoteSwiftPackageReference "Parsley" */;
 			productName = Parsley;
+		};
+		D527284F2818F86B000DCE07 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5B76DC127FFDC570050C201 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
 		};
 		D5B76DC227FFDC570050C201 /* KeyboardShortcuts */ = {
 			isa = XCSwiftPackageProductDependency;
