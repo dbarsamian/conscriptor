@@ -8,9 +8,7 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 
 *Conscriptor* is a Markdown editor designed to make editing Markdown documents easier, more approachable, and faster.
 
-<a href="https://apps.apple.com/us/app/conscriptor/id1584088887?mt=12&amp;itsct=apps_box_badge&amp;itscg=30200" style="display: inline-block; overflow: hidden; border-radius: 13px; width: 250px; height: 83px;"><img src="https://tools.applemediaservices.com/api/badges/download-on-the-mac-app-store/black/en-us?size=250x83&amp;releaseDate=1649721600&h=64bb532e72c2c13c1c79da961f2a1168" alt="Download on the Mac App Store" style="border-radius: 13px; width: 250px; height: 83px;"></a>
-
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ### Features
 
@@ -24,9 +22,9 @@ A ["Mac-assed"](https://daringfireball.net/linked/2020/03/20/mac-assed-mac-apps)
 - Insert image button to make adding images to documents simpler.
 - Quick Look integration that displays live previews of Markdown documents.
 
-### Upcoming Additions
+~~### Upcoming Additions~~
 
-- Customization of keyboard shortcuts.
+~~- Customization of keyboard shortcuts.~~
 
 ## Getting Started
 
@@ -51,6 +49,7 @@ To setup *Conscriptor* for development...
 | 0.6 | 26 March 2022 | Image, Link Insertion; Engine Improvement; Layout Improvement |
 | 0.7 | 4 April 2022 | Quick Look extension, styling changes, new license |
 | 1.0 | 12 April 2022 | Initial Release |
+|     | 1 June 2022 | Open Source
 
 
 ## Authors
@@ -59,17 +58,10 @@ To setup *Conscriptor* for development...
 
 ## License
 
-This work is licensed under a
-[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License][cc-by-nc-sa].
-
-[![CC BY-NC-SA 4.0][cc-by-nc-sa-image]][cc-by-nc-sa]
+This work is licensed under a MIT License. See LICENSE.md for more information.
 
 ## Acknowledgements
 
 - [HighlightedTextEditor](https://github.com/kyle-n/HighlightedTextEditor) by Kyle Nazario
 - [MarkdownSyntax](https://github.com/hebertialmeida/MarkdownSyntax) by Heberti Almeida
 - [github.css](https://gist.github.com/tuzz/3331384) by Chris Patuzzo
-
-[cc-by-nc-sa]: http://creativecommons.org/licenses/by-nc-sa/4.0/
-[cc-by-nc-sa-image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
-[cc-by-nc-sa-shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey.svg
